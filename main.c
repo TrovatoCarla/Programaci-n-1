@@ -1,48 +1,59 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-float PedirNumerosySacarPromedio ();//PROTOTIPO
+int getInt(char *mensaje,char *mensajeError,int minimo,int maximo,int reintentos,int *resultado);
+int isValidInt(int numero,int minimo,int maximo);
 
 int main()
 {
-    PedirNumerosySacarPromedio();
-}
-
-float PedirNumerosySacarPromedio ()
-{
     int numeroIngresado;
-    int acumulador=0;
-    float promedio;
-    int i;
-    int maximo;
-    int minimo;
-
-    for(i=0;i<5;i++)
-    {
-        printf("Ingrese un numero: ");
-        scanf("%d",&numeroIngresado);
-        if(i==0)
-        {
-            maximo=numeroIngresado;
-            minimo=numeroIngresado;
-        }
-        else
-        {
-            if(numeroIngresado>maximo)
-            {
-                maximo=numeroIngresado;
-            }
-            if(numeroIngresado<minimo)
-            {
-                minimo=numeroIngresado;
-            }
-        }
-
-        acumulador=acumulador+numeroIngresado;
-    }
-    promedio=(float)acumulador/i;
-    printf("\nEl promedio es: %.2f",promedio);
-    printf("\nEl numero minimo es:%d",minimo);
-    printf("\nEl numero maximo es:%d",maximo);
+    getInt("Ingrese numero", "error",0,100,2,&numeroIngresado);
+    printf("El numero ingresado es: %d", numeroIngresado);
     return 0;
 }
+
+int isValidInt(int numero,int minimo,int maximo)
+{
+    if(numero>=minimo && numero<=maximo)
+    {
+        return 1;
+    }
+   // else//NO ES NECESARIO
+   //{
+        return 0;//HASTA DOS RETORNOS SE PUEDE JUNTOS.3NO
+   // }
+
+}
+
+int getInt(char *mensaje,char *mensajeError,int minimo,int maximo,int reintentos,int *resultado)
+
+{
+    int buffer;
+    int i;
+    int retorno=-1;
+
+    if(mensaje!=NULL && mensajeError!=NULL && resultado!=NULL && reintentos>=0 && maximo>=minimo)
+    {
+
+        for(i=0;i<=reintentos;i++)
+        {
+            printf("%s",mensaje);
+            scanf("%d",&buffer);
+            if(isValidInt(buffer,minimo,maximo))
+             {
+                *resultado=buffer;
+                retorno=0;
+                break;
+             }
+             else
+             {
+                printf("%s",mensajeError);
+            }
+
+        }
+
+    }
+    return retorno;
+}
+
+
