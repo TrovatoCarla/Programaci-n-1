@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include "funcionesUTN.h"
 
 int getInt(char *mensaje,char *mensajeError,int maximo,int minimo,int reintentos,int *resultado)
 {
@@ -53,7 +54,7 @@ int getFloat(char *mensaje,char *mensajeError,float maximo,float minimo,int rein
             {
                 printf("%s",mensaje);
                 scanf("%f",&auxiliar);
-                if(isValidInt(auxiliar,maximo,minimo))
+                if(isValidFloat(auxiliar,maximo,minimo))
                 {
                     *resultado=auxiliar;
                     retorno=0;
@@ -64,6 +65,15 @@ int getFloat(char *mensaje,char *mensajeError,float maximo,float minimo,int rein
             }
         }
     return retorno;
+}
+int isValidFloat(float numero, float maximo, float minimo)
+{
+    if(numero >= minimo && numero <= maximo)
+    {
+        return 1;
+    }
+
+    return 0;
 }
 
 

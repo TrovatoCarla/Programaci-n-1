@@ -1,12 +1,13 @@
 # depslib dependency file v1.0
-1554851917 source:c:\programacion 1\programacion-1\practica_clase\main.c
+1554853689 source:c:\programacion 1\programacion-1\practica_clase\main.c
 	<stdio.h>
 	<stdlib.h>
 	"funcionesUTN.h"
 
-1554851917 source:c:\programacion 1\programacion-1\practica_clase\funcionesutn.c
+1554852100 source:c:\programacion 1\programacion-1\practica_clase\funcionesutn.c
 	<stdio.h>
 	<stdlib.h>
+	"funcionesUTN.h"
 
-1554851917 c:\programacion 1\programacion-1\practica_clase\funcionesutn.h
+1554853802 c:\programacion 1\programacion-1\practica_clase\funcionesutn.h
 
