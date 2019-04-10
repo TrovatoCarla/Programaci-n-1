@@ -9,11 +9,12 @@ int main()
     char nombre[MAX];
     int i;
     printf("\nIngrese nombre: ");
-    fgets(buffer,sizeof(nombre),stdin);
+    fgets(buffer,sizeof(nombre),stdin);//hacer funcion de esta e incluirle strlen(nombre)-1
+                                                        //  nombre[strlen(nombre-1]='\0'
 
     strncpy(nombre,buffer,sizeof(nombre));
 
-    //i=strlen(buffer);
+    //i=strlen(buffer); cuenta la cantidad de lugares q tiene indice
     //printf("\n %d",i-1);
 
     for(i=0;i<MAX && buffer[i]!='\0';i++)
