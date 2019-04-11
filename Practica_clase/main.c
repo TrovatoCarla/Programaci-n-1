@@ -1,23 +1,34 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "funcionesUTN.h"
-int getChar(char *mensaje,char *mensajeError,char maximo,char minimo,int reintentos,char *resultado);
-int isValidChar(char letra, char maximo, char minimo);
+int getString(char *input,char *msg,char *msgError,int maximo,int minimo);
 
 int main()
 {
-    char letra;
-    int respuesta;
-    respuesta=getChar("\nIngrese opcion a b o c : ","Error",'z','a',3,&letra);
-    if(respuesta==0)
+    char buffer[10];
+    char cadena[10];
+    int r;
+    r=getString(cadena,"nombre: ","El largo debe ser entre 0 y 10",10,0);
+    if(r==0)
     {
-        printf("\nLa opcion ingresada: %c",letra);
+        printf("%s",buffer);
     }
-
     return 0;
 }
 
+int getString(char *input,char *msg,char *msgError,int maximo,int minimo)
+{
+    char algo[10];
+    int retorno=1;
+
+    if(input!=NULL && msg!=NULL && msgError!=NULL && maximo>=minimo)
+    {
+        retorno=0;
+
+    }
+    else
+        printf("Error");
 
 
-
-
+     return retorno;
+}
