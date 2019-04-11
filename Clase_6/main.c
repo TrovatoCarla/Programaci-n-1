@@ -12,8 +12,6 @@ int main()
     fgets(buffer,sizeof(nombre),stdin);//hacer funcion de esta e incluirle strlen(nombre)-1
                                                         //  nombre[strlen(nombre-1]='\0'
 
-    strncpy(nombre,buffer,sizeof(nombre));
-
     //i=strlen(buffer); cuenta la cantidad de lugares q tiene indice
     //printf("\n %d",i-1);
 
@@ -21,11 +19,17 @@ int main()
     {
 
         if((buffer[i]<'a' || buffer[i]>'z') && (buffer[i]<'A' || buffer[i]>'Z'))
-          {
+        {
                 printf("Error!!!");
                 break;
-           }
+        }
+        else
+        {
+        strncpy(nombre,buffer,sizeof(nombre));
+            printf("%s",nombre);
+         }
     }
+
 
     return 0;
 }
