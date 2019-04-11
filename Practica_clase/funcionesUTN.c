@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "funcionesUTN.h"
+#include "misValid.h"
 
 int getInt(char *mensaje,char *mensajeError,int maximo,int minimo,int reintentos,int *resultado)
 {
@@ -33,15 +34,6 @@ int getInt(char *mensaje,char *mensajeError,int maximo,int minimo,int reintentos
     return retorno;
 }
 
-int isValidInt(int numero, int maximo, int minimo)
-{
-    if(numero >= minimo && numero <=maximo)
-    {
-        return 1;
-    }
-        return 0;
-}
-
 int getFloat(char *mensaje,char *mensajeError,float maximo,float minimo,int reintentos,float *resultado)
 {
     float auxiliar;
@@ -66,14 +58,29 @@ int getFloat(char *mensaje,char *mensajeError,float maximo,float minimo,int rein
         }
     return retorno;
 }
-int isValidFloat(float numero, float maximo, float minimo)
-{
-    if(numero >= minimo && numero <= maximo)
-    {
-        return 1;
-    }
 
-    return 0;
+int getChar(char *mensaje,char *mensajeError,char maximo,char minimo,int reintentos,char *resultado)
+{
+    char buffer;
+    int retorno=-1;
+
+        if(mensaje!=NULL && mensajeError!=NULL && maximo>=minimo && reintentos>0 && resultado!=NULL)
+        {
+           do
+           {
+               printf("%s",mensaje);
+               scanf("%c",&buffer);
+               if(isValidChar(buffer,maximo,minimo))
+               {
+                   *resultado=buffer;
+                   retorno=0;
+                   break;
+               }
+               else
+                printf("%s",mensajeError);
+           }while(reintentos>=0);
+        }
+    return retorno;
 }
 
 
