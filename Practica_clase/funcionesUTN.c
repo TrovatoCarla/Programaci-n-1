@@ -1,7 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "funcionesUTN.h"
 #include "misValid.h"
+#define MAX 3000
+#define TRUE 1
+#define FALSE 0
 
 int getInt(char *mensaje,char *mensajeError,int maximo,int minimo,int reintentos,int *resultado)
 {
@@ -83,6 +87,36 @@ int getChar(char *mensaje,char *mensajeError,char maximo,char minimo,int reinten
     return retorno;
 }
 
+int getString(char *mensaje,char *mensajeError,char maximo,char minimo,int reintentos,char *resultado)
+{
+    char buffer[MAX];
+    int retorno=-1;
+
+    if(mensaje!=NULL && mensajeError!=NULL && maximo>minimo && reintentos>=0 && resultado!=NULL)
+    {
+
+        do
+        {
+            printf("%s",mensaje);
+            fgets(buffer,sizeof(buffer),stdin);
+            buffer[strlen(buffer)-1]= '\0';
+            if(strlen(buffer)<=maximo && strlen(buffer)>=minimo)
+             {
+                if(isValidNombre(buffer)==TRUE)
+                {
+                    strncpy(resultado,buffer,maximo);
+                    retorno=0;
+                    break;
+                 }
+            }
+            reintentos--;
+            printf("%s",mensajeError);
+        }while(reintentos>=0);
+
+     }
+
+     return retorno;
+}
 
 
 

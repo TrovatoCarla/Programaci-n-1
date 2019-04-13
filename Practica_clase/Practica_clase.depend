@@ -11,20 +11,23 @@
 
 1554853802 c:\programacion 1\programacion-1\practica_clase\funcionesutn.h
 
-1555013153 source:/home/carla/Programacion-1/Practica_clase/main.c
+1555197874 source:/home/carla/Programacion-1/Practica_clase/main.c
 	<stdio.h>
 	<stdlib.h>
-	"funcionesUTN.h"
-
-1555007228 /home/carla/Programacion-1/Practica_clase/funcionesUTN.h
-
-1555009138 source:/home/carla/Programacion-1/Practica_clase/misValid.c
-
-1555009214 source:/home/carla/Programacion-1/Practica_clase/funcionesUTN.c
-	<stdio.h>
-	<stdlib.h>
+	<string.h>
 	"funcionesUTN.h"
 	"misValid.h"
 
-1555009168 /home/carla/Programacion-1/Practica_clase/misValid.h
+1555197976 /home/carla/Programacion-1/Practica_clase/funcionesUTN.h
+
+1555197795 source:/home/carla/Programacion-1/Practica_clase/misValid.c
+
+1555197838 source:/home/carla/Programacion-1/Practica_clase/funcionesUTN.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"funcionesUTN.h"
+	"misValid.h"
+
+1555197745 /home/carla/Programacion-1/Practica_clase/misValid.h
 

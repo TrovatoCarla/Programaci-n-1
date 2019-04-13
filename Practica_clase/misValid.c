@@ -1,3 +1,6 @@
+#define TRUE 1
+#define FALSE 0
+
 
 int isValidInt(int numero, int maximo, int minimo)
 {
@@ -25,4 +28,24 @@ int isValidChar(char letra, char maximo, char minimo)
         return 1;
     }
     return 0;
+}
+
+int isValidNombre(char *cadena)
+{
+    int retorno= TRUE;
+    int i;
+
+    for(i=0;cadena[i]!= '\0';i++)
+    {
+        if((cadena[i] <'A' || cadena[i] >'Z') && (cadena[i] <'a' || cadena[i] >'z'))
+        {
+            if(cadena[i]<= '9' && cadena[i]>=0)
+            {
+                retorno= FALSE;
+            }
+        }
+
+    }
+    return retorno;
+
 }
