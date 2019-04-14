@@ -5,3 +5,4 @@ int getFloat(char *mensaje,char *mensajeError,float maximo,float minimo,int rein
 int getChar(char *mensaje,char *mensajeError,char maximo,char minimo,int reintentos,char *resultado);
 int getString(char *mensaje,char *mensajeError,char maximo,char minimo,int reintentos,char *resultado);
 int getName(char *mensaje,char *mensajeError,char maximo,char minimo,int reintentos,char *resultado);
+int getApellido(char* mensaje,char* mensajeError,char maximo,char minimo,int reintentos,char* resultado);
