@@ -138,4 +138,26 @@ int getName(char *mensaje,char *mensajeError,char maximo,char minimo,int reinten
     return retorno;
 }
 
+int getApellido(char* mensaje,char* mensajeError,char maximo,char minimo,int reintentos,char* resultado)
+{
+    char buffer[MAX];
+    int retorno=-1;
+
+    if(mensaje!=NULL && mensajeError!=NULL && maximo>minimo && reintentos>0 && resultado!=NULL)
+    {
+
+        if(!getString(mensaje,mensajeError,maximo,minimo,reintentos,buffer))
+        {
+            if(isValidApellido(buffer))
+            {
+                strncpy(resultado,buffer,maximo);
+                retorno=0;
+            }
+        }
+    }
+
+        return retorno;
+}
+
+
 

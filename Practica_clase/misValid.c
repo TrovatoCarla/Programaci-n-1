@@ -39,7 +39,7 @@ int isValidNombre(char *cadena)
     {
         if((cadena[i] <'A' || cadena[i] >'Z') && (cadena[i] <'a' || cadena[i] >'z'))
         {
-            if(cadena[i]<= '9' && cadena[i]>=0)
+            if(cadena[i]<= '9' && cadena[i]>='0')
             {
                 retorno= FALSE;
             }
@@ -48,4 +48,22 @@ int isValidNombre(char *cadena)
     }
     return retorno;
 
+}
+
+int isValidApellido(char* cadena)
+{
+    int retorno= TRUE;
+    int i;
+
+    for(i=0;cadena[i]!= '\0';i++)
+    {
+        if((cadena[i]<'a' || cadena[i]>'z')&&(cadena[i]<'A' || cadena[i]>'Z'))
+        {
+            if(cadena[i]<'0' &&  cadena[i]>'9')
+            {
+                retorno=FALSE;
+            }
+        }
+    }
+    return retorno;
 }
