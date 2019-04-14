@@ -119,4 +119,23 @@ int getString(char *mensaje,char *mensajeError,char maximo,char minimo,int reint
 }
 
 
+int getName(char *mensaje,char *mensajeError,char maximo,char minimo,int reintentos,char *resultado)
+{
+    int retorno=-1;
+    char buffer[MAX];
+
+    if(mensaje!=NULL && mensajeError!=NULL && maximo>minimo && reintentos>=0 && resultado!=NULL)
+    {
+       if(!getString(mensaje,mensajeError,maximo,minimo,reintentos,buffer))
+        {
+            if(isValidNombre(buffer))
+            {
+                strncpy(resultado,buffer,maximo);
+                retorno=0;
+             }
+        }
+    }
+    return retorno;
+}
+
 
