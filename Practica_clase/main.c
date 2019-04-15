@@ -11,7 +11,7 @@ int isValidMail(char* cadena);
 
 int main()
 {
-    char email[10];
+    char email[50];
 
     if(getMail("Ingrese mail: ","Mail invalido\n",50,2,3,email)==0)
     {
@@ -29,41 +29,53 @@ int getMail(char* mensaje,char* mensajeError,char maximo,char minimo,int reinten
     int retorno=-1;
     char buffer[4000];
 
-    if(!getString(mensaje,mensajeError,maximo,minimo,reintentos,buffer))
+    if(mensaje!=NULL && mensajeError!=NULL && maximo>minimo && reintentos>=0 && resultado!=NULL)
     {
-        if(isValidMail(buffer))
+        do//No utiliec getStrin porque esta con valid de nombre
         {
-            strncpy(resultado,buffer,maximo);
-            retorno=0;
-        }
+            printf("%s",mensaje);
+            fgets(buffer,sizeof(buffer),stdin);
+            if((strlen(buffer)<=maximo) && (strlen(buffer)>=minimo))
+            {
+                if(isValidMail(buffer))
+                {
+                    strncpy(resultado,buffer,maximo);
+                    retorno=0;
+                    break;
+                }
+            }
+            reintentos--;
+            printf("%s",mensajeError);
+        }while(reintentos>=0);
     }
     return retorno;
-
 }
 
 int isValidMail(char* cadena)
 {
-    int retorno=FALSE;
+    int retorno= TRUE;
     int i;
-    int flag=0;
-    for(i=0;cadena[i]!='\n';i++)
+    //int flag=0;
+
+    for(i=0;cadena[i]!='\0';i++)
     {
-        if((cadena[i]>'a' && cadena[i]<'z') &&
-            (cadena[i]>='0' && cadena<='9') &&
-            (cadena[i]='.') &&
-            (cadena[i]='_') &&
-            (cadena[i]='-'))
+        if((cadena[i]<'a' || cadena[i]>'z')&&(cadena[i]<'@' || cadena [i]>'@'))
         {
-            retorno=TRUE;
+            if(cadena[i]<'0' || cadena[i]>'9')
+            {
+                retorno=FALSE;
+            }
+
         }
-        if((flag==0) && (cadena[i]='@'))
-        {
-            flag=1;
-        }
+       /*if((flag==1) && (cadena[i]='@'))
+            {
+                flag=1;
+            }*/
 
     }
     return retorno;
 }
+
 
 
 
