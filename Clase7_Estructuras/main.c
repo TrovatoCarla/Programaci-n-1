@@ -21,9 +21,9 @@ int main()
     strncpy(arrayNombres[2],"\nJUAN2\n",50);
 
     muestraArray(arrayNombres,3);
-    if(encuentraPosVacia(arrayNombres,50)==0)
+    if(encuentraPosVacia(arrayNombres,QTY_EMPLEADOS)==0)
     {
-        printf("%d",QTY_EMPLEADOS[i]);
+        printf("%d",);
 
     }
    /* if(getName( "Nombre?: ",
@@ -74,7 +74,7 @@ int encuentraPosVacia(char arrayStr [] [50], int limite)
 
     for(i=0;i<limite;i++)
     {
-        if(strcmp(arrayStr[i],"\0")==0)
+        if(strncmp(arrayStr[i],"\0")==0)
         {
 
             retorno=i;
