@@ -6,75 +6,60 @@
 #define MAX 3000
 #define TRUE 1
 #define FALSE 0
+#define MAX_TELEFONO 20
 
+int getTelefono(char* mensaje,char* mensajeError,char maximo,char minimo,int reintentos,char* resultado);
+int isValidTelefono(char* cadena);
 
 int main()
 {
     char numero[50];
 
-    if(getInt("Ingrese mail: ","Mail invalido\n",50,2,3,numero)==0)
+    if(getTelefono("Ingrese telefono: ","Telefono invalido\n",20,6,3,numero)==0)
     {
-        printf("Su numero es: %s",numero);
-    }
-    else
-    {
-        printf("ERR %s",numero);
+        printf("Su telefono es: %s",numero);
     }
     return 0;
 }
-int getInt(char *mensaje,char *mensajeError,int maximo,int minimo,int reintentos,int *resultado)
-{
-    int auxiliar;
-    int i;
-    int retorno=-1;
-        if(mensaje!=NULL &&
-            mensajeError!=NULL &&
-            maximo>=minimo &&
-            reintentos>=0 &&
-            resultado!=NULL)
 
-            for(i=0;i<reintentos;i++)
+
+int getTelefono(char* mensaje,char* mensajeError,char maximo,char minimo,int reintentos,char* resultado)
+{
+    char buffer[MAX_TELEFONO];
+    int retorno=-1;
+
+    if(mensaje!=NULL && mensajeError!=NULL && maximo>minimo && reintentos>=0 && resultado!=NULL)
+    {
+        if(!getString(mensaje,mensajeError,maximo,minimo,reintentos,buffer))
+        {
+            if(isValidTelefono(buffer)==TRUE)
             {
-                printf("%s",mensaje);
-                scanf("%d",&auxiliar);
-                if(isValidInt(auxiliar,maximo,minimo))
-                {
-                    *resultado=auxiliar;
-                    retorno=0;
-                    break;
-                }
-                else
-                {
-                    printf("%s",mensajeError);
-                }
+                strncpy(resultado,buffer,maximo);
+                retorno=0;
             }
 
 
+         }
+
+    }
+
+       return retorno;
+}
+
+int isValidTelefono(char* cadena)
+{
+    int i;
+    int retorno=TRUE;
+
+     for(i=0;cadena[i]!= '\0';i++)
+    {
+        if(cadena[i]<'0' || cadena[i]>'9')
+        {
+            retorno=FALSE;
+        }
+
+    }
     return retorno;
-}
-int isValidInt(int numero, int maximo, int minimo)
-{
-    if(numero >= minimo && numero <=maximo)
-    {
-        return 1;
-    }
-        return 0;
-}
-
-
-
-
-/*int getTelefono(char* msj,char* msjError,char maximo,char minimo,int reintentos,char* resultado)
-{
-    char buffer[20];
-    int retorno=-1;
-
-    if(msj!=NULL && msjError!=NULL && maximo>minimo && reintentos>=0 && resultado!=NULL)
-    {
-        if()
-
-    }
-
 
 }
 

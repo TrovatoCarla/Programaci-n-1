@@ -102,16 +102,18 @@ int getString(char *mensaje,char *mensajeError,char maximo,char minimo,int reint
             buffer[strlen(buffer)-1]= '\0';
             if(strlen(buffer)<=maximo && strlen(buffer)>=minimo)
              {
-                if(isValidNombre(buffer)==TRUE)
-                {
                     strncpy(resultado,buffer,maximo);
                     retorno=0;
                     break;
-                 }
             }
-            reintentos--;
-            printf("%s",mensajeError);
-        }while(reintentos>=0);
+            else
+            {
+                printf("%s",mensajeError);
+                printf("HOLAAAA");
+            }
+            //reintentos--;
+
+        }while(reintentos--);
 
      }
 
