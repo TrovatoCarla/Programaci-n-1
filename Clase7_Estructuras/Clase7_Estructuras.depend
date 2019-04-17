@@ -1,0 +1,21 @@
+# depslib dependency file v1.0
+1555453048 source:/home/alumno/Programacion-1/Clase7_Estructuras/funcionesUTN.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"funcionesUTN.h"
+	"misValid.h"
+
+1555453048 /home/alumno/Programacion-1/Clase7_Estructuras/funcionesUTN.h
+
+1555453048 /home/alumno/Programacion-1/Clase7_Estructuras/misValid.h
+
+1555453048 source:/home/alumno/Programacion-1/Clase7_Estructuras/misValid.c
+
+1555461648 source:/home/alumno/Programacion-1/Clase7_Estructuras/main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"funcionesUTN.h"
+	"misValid.h"
+
