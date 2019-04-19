@@ -8,74 +8,66 @@
 #define FALSE 0
 #define MAX_TELEFONO 20
 
+int isValidMail(char* cadena);
+int getMail(char* mensaje,char* mensajeError,char maximo,char minimo,int reintentos,char* resultado);
+
 int main()
 {
     char numero[50];
 
-    if(getTelefono("Ingrese telefono: ","Telefono invalido\n",20,6,3,numero)==0)
+    if(getMail("Ingrese mail: ","Mail invalido\n",50,1,3,numero)==0)
     {
-        printf("Su telefono es: %s",numero);
+        printf("Su mail es: %s",numero);
     }
     else
     {
-        printf("EEROR");
+        printf("ERROR");
     }
     return 0;
 }
 
 
-/*int getMail(char* mensaje,char* mensajeError,char maximo,char minimo,int reintentos,char* resultado)
+int getMail(char* mensaje,char* mensajeError,char maximo,char minimo,int reintentos,char* resultado)
 {
     int retorno=-1;
     char buffer[4000];
 
     if(mensaje!=NULL && mensajeError!=NULL && maximo>minimo && reintentos>=0 && resultado!=NULL)
     {
-        do//No utiliec getStrin porque esta con valid de nombre
+        if(!getString(mensaje,mensajeError,maximo,minimo,reintentos,buffer))
         {
-            printf("%s",mensaje);
-            fgets(buffer,sizeof(buffer),stdin);
-            if((strlen(buffer)<=maximo) && (strlen(buffer)>=minimo))
+            if(isValidMail(buffer)==TRUE)
             {
-                if(isValidMail(buffer))
-                {
-                    strncpy(resultado,buffer,maximo);
-                    retorno=0;
-                    break;
-                }
+                strncpy(resultado,buffer,maximo);
+                retorno=0;
             }
-            reintentos--;
-            printf("%s",mensajeError);
-        }while(reintentos>=0);
-    }
+            else
+            {
+                printf("%s",mensajeError);
+            }
+        }
+     }
     return retorno;
 }
 
 int isValidMail(char* cadena)
 {
-    int retorno= TRUE;
     int i;
-    int flag=0;
+    int retorno=TRUE;
 
-    for(i=0;cadena[i]!='\0';i++)
+     for(i=0;cadena[i]!='\0';i++)
     {
-        if((cadena[i]<'a' || cadena[i]>'z')&&(cadena[i]<'@' || cadena [i]>'@'))
+        if((cadena[i]<'0' || cadena[i]>'9') &&
+            (cadena[i]<'a' || cadena [i]>'z') &&
+            (cadena[i]<'-' || cadena[i]>'-') &&
+            (cadena[i]<'@' || cadena[i]>'@'))
         {
-            if(cadena[i]<'0' || cadena[i]>'9')
-            {
-                retorno=FALSE;
-            }
-
+            retorno=FALSE;
         }
-       if((flag==1) && (cadena[i]='@'))
-            {
-                flag=1;
-            }
-
     }
     return retorno;
 }
-*/
+
 
 
 
