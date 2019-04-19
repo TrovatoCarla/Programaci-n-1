@@ -54,15 +54,25 @@ int isValidMail(char* cadena)
 {
     int i;
     int retorno=TRUE;
+    int flag=0;
 
      for(i=0;cadena[i]!='\0';i++)
     {
         if((cadena[i]<'0' || cadena[i]>'9') &&
             (cadena[i]<'a' || cadena [i]>'z') &&
             (cadena[i]<'-' || cadena[i]>'-') &&
-            (cadena[i]<'@' || cadena[i]>'@'))
+            (cadena[i]<'@' || cadena[i]>'@') &&
+            (cadena[i]<'.' || cadena[i]>'.') &&
+            (cadena[i]<'_' || cadena[i]>'_'))
         {
             retorno=FALSE;
+        }
+        if(flag==0)
+        {
+            if(cadena[i]=='@')
+            {
+                flag=1;
+            }
         }
     }
     return retorno;
