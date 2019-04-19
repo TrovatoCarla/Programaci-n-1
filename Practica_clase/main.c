@@ -33,32 +33,27 @@ int getDomicilio(char* mensaje,char* mensajeAltura,char* mensajeError,char maxim
 
     if(mensaje!=NULL && mensajeAltura!=NULL && mensajeError!=NULL && maximo>minimo && reintentos>=0 && resultado!=NULL)
     {
-        if(!getString(mensaje,mensajeError,maximo,minimo,reintentos,calle))
+        if(!getApellido(mensaje,mensajeError,maximo,minimo,reintentos,calle))
         {
-            if(isValidApellido(calle)==TRUE)
+            strncpy(resultado,calle,maximo);
+
+            if(!getStringInt(mensaje,mensajeError,maximo,minimo,reintentos,altura))
             {
-                strncpy(resultado,calle,maximo);
+                if(isValidStringNumber(altura)==TRUE)
+                {
+                    strncpy(resultado,altura,maximo);
+                    retorno=0;
+                    break;
+                }
             }
-            else
-            {
-                printf("%s",mensajeError);
-            }
+
         }
-        if(!getStringInt(mensaje,mensajeError,maximo,minimo,reintentos,altura))
-        {
-            if(isValidStringNumber(altura)==TRUE)
-            {
-                strncpy(resultado,altura,maximo);
-                retorno=0;
-            }
-        }
-        else
+         else
         {
             printf("%s",mensajeError);
         }
 
     }
-
     return retorno;
 }
 
