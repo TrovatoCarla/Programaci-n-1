@@ -4,6 +4,7 @@
 #include "funcionesUTN.h"
 #include "misValid.h"
 #define MAX 3000
+#define MAX_TELEFONO 20
 #define TRUE 1
 #define FALSE 0
 
@@ -109,9 +110,9 @@ int getString(char *mensaje,char *mensajeError,char maximo,char minimo,int reint
             else
             {
                 printf("%s",mensajeError);
-                printf("HOLAAAA");
             }
             //reintentos--;
+
 
         }while(reintentos--);
 
@@ -161,5 +162,63 @@ int getApellido(char* mensaje,char* mensajeError,char maximo,char minimo,int rei
         return retorno;
 }
 
+int getStringInt(char *mensaje,char *mensajeError,char maximo,char minimo,int reintentos,char *resultado)
+{
+    char buffer[MAX];
+    int retorno=-1;
+
+    if(mensaje!=NULL && mensajeError!=NULL && maximo>minimo && reintentos>=0 && resultado!=NULL)
+    {
+
+        do
+        {
+            printf("%s",mensaje);
+            fgets(buffer,sizeof(buffer),stdin);
+            buffer[strlen(buffer)-1]= '\0';
+            if(strlen(buffer)<=maximo && strlen(buffer)>=minimo)
+             {
+                if(isValidStringNumber(buffer)==TRUE)
+                {
+                    strncpy(resultado,buffer,maximo);
+                    retorno=0;
+                    break;
+                }
+                else
+                {
+                    printf("%s",mensajeError);
+                }
+            }
+
+            //reintentos--;
+
+
+        }while(reintentos--);
+
+     }
+
+     return retorno;
+}
+
+int getTelefono(char* mensaje,char* mensajeError,char maximo,char minimo,int reintentos,char* resultado)
+{
+    char buffer[MAX_TELEFONO];
+    int retorno=-1;
+
+    if(mensaje!=NULL && mensajeError!=NULL && maximo>minimo && reintentos>=0 && resultado!=NULL)
+    {
+        if(!getStringInt(mensaje,mensajeError,maximo,minimo,reintentos,buffer))
+        {
+            strncpy(resultado,buffer,maximo);
+            retorno=0;
+        }
+        else
+        {
+            printf("%s",mensajeError);
+        }
+
+    }
+
+       return retorno;
+}
 
 

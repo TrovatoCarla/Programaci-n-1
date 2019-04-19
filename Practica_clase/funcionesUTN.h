@@ -6,3 +6,5 @@ int getChar(char *mensaje,char *mensajeError,char maximo,char minimo,int reinten
 int getString(char *mensaje,char *mensajeError,char maximo,char minimo,int reintentos,char *resultado);
 int getName(char *mensaje,char *mensajeError,char maximo,char minimo,int reintentos,char *resultado);
 int getApellido(char* mensaje,char* mensajeError,char maximo,char minimo,int reintentos,char* resultado);
+int getStringInt(char *mensaje,char *mensajeError,char maximo,char minimo,int reintentos,char *resultado);
+int getTelefono(char* mensaje,char* mensajeError,char maximo,char minimo,int reintentos,char* resultado);

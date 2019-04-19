@@ -67,3 +67,18 @@ int isValidApellido(char* cadena)
     }
     return retorno;
 }
+
+int isValidStringNumber(char* cadena)
+{
+    int i;
+    int retorno=TRUE;
+
+     for(i=0;cadena[i]!= '\0';i++)
+    {
+        if((cadena[i]<'0' || cadena[i]>'9') && (cadena[i]<'-' || cadena[i]>'-'))
+        {
+            retorno=FALSE;
+        }
+    }
+    return retorno;
+}

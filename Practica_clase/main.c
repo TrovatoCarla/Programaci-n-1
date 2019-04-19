@@ -8,9 +8,6 @@
 #define FALSE 0
 #define MAX_TELEFONO 20
 
-int getTelefono(char* mensaje,char* mensajeError,char maximo,char minimo,int reintentos,char* resultado);
-int isValidTelefono(char* cadena);
-
 int main()
 {
     char numero[50];
@@ -19,48 +16,11 @@ int main()
     {
         printf("Su telefono es: %s",numero);
     }
+    else
+    {
+        printf("EEROR");
+    }
     return 0;
-}
-
-
-int getTelefono(char* mensaje,char* mensajeError,char maximo,char minimo,int reintentos,char* resultado)
-{
-    char buffer[MAX_TELEFONO];
-    int retorno=-1;
-
-    if(mensaje!=NULL && mensajeError!=NULL && maximo>minimo && reintentos>=0 && resultado!=NULL)
-    {
-        if(!getString(mensaje,mensajeError,maximo,minimo,reintentos,buffer))
-        {
-            if(isValidTelefono(buffer)==TRUE)
-            {
-                strncpy(resultado,buffer,maximo);
-                retorno=0;
-            }
-
-
-         }
-
-    }
-
-       return retorno;
-}
-
-int isValidTelefono(char* cadena)
-{
-    int i;
-    int retorno=TRUE;
-
-     for(i=0;cadena[i]!= '\0';i++)
-    {
-        if(cadena[i]<'0' || cadena[i]>'9')
-        {
-            retorno=FALSE;
-        }
-
-    }
-    return retorno;
-
 }
 
 
