@@ -8,16 +8,15 @@
 #define FALSE 0
 #define MAX_TELEFONO 20
 
-int isValidMail(char* cadena);
-int getMail(char* mensaje,char* mensajeError,char maximo,char minimo,int reintentos,char* resultado);
+int getDomicilio(char* mensaje,char* mensajeAltura,char* mensajeError,char maximo,char minimo,int reintentos,char* resultado);
 
 int main()
 {
     char numero[50];
 
-    if(getMail("Ingrese mail: ","Mail invalido\n",50,1,3,numero)==0)
+    if(getDomicilio("Ingrese calle: ","Ingrese la altura: ","Domicilio invalido\n",50,1,3,numero)==0)
     {
-        printf("Su mail es: %s",numero);
+        printf("Su domicilio es: %s",numero);
     }
     else
     {
@@ -26,7 +25,59 @@ int main()
     return 0;
 }
 
+int getDomicilio(char* mensaje,char* mensajeAltura,char* mensajeError,char maximo,char minimo,int reintentos,char* resultado)
+{
+    char calle[100];
+    char altura[10];
+    int retorno=-1;
 
+    if(mensaje!=NULL && mensajeAltura!=NULL && mensajeError!=NULL && maximo>minimo && reintentos>=0 && resultado!=NULL)
+    {
+        if(!getString(mensaje,mensajeError,maximo,minimo,reintentos,calle))
+        {
+            if(isValidApellido(calle)==TRUE)
+            {
+                strncpy(resultado,calle,maximo);
+            }
+            else
+            {
+                printf("%s",mensajeError);
+            }
+        }
+        if(!getStringInt(mensaje,mensajeError,maximo,minimo,reintentos,altura))
+        {
+            if(isValidStringNumber(altura)==TRUE)
+            {
+                strncpy(resultado,altura,maximo);
+                retorno=0;
+            }
+        }
+        else
+        {
+            printf("%s",mensajeError);
+        }
+
+    }
+
+    return retorno;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* PREGUNTAR POR LA VALIDACION DEL MAIL PARA QUE SOLO ME TOME 1 @
 int getMail(char* mensaje,char* mensajeError,char maximo,char minimo,int reintentos,char* resultado)
 {
     int retorno=-1;
@@ -67,17 +118,10 @@ int isValidMail(char* cadena)
         {
             retorno=FALSE;
         }
-        if(flag==0)
-        {
-            if(cadena[i]=='@')
-            {
-                flag=1;
-            }
-        }
     }
     return retorno;
 }
-
+*/
 
 
 
