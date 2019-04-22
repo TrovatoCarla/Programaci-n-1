@@ -3,7 +3,7 @@
 #include <string.h>
 #include "funcionesUTN.h"
 #include "misValid.h"
-#define QTY_EMPLEADOS 10
+#define EMPLEADOS 10
 
 int muestraArray(char arrayStr[][50],int limite);//cada uno de los elements puede tener 50 caracteres
 int iniciarlizarArrays(char arrayStr [] [50], int limite);
@@ -11,46 +11,17 @@ int encuentraPosVacia(char arrayStr [] [50], int limite);
 
 int main()
 {
-    //char auxName[500] = "test";
+    char arrayNombres[EMPLEADOS][50];
 
-    char arrayNombres[QTY_EMPLEADOS][50];
+    iniciarlizarArrays(arrayNombres,EMPLEADOS);
 
+    strncpy(arrayNombres[0],"CARLA\n",EMPLEADOS);
+    strncpy(arrayNombres[1],"KAREN\n",EMPLEADOS);
+    strncpy(arrayNombres[2],"LUCAS\n",EMPLEADOS);
+    strncpy(arrayNombres[3],"EMILCE\n",EMPLEADOS);
 
-    strncpy(arrayNombres[0],"\nJUAN0",50);
-    strncpy(arrayNombres[1],"\nJUAN1",50);
-    strncpy(arrayNombres[2],"\nJUAN2\n",50);
-
-    muestraArray(arrayNombres,3);
-    if(encuentraPosVacia(arrayNombres,QTY_EMPLEADOS)==0)
-    {
-        printf("%d",);
-
-    }
-   /* if(getName( "Nombre?: ",
-                "Error",
-                2,
-                5,
-                2,
-                auxName) == 0)
-    {
-        printf("OK: %s",auxName);
-    }
-    else
-    {
-        printf("ER: %s",auxName);
-    }*/
-    return 0;
-}
-
-int muestraArray(char arrayStr[][50],int limite)
-{
-    int i;
-
-      for(i=0;i<limite;i++)
-    {
-        printf("%s",arrayStr[i]);
-    }
-
+    //muestraArray(arrayNombres,EMPLEADOS);
+    encuentraPosVacia(arrayNombres,EMPLEADOS);
 
     return 0;
 }
@@ -67,6 +38,17 @@ int iniciarlizarArrays(char arrayStr [] [50], int limite)
     return 0;
 }
 
+int muestraArray(char arrayStr[][50],int limite)
+{
+    int i;
+
+      for(i=0;i<limite;i++)
+    {
+        printf("%s",arrayStr[i]);
+    }
+    return 0;
+}
+
 int encuentraPosVacia(char arrayStr [] [50], int limite)
 {
     int i;
@@ -74,20 +56,34 @@ int encuentraPosVacia(char arrayStr [] [50], int limite)
 
     for(i=0;i<limite;i++)
     {
-        if(strncmp(arrayStr[i],"\0")==0)
+        if(strncmp(arrayStr[i],"\0",50)==0)
         {
-
-            retorno=i;
-
+            retorno=0;
+            printf("%d",i);
             break;
          }
-         else
-         continue;
-
-
+        else
+            continue;
     }
-
-
     return retorno;
+}
+
+int buscaSiYaExiste(char arrayStr [] [50],char* aux,int limite)
+{
+    //char aux;
+    int i;
+    int retorno=-1;
+
+    for (i=0;i<limite;i++)
+    {
+        if(strncmp(arrayStr[i],aux,50)==0)
+        {
+            retorno=0;
+        }
+        else
+            continue;
+    }
+    return retorno;
+
 }
 
