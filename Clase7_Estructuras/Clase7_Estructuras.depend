@@ -19,7 +19,7 @@
 	"funcionesUTN.h"
 	"misValid.h"
 
-1555537212 source:/home/carla/Programacion-1/Clase7_Estructuras/funcionesUTN.c
+1555962808 source:/home/carla/Programacion-1/Clase7_Estructuras/funcionesUTN.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -30,10 +30,12 @@
 
 1555962808 /home/carla/Programacion-1/Clase7_Estructuras/misValid.h
 
-1555965459 source:/home/carla/Programacion-1/Clase7_Estructuras/main.c
+1555972541 source:/home/carla/Programacion-1/Clase7_Estructuras/main.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 	"funcionesUTN.h"
 	"misValid.h"
+
+1555962808 source:/home/carla/Programacion-1/Clase7_Estructuras/misValid.c
 

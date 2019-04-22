@@ -4,41 +4,52 @@
 #include "funcionesUTN.h"
 #include "misValid.h"
 #define EMPLEADOS 10
+#define MAXIMO_CARACTER 50
 
 int muestraArray(char arrayStr[][50],int limite);//cada uno de los elements puede tener 50 caracteres
 int iniciarlizarArrays(char arrayStr [] [50], int limite);
 int encuentraPosVacia(char arrayStr [] [50], int limite);
+int buscaSiYaExiste(char arrayStr [] [MAXIMO_CARACTER],char* nombre,int* posicionNombreExistente,int limite);
 
 int main()
 {
     char arrayNombres[EMPLEADOS][50];
-
+    int posicionRepetida;
     iniciarlizarArrays(arrayNombres,EMPLEADOS);
 
-    strncpy(arrayNombres[0],"CARLA\n",EMPLEADOS);
-    strncpy(arrayNombres[1],"KAREN\n",EMPLEADOS);
-    strncpy(arrayNombres[2],"LUCAS\n",EMPLEADOS);
-    strncpy(arrayNombres[3],"EMILCE\n",EMPLEADOS);
+
+    strncpy(arrayNombres[0],"CARLA",EMPLEADOS);
+    strncpy(arrayNombres[1],"KAREN",EMPLEADOS);
+    strncpy(arrayNombres[2],"LUCAS",EMPLEADOS);
+    strncpy(arrayNombres[3],"EMILCE",EMPLEADOS);
 
     //muestraArray(arrayNombres,EMPLEADOS);
-    encuentraPosVacia(arrayNombres,EMPLEADOS);
-
-    return 0;
-}
-
-int iniciarlizarArrays(char arrayStr [] [50], int limite)
-{
-    int i;
-
-    for(i=0;i<limite;i++)
+    //encuentraPosVacia(arrayNombres,EMPLEADOS);
+   if(buscaSiYaExiste(arrayNombres,"GUstavo",&posicionRepetida,MAXIMO_CARACTER)==0)
     {
-        strncpy(arrayStr[i],"\0",50);
+        printf("%d",posicionRepetida);
+    }
+    else
+    {
+        printf("Nombre disponible");
     }
 
     return 0;
 }
 
-int muestraArray(char arrayStr[][50],int limite)
+int iniciarlizarArrays(char arrayStr [] [MAXIMO_CARACTER], int limite)
+{
+    int i;
+
+    for(i=0;i<limite;i++)
+    {
+        strncpy(arrayStr[i],"\0",MAXIMO_CARACTER);
+    }
+
+    return 0;
+}
+
+int muestraArray(char arrayStr[][MAXIMO_CARACTER],int limite)
 {
     int i;
 
@@ -49,14 +60,14 @@ int muestraArray(char arrayStr[][50],int limite)
     return 0;
 }
 
-int encuentraPosVacia(char arrayStr [] [50], int limite)
+int encuentraPosVacia(char arrayStr [] [MAXIMO_CARACTER], int limite)
 {
     int i;
     int retorno=-1;
 
     for(i=0;i<limite;i++)
     {
-        if(strncmp(arrayStr[i],"\0",50)==0)
+        if(strncmp(arrayStr[i],"\0",MAXIMO_CARACTER)==0)
         {
             retorno=0;
             printf("%d",i);
@@ -68,20 +79,20 @@ int encuentraPosVacia(char arrayStr [] [50], int limite)
     return retorno;
 }
 
-int buscaSiYaExiste(char arrayStr [] [50],char* aux,int limite)
+int buscaSiYaExiste(char arrayStr [] [MAXIMO_CARACTER],char* nombre,int* posicionNombreExistente,int limite)
 {
-    //char aux;
+
     int i;
     int retorno=-1;
 
     for (i=0;i<limite;i++)
     {
-        if(strncmp(arrayStr[i],aux,50)==0)
+        if(strncmp(arrayStr[i],nombre,MAXIMO_CARACTER)==0)
         {
+            *posicionNombreExistente=i;
             retorno=0;
+            break;
         }
-        else
-            continue;
     }
     return retorno;
 
