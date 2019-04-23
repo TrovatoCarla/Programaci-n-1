@@ -3,53 +3,53 @@
 #include <string.h>
 #include "funcionesUTN.h"
 #include "misValid.h"
-#define EMPLEADOS 3
-#define MAXIMO_CARACTER 500
+#define EMPLEADOS 5
+#define MAXIMO_CARACTER 100
 #define TRUE 1
 #define FALSE 0
 
-int muestraArray(char arrayStr[][50],int limite);//cada uno de los elements puede tener 50 caracteres
-int iniciarlizarArrays(char arrayStr [] [50], int limite);
-int encuentraPosVacia(char arrayStr [] [MAXIMO_CARACTER],int* posicionDisponible, int limite);
-int buscaSiYaExiste(char arrayStr [] [MAXIMO_CARACTER],char* nombre,int* posicionNombreExistente,int limite);
 
 int main()
 {
     char arrayUsuario[EMPLEADOS][MAXIMO_CARACTER];
     char nombre[50];
-    int posicionDisponible;
-    int posicionNombreExistente;
-    //iniciarlizarArrays(arrayUsuario,EMPLEADOS);
 
-    encuentraPosVacia(arrayUsuario,&posicionDisponible,EMPLEADOS);
-    if(posicionDisponible!=-1)
-    {
-        getName("Ingrese nombre: ","ERROR",50,2,3,nombre);
-        buscaSiYaExiste(arrayUsuario,nombre,&posicionNombreExistente,EMPLEADOS);
-        if(posicionNombreExistente!=-1)
-        {
-            strncpy(arrayUsuario[posicionDisponible],nombre,MAXIMO_CARACTER);
-            printf("%s",arrayUsuario[posicionDisponible]);
-        }
-        else
-        {
-            printf("Nombre existente");
-        }
-    }
-    else
-    {
-        printf("Sin lugar disponible");
-    }
+    altaDeUsuario("Ingrese usuario","ERROR usuario incorrecto","Error,usuario existente","Error,no hay posicion disponible",50,2,3,arrayUsuario);
+
+
+
     return 0;
 }
 
+int altaDeUsuario(char* mensaje,char* mensajeError,char* errorNombreExistente,char* errorNoHayPosVacia,int maximo,int minimo,int reintentos,char arrayUsuario[EMPLEADOS][MAXIMO_CARACTER])
+{
+    char arrayBuffer[MAXIMO_CARACTER];
+    int i;
+    int retorno=-1;
+    int posicionDisponible;
+    int posicionNombreExistente;
 
-
-
-
-
-
-
-
-int altaDeUsuario(char* )
-
+    if(mensaje!=NULL,mensajeError!=NULL,errorNombreExistente!=NULL,errorNoHayPosVacia!=NULL,maximo>minimo,reintentos>=0,arrayUsuario[EMPLEADOS][MAXIMO_CARACTER]!=NULL)
+    {
+        encuentraPosVacia(arrayUsuario,&posicionDisponible,EMPLEADOS);
+        if(posicionDisponible!=-1)
+        {
+            getName(mensaje,mensajeError,maximo,minimo,reintentos,arrayBuffer);
+            buscaSiYaExiste(arrayUsuario,arrayBuffer,&posicionNombreExistente,EMPLEADOS);
+            if(posicionNombreExistente!=-1)
+            {
+                strncpy(arrayUsuario[posicionDisponible],arrayBuffer,MAXIMO_CARACTER);
+                retorno=0;
+            }
+            else
+            {
+                printf("%s",errorNombreExistente);
+            }
+        }
+        else
+        {
+            printf("%s",errorNoHayPosVacia);
+        }
+    }
+        return retorno;
+}

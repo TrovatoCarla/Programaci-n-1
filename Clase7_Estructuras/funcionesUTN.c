@@ -4,7 +4,7 @@
 #include "funcionesUTN.h"
 #include "misValid.h"
 #define EMPLEADOS 3
-#define MAXIMO_CARACTER 500
+#define MAXIMO_CARACTER 100
 #define TRUE 1
 #define FALSE 0
 
@@ -161,7 +161,7 @@ int getApellido(char* mensaje,char* mensajeError,char maximo,char minimo,int rei
         return retorno;
 }
 
-int iniciarlizarArrays(char arrayStr [] [MAXIMO_CARACTER], int limite)
+int iniciarlizarArrays(char arrayStr [][MAXIMO_CARACTER], int limite)
 {
     int i;
 
