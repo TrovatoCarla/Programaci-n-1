@@ -3,9 +3,11 @@
 #include <string.h>
 #include "funcionesUTN.h"
 #include "misValid.h"
-#define MAX 3000
+#define EMPLEADOS 3
+#define MAXIMO_CARACTER 500
 #define TRUE 1
 #define FALSE 0
+
 
 int getInt(char *mensaje,char *mensajeError,int maximo,int minimo,int reintentos,int *resultado)
 {
@@ -89,7 +91,7 @@ int getChar(char *mensaje,char *mensajeError,char maximo,char minimo,int reinten
 
 int getString(char *mensaje,char *mensajeError,char maximo,char minimo,int reintentos,char *resultado)
 {
-    char buffer[MAX];
+    char buffer[MAXIMO_CARACTER];
     int retorno=-1;
 
     if(mensaje!=NULL && mensajeError!=NULL && maximo>minimo && reintentos>=0 && resultado!=NULL)
@@ -122,7 +124,7 @@ int getString(char *mensaje,char *mensajeError,char maximo,char minimo,int reint
 int getName(char *mensaje,char *mensajeError,char maximo,char minimo,int reintentos,char *resultado)
 {
     int retorno=-1;
-    char buffer[MAX];
+    char buffer[MAXIMO_CARACTER];
 
     if(mensaje!=NULL && mensajeError!=NULL && maximo>minimo && reintentos>=0 && resultado!=NULL)
     {
@@ -140,7 +142,7 @@ int getName(char *mensaje,char *mensajeError,char maximo,char minimo,int reinten
 
 int getApellido(char* mensaje,char* mensajeError,char maximo,char minimo,int reintentos,char* resultado)
 {
-    char buffer[MAX];
+    char buffer[MAXIMO_CARACTER];
     int retorno=-1;
 
     if(mensaje!=NULL && mensajeError!=NULL && maximo>minimo && reintentos>0 && resultado!=NULL)
@@ -159,5 +161,62 @@ int getApellido(char* mensaje,char* mensajeError,char maximo,char minimo,int rei
         return retorno;
 }
 
+int iniciarlizarArrays(char arrayStr [] [MAXIMO_CARACTER], int limite)
+{
+    int i;
 
+    for(i=0;i<limite;i++)
+    {
+        strncpy(arrayStr[i],"\0",MAXIMO_CARACTER);
+    }
 
+    return 0;
+}
+
+int muestraArray(char arrayStr[][MAXIMO_CARACTER],int limite)
+{
+    int i;
+
+      for(i=0;i<limite;i++)
+    {
+        printf("%s",arrayStr[i]);
+    }
+    return 0;
+}
+
+int encuentraPosVacia(char arrayStr [] [MAXIMO_CARACTER],int* posicionDisponible, int limite)
+{
+    int i;
+    int retorno=-1;
+
+    for(i=0;i<limite;i++)
+    {
+        if(strncmp(arrayStr[i],"\0",MAXIMO_CARACTER)==0)
+        {
+            *posicionDisponible=i;
+            retorno=0;
+            break;
+         }
+        else
+            continue;
+    }
+    return retorno;
+}
+
+int buscaSiYaExiste(char arrayStr [] [MAXIMO_CARACTER],char* nombre,int* posicionNombreExistente,int limite)
+{
+
+    int i;
+    int retorno=-1;
+
+    for (i=0;i<limite;i++)
+    {
+        if(strncmp(arrayStr[i],nombre,MAXIMO_CARACTER)==0)
+        {
+            *posicionNombreExistente=i;
+            retorno=0;
+            break;
+        }
+    }
+    return retorno;
+}

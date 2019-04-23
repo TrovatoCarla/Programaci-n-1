@@ -43,7 +43,7 @@ int getDomicilio(char* mensaje,char* mensajeAltura,char* mensajeError,char maxim
                 {
                     strncpy(resultado,altura,maximo);
                     retorno=0;
-                    break;
+                    //break;
                 }
             }
 
