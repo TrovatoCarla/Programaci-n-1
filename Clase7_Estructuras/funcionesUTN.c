@@ -198,8 +198,8 @@ int encuentraPosVacia(char arrayStr [] [MAXIMO_CARACTER],int* posicionDisponible
             retorno=0;
             break;
          }
-        else
-            continue;
+      else
+         continue;
     }
     return retorno;
 }
