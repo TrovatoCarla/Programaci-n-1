@@ -172,7 +172,7 @@ int muestraArray(char arrayStr[][MAXIMO_CARACTER],int limite)
     }
     return 0;
 }
-/*
+
 int iniciarlizarArrays(char arrayStr [][MAXIMO_CARACTER], int limite)
 {
     int i;
@@ -182,17 +182,6 @@ int iniciarlizarArrays(char arrayStr [][MAXIMO_CARACTER], int limite)
         strncpy(arrayStr[i],"\0",MAXIMO_CARACTER);
     }
 
-    return 0;
-}
-
-int muestraArray(char arrayStr[][MAXIMO_CARACTER],int limite)
-{
-    int i;
-
-      for(i=0;i<limite;i++)
-    {
-        printf("%s",arrayStr[i]);
-    }
     return 0;
 }
 
@@ -232,4 +221,3 @@ int buscaSiYaExiste(char arrayStr [] [MAXIMO_CARACTER],char* nombre,int* posicio
     }
     return retorno;
 }
-*/

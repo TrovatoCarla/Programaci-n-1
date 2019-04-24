@@ -1,8 +1,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "Empleado.h"
-
+#include "funcionesUTN.h"
+#include "misValid.h"
+#define EMPLEADOS 3
+#define MAXIMO_CARACTER 100
+#define TRUE 1
+#define FALSE 0
 
 //Empleado auxiliarEmpleado[500];
 ///mpleado *pEmpleado;
@@ -14,7 +18,7 @@
 
 int main()
 {
-
+    /*
     Empleado primerEmp;
 
     primerEmp.idEmpleado=1;
@@ -23,10 +27,12 @@ int main()
     strncpy(primerEmp.nombre,"Carla\n",50);
 
     emp_muestra(&primerEmp,50);
-
+    */
 
     return 0;
 }
+
+
 /*
 int altaDeUsuario(char* mensaje,char* mensajeError,char* errorNombreExistente,char* errorNoHayPosVacia,int maximo,int minimo,int reintentos,char arrayUsuario[EMPLEADOS][MAXIMO_CARACTER])
 {
