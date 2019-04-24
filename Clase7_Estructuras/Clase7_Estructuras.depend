@@ -1,23 +1,22 @@
 # depslib dependency file v1.0
-1555453048 source:/home/alumno/Programacion-1/Clase7_Estructuras/funcionesUTN.c
+1556063874 source:/home/alumno/Programacion-1/Clase7_Estructuras/funcionesUTN.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 	"funcionesUTN.h"
 	"misValid.h"
 
-1555453048 /home/alumno/Programacion-1/Clase7_Estructuras/funcionesUTN.h
+1556060907 /home/alumno/Programacion-1/Clase7_Estructuras/funcionesUTN.h
 
-1555453048 /home/alumno/Programacion-1/Clase7_Estructuras/misValid.h
+1556056004 /home/alumno/Programacion-1/Clase7_Estructuras/misValid.h
 
-1555453048 source:/home/alumno/Programacion-1/Clase7_Estructuras/misValid.c
+1556056004 source:/home/alumno/Programacion-1/Clase7_Estructuras/misValid.c
 
-1555461648 source:/home/alumno/Programacion-1/Clase7_Estructuras/main.c
+1556067356 source:/home/alumno/Programacion-1/Clase7_Estructuras/main.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
-	"funcionesUTN.h"
-	"misValid.h"
+	"Empleado.h"
 
 1555962808 source:/home/carla/Programacion-1/Clase7_Estructuras/funcionesUTN.c
 	<stdio.h>
@@ -38,4 +37,10 @@
 	"misValid.h"
 
 1555962808 source:/home/carla/Programacion-1/Clase7_Estructuras/misValid.c
+
+1556063882 source:/home/alumno/Programacion-1/Clase7_Estructuras/Empleados.c
+
+1556061566 /home/alumno/Programacion-1/Clase7_Estructuras/Empleados.h
+
+1556067071 /home/alumno/Programacion-1/Clase7_Estructuras/Empleado.h
 

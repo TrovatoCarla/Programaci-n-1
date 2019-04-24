@@ -1,37 +1,43 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "funcionesUTN.h"
-#include "misValid.h"
-#define EMPLEADOS 5
-#define MAXIMO_CARACTER 100
-#define TRUE 1
-#define FALSE 0
+#include "Empleado.h"
 
+
+//Empleado auxiliarEmpleado[500];
+///mpleado *pEmpleado;
+
+//pEmpleado=&auxiliarEmpleado[114];
+//pEmpleado->apellido;
+
+//int emp_muestra(Empleado *arrayEmp,int limite);
 
 int main()
 {
-    char arrayUsuario[EMPLEADOS][MAXIMO_CARACTER];
-    char nombre[50];
 
-    altaDeUsuario("Ingrese usuario","ERROR usuario incorrecto","Error,usuario existente","Error,no hay posicion disponible",50,2,3,arrayUsuario);
+    Empleado primerEmp;
 
+    primerEmp.idEmpleado=1;
+    primerEmp.isEmpty=1;
+
+    strncpy(primerEmp.nombre,"Carla\n",50);
+
+    emp_muestra(&primerEmp,50);
 
 
     return 0;
 }
-
+/*
 int altaDeUsuario(char* mensaje,char* mensajeError,char* errorNombreExistente,char* errorNoHayPosVacia,int maximo,int minimo,int reintentos,char arrayUsuario[EMPLEADOS][MAXIMO_CARACTER])
 {
     char arrayBuffer[MAXIMO_CARACTER];
-    int i;
     int retorno=-1;
     int posicionDisponible;
     int posicionNombreExistente;
 
-    if(mensaje!=NULL,mensajeError!=NULL,errorNombreExistente!=NULL,errorNoHayPosVacia!=NULL,maximo>minimo,reintentos>=0,arrayUsuario[EMPLEADOS][MAXIMO_CARACTER]!=NULL)
+    if(mensaje!=NULL && mensajeError!=NULL && errorNombreExistente!=NULL && errorNoHayPosVacia!=NULL && maximo>minimo && reintentos>=0 && arrayUsuario[EMPLEADOS][MAXIMO_CARACTER]!=NULL)
     {
-        encuentraPosVacia(arrayUsuario,&posicionDisponible,EMPLEADOS);
+        encuentraPosVacia(arrayUsuario,posicionDisponible,EMPLEADOS);
         if(posicionDisponible!=-1)
         {
             getName(mensaje,mensajeError,maximo,minimo,reintentos,arrayBuffer);
@@ -53,3 +59,4 @@ int altaDeUsuario(char* mensaje,char* mensajeError,char* errorNombreExistente,ch
     }
         return retorno;
 }
+*/

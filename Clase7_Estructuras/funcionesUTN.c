@@ -9,6 +9,7 @@
 #define FALSE 0
 
 
+
 int getInt(char *mensaje,char *mensajeError,int maximo,int minimo,int reintentos,int *resultado)
 {
     int auxiliar;
@@ -161,6 +162,17 @@ int getApellido(char* mensaje,char* mensajeError,char maximo,char minimo,int rei
         return retorno;
 }
 
+int muestraArray(char arrayStr[][MAXIMO_CARACTER],int limite)
+{
+    int i;
+
+      for(i=0;i<limite;i++)
+    {
+        printf("%s",arrayStr[i]);
+    }
+    return 0;
+}
+/*
 int iniciarlizarArrays(char arrayStr [][MAXIMO_CARACTER], int limite)
 {
     int i;
@@ -220,3 +232,4 @@ int buscaSiYaExiste(char arrayStr [] [MAXIMO_CARACTER],char* nombre,int* posicio
     }
     return retorno;
 }
+*/
