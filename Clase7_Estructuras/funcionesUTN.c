@@ -3,7 +3,7 @@
 #include <string.h>
 #include "funcionesUTN.h"
 #include "misValid.h"
-#define EMPLEADOS 3
+#define EMPLEADOS 6
 #define MAXIMO_CARACTER 100
 #define TRUE 1
 #define FALSE 0
@@ -204,20 +204,20 @@ int encuentraPosVacia(char arrayStr [] [MAXIMO_CARACTER],int* posicionDisponible
     return retorno;
 }
 
-int buscaSiYaExiste(char arrayStr [] [MAXIMO_CARACTER],char* nombre,int* posicionNombreExistente,int limite)
+/*int buscaSiYaExiste(char arrayStr [] [MAXIMO_CARACTER],char* nombre,int* posicionNombreExistente,int limite)
 {
 
     int i;
-    int retorno=-1;
+    int retorno=FALSE;
 
     for (i=0;i<limite;i++)
     {
-        if(strncmp(arrayStr[i],nombre,MAXIMO_CARACTER)==0)
+        if(strncmp(arrayStr[i],nombre,MAXIMO_CARACTER)==TRUE)
         {
             *posicionNombreExistente=i;
-            retorno=0;
+            retorno=TRUE;
             break;
         }
     }
     return retorno;
-}
+}*/
