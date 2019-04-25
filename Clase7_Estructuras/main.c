@@ -32,35 +32,47 @@ int bajaDeUsuario(char* mensaje,
                     int reintentos,
                     char* arrayUsuario[] [MAXIMO_CARACTER]);*/
 
+int modificacionDeUsuario(char* mensaje,
+                    char* mensajeError,
+                    char* msjErrNoExisteUsuario,
+                    char modificacion[MAXIMO_CARACTER],
+                    int maximo,
+                    int minimo,
+                    int reintentos,
+                    char arrayUsuario[] [MAXIMO_CARACTER]);
+int altaDeUsuario(char* mensaje,
+                    char* mensajeError,
+                    char* errorNombreExistente,
+                    char* errorNoHayPosVacia,
+                    int maximo,
+                    int minimo,
+                    int reintentos,
+                    char arrayUsuario[EMPLEADOS][MAXIMO_CARACTER]);
 
-int buscaSiYaExiste(char arrayStr[][MAXIMO_CARACTER],char* nombre,int limite);
 int main()
 {
     char usuario[EMPLEADOS][MAXIMO_CARACTER];
 
     iniciarlizarArrays(usuario,EMPLEADOS);
 
-    strncpy(usuario[0],"\nCarla",20);
-    strncpy(usuario[1],"\nKaren",20);
-    strncpy(usuario[2],"\nEmilce",20);
-    strncpy(usuario[3],"\nGiovanni",20);
+    strncpy(usuario[0],"Carla",20);
+    strncpy(usuario[1],"Karen",20);
+    strncpy(usuario[2],"Emilce",20);
+    strncpy(usuario[3],"Giovanni",20);
 
     muestraArray(usuario,EMPLEADOS);
-  if(buscaSiYaExiste(usuario,"Carla",EMPLEADOS)==TRUE)
-  {
-    printf("ENcontrado");
-  }
-  else
-  printf("NADA");
 
 
+    if(altaDeUsuario("Indique nombre \n","ERROR","ya existe nombre","No hay espacio",50,2,3,usuario)==0)
+    {
+        printf("Alta");
+    }
+    else
+   printf("NADA");
+
+   muestraArray(usuario,EMPLEADOS);
 
 
-
-   /*  if(bajaDeUsuario("Indique nombre a MODIFICAR\n","ERROR","NO existe nombre",50,2,3,aCambiar)==0)
-   {
-        muestraArray(usuario,EMPLEADOS);
-    }*/
 
     /*
     Empleado primerEmp;
@@ -76,68 +88,68 @@ int main()
     return 0;
 }
 
-int buscaSiYaExiste(char arrayStr[][MAXIMO_CARACTER],char* nombre,int limite)
+int bajaDeUsuario(char* mensaje,char*msjError,char* msjErrNoExisteUsuario,maximo,minimo,reintentos,char arrayUsuario[] [MAXIMO_CARACTER])
 {
+    char arraybuffer[MAXIMO_CARACTER];
+    int retorno=-1;
+    int posicionABorrar=-1;
 
-    int i;
-    int retorno=FALSE;
-
-    for (i=0;i<limite;i++)
+    if(mensaje!=NULL && msjError!=NULL && msjErrNoExisteUsuario!=NULL && maximo>minimo && reintentos>=0 && arrayUsuario!=NULL)
     {
-        if(strncmp(arrayStr[i],nombre,MAXIMO_CARACTER)==TRUE)
+        if(getName(mensaje,mensajeError,maximo,minimo,reintentos,arraybuffer)==0)
         {
-            retorno=TRUE;
-            break;
+            if(buscaSiYaExiste(arrayUsuario,arraybuffer,posicionABorrar,MAXIMO_CARACTER)!=-1)
+            {
+                strncpy(arrayUsuario[posicionABorrar]," ",MAXIMO_CARACTER);
+                retorno=0;
+            }
+            else
+            {
+                printf("%s",msjErrNoExisteUsuario);
+            }
         }
     }
     return retorno;
+
 }
 
 
 
 
-/*
-int bajaDeUsuario(char* mensaje,
+
+
+int modificacionDeUsuario(char* mensaje,
                     char* mensajeError,
                     char* msjErrNoExisteUsuario,
+                    char modificacion[MAXIMO_CARACTER],
                     int maximo,
                     int minimo,
                     int reintentos,
-                    char* arrayUsuario[] [MAXIMO_CARACTER])
+                    char arrayUsuario[] [MAXIMO_CARACTER])
 {
     char buffer[MAXIMO_CARACTER];
-    int posicionAModificar;
-    char datoNuevo[MAXIMO_CARACTER];
+    int posicionAModificar=-1;
     int retorno=-1;
 
-    if(mensaje!=NULL && mensajeError!=NULL && msjErrNoExisteUsuario!=NULL && maximo>minimo && reintentos>=0 && arrayUsuario!=NULL)
+    if(mensaje!=NULL && mensajeError!=NULL && msjErrNoExisteUsuario!=NULL && modificacion!=NULL && maximo>minimo && reintentos>=0 && arrayUsuario!=NULL)
     {
-        if(getName(mensaje,mensajeError,maximo,minimo,reintentos,buffer)==0)
-        {
-            if(buscaSiYaExiste(arrayUsuario[][MAXIMO_CARACTER],buffer,&posicionAModificar,EMPLEADOS)!=FALSE)
+        getName(mensaje,mensajeError,maximo,minimo,reintentos,buffer);
+        buscaSiYaExiste(arrayUsuario,buffer,&posicionAModificar,EMPLEADOS);
+            if(posicionAModificar!=-1)
             {
-                strncpy(arrayUsuario[posicionAModificar],"\0",MAXIMO_CARACTER);
-                if(getName(mensaje,mensajeError,maximo,minimo,reintentos,datoNuevo)==0)
+                strncpy(arrayUsuario[posicionAModificar],"",MAXIMO_CARACTER);
+                if(getName(mensaje,mensajeError,maximo,minimo,reintentos,modificacion)==0)
                 {
-                    strncpy(" ",datoNuevo,MAXIMO_CARACTER);
+                    strncpy(arrayUsuario[posicionAModificar],modificacion,MAXIMO_CARACTER);///Mirar bien el destino es la posicion encontrada y no " " como estaba poniendo
                     retorno=0;
                 }
             }
             else
                 printf("%s",msjErrNoExisteUsuario);
-        }
+
     }
     return retorno;
 }
-
-
-
-
-
-
-
-
-
 
 
 int altaDeUsuario(char* mensaje,
@@ -151,8 +163,8 @@ int altaDeUsuario(char* mensaje,
 {
     char arrayBuffer[MAXIMO_CARACTER];
     int retorno=-1;
-    int posicionDisponible;
-    int posicionNombreExistente;
+    int posicionDisponible=-1;
+    int posicionNombreExistente=-1;
 
     if(mensaje!=NULL &&
         mensajeError!=NULL &&
@@ -183,5 +195,3 @@ int altaDeUsuario(char* mensaje,
     }
         return retorno;
 }
-
-*/

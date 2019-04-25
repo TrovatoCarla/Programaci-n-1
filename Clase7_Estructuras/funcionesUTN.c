@@ -204,20 +204,20 @@ int encuentraPosVacia(char arrayStr [] [MAXIMO_CARACTER],int* posicionDisponible
     return retorno;
 }
 
-/*int buscaSiYaExiste(char arrayStr [] [MAXIMO_CARACTER],char* nombre,int* posicionNombreExistente,int limite)
+int buscaSiYaExiste(char arrayStr [] [MAXIMO_CARACTER],char* nombre,int* posicionNombreExistente,int limite)
 {
 
     int i;
-    int retorno=FALSE;
+    int retorno=-1;
 
     for (i=0;i<limite;i++)
     {
-        if(strncmp(arrayStr[i],nombre,MAXIMO_CARACTER)==TRUE)
+        if(strncmp(arrayStr[i],nombre,MAXIMO_CARACTER)==0)
         {
             *posicionNombreExistente=i;
-            retorno=TRUE;
+            retorno=0;
             break;
         }
     }
     return retorno;
-}*/
+}
