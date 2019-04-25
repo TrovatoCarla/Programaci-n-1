@@ -3,7 +3,7 @@
 #include <string.h>
 #include "funcionesUTN.h"
 #include "misValid.h"
-#define EMPLEADOS 6
+#define EMPLEADOS 4
 #define MAXIMO_CARACTER 100
 #define TRUE 1
 #define FALSE 0
@@ -48,6 +48,13 @@ int altaDeUsuario(char* mensaje,
                     int minimo,
                     int reintentos,
                     char arrayUsuario[EMPLEADOS][MAXIMO_CARACTER]);
+int bajaDeUsuario(char* mensaje,
+                    char*msjError,
+                    char* msjErrNoExisteUsuario,
+                    int maximo,
+                    int minimo,
+                    int reintentos,
+                    char arrayUsuario[] [MAXIMO_CARACTER]);
 
 int main()
 {
@@ -63,9 +70,9 @@ int main()
     muestraArray(usuario,EMPLEADOS);
 
 
-    if(altaDeUsuario("Indique nombre \n","ERROR","ya existe nombre","No hay espacio",50,2,3,usuario)==0)
+    if(bajaDeUsuario("Indique nombre a dar de baja\n","ERROR","No existe usuario",50,2,3,usuario)==0)
     {
-        printf("Alta");
+        printf("BAJA");
     }
     else
    printf("NADA");
@@ -88,17 +95,23 @@ int main()
     return 0;
 }
 
-int bajaDeUsuario(char* mensaje,char*msjError,char* msjErrNoExisteUsuario,maximo,minimo,reintentos,char arrayUsuario[] [MAXIMO_CARACTER])
+int bajaDeUsuario(char* mensaje,
+                    char* mensajeError,
+                    char* msjErrNoExisteUsuario,
+                    int maximo,
+                    int minimo,
+                    int reintentos,
+                    char arrayUsuario[] [MAXIMO_CARACTER])
 {
     char arraybuffer[MAXIMO_CARACTER];
     int retorno=-1;
     int posicionABorrar=-1;
 
-    if(mensaje!=NULL && msjError!=NULL && msjErrNoExisteUsuario!=NULL && maximo>minimo && reintentos>=0 && arrayUsuario!=NULL)
+    if(mensaje!=NULL && mensajeError!=NULL && msjErrNoExisteUsuario!=NULL && maximo>minimo && reintentos>=0 && arrayUsuario!=NULL)
     {
         if(getName(mensaje,mensajeError,maximo,minimo,reintentos,arraybuffer)==0)
         {
-            if(buscaSiYaExiste(arrayUsuario,arraybuffer,posicionABorrar,MAXIMO_CARACTER)!=-1)
+            if(buscaSiYaExiste(arrayUsuario,arraybuffer,&posicionABorrar,MAXIMO_CARACTER)!=-1)
             {
                 strncpy(arrayUsuario[posicionABorrar]," ",MAXIMO_CARACTER);
                 retorno=0;
@@ -112,7 +125,6 @@ int bajaDeUsuario(char* mensaje,char*msjError,char* msjErrNoExisteUsuario,maximo
     return retorno;
 
 }
-
 
 
 
