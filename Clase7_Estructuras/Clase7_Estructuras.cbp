@@ -31,9 +31,14 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
+		<Unit filename="Empleado.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Empleado.h" />
 		<Unit filename="funcionesUTN.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="funcionesUTN.h" />
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>
