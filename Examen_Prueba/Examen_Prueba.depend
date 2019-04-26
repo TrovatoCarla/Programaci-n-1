@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1556236043 source:/home/alumno/Programacion-1/Examen_Prueba/main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
