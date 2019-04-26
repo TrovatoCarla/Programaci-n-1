@@ -1,6 +1,10 @@
 # depslib dependency file v1.0
-1556236043 source:/home/alumno/Programacion-1/Examen_Prueba/main.c
+1556239810 source:/home/alumno/Programacion-1/Examen_Prueba/main.c
 	<stdio.h>
 	<stdlib.h>
+	<string.h>
+	"Pantalla.h"
+
+1556239810 /home/alumno/Programacion-1/Examen_Prueba/Pantalla.h
 	<string.h>
 
