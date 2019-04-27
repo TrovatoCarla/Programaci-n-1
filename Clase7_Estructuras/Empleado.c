@@ -15,7 +15,7 @@ int emp_muestra(Empleado *arrayEmp,int limite)
     return 0;
 }
 
-int emp_initArray(Empleado* arrayEmp,int limite)
+void emp_initArray(Empleado* arrayEmp,int limite)
 {
     int i;
 
