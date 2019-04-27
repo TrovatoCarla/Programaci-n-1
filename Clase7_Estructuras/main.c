@@ -29,6 +29,29 @@ int emp_lugarLibre(Empleado* arrayEmp,int limite,int* indice);
 
 int main()
 {
+    char cadena[EMPLEADOS][MAXIMO_CARACTER];
+
+    iniciarlizarArrays(cadena,EMPLEADOS);
+
+    strncpy(cadena[0],"Carla\n",MAXIMO_CARACTER);
+    strncpy(cadena[1],"Zoe\n",MAXIMO_CARACTER);
+    strncpy(cadena[2],"Emilce\n",MAXIMO_CARACTER);
+    strncpy(cadena[3],"Karen\n",MAXIMO_CARACTER);
+    strncpy(cadena[4],"Juan\n",MAXIMO_CARACTER);
+    strncpy(cadena[5],"Pedro\n",MAXIMO_CARACTER);
+
+    muestraArray(cadena,EMPLEADOS);
+
+    ordenarArray(cadena,EMPLEADOS);
+
+    muestraArray(cadena,EMPLEADOS);
+
+
+    return 0;
+
+
+
+/*
     Empleado primerEmp;
 
     primerEmp.idEmpleado=1;
@@ -45,11 +68,18 @@ int main()
     emp_lugarLibre(&primerEmp,EMPLEADOS,&lugarLibre);
     printf("%d",lugarLibre);
 
-    return 0;
+    return 0;*/
 }
 
 
-
+int doSwap(int *primerValor, int *segundoValor)
+{
+    int aux;
+    aux = *primerValor;
+    *primerValor = *segundoValor;
+    *segundoValor = aux;
+    return 0;
+}
 
 
 

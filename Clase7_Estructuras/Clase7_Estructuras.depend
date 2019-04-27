@@ -18,25 +18,25 @@
 	<string.h>
 	"Empleado.h"
 
-1556217076 source:/home/carla/Programacion-1/Clase7_Estructuras/funcionesUTN.c
+1556403679 source:/home/carla/Programacion-1/Clase7_Estructuras/funcionesUTN.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 	"funcionesUTN.h"
 	"misValid.h"
 
-1556384867 /home/carla/Programacion-1/Clase7_Estructuras/funcionesUTN.h
+1556403679 /home/carla/Programacion-1/Clase7_Estructuras/funcionesUTN.h
 
-1556384867 /home/carla/Programacion-1/Clase7_Estructuras/misValid.h
+1556392466 /home/carla/Programacion-1/Clase7_Estructuras/misValid.h
 
-1556384867 source:/home/carla/Programacion-1/Clase7_Estructuras/main.c
+1556403298 source:/home/carla/Programacion-1/Clase7_Estructuras/main.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 	"funcionesUTN.h"
 	"misValid.h"
 
-1556216754 source:/home/carla/Programacion-1/Clase7_Estructuras/misValid.c
+1556392638 source:/home/carla/Programacion-1/Clase7_Estructuras/misValid.c
 
 1556063882 source:/home/alumno/Programacion-1/Clase7_Estructuras/Empleados.c
 
@@ -44,11 +44,11 @@
 
 1556067071 /home/alumno/Programacion-1/Clase7_Estructuras/Empleado.h
 
-1556219937 source:/home/carla/Programacion-1/Clase7_Estructuras/Empleado.c
+1556388790 source:/home/carla/Programacion-1/Clase7_Estructuras/Empleado.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 	"Empleado.h"
 
-1556217821 /home/carla/Programacion-1/Clase7_Estructuras/Empleado.h
+1556388790 /home/carla/Programacion-1/Clase7_Estructuras/Empleado.h
 
