@@ -1,5 +1,4 @@
-#ifndef ABM_H_INCLUDED
-#define ABM_H_INCLUDED
+#define MAXIMO_CARACTER 100
 
 int bajaDeUsuario(char* mensaje,
                     char*msjError,
@@ -25,7 +24,6 @@ int altaDeUsuario(char* mensaje,
                     int maximo,
                     int minimo,
                     int reintentos,
-                    char arrayUsuario[EMPLEADOS][MAXIMO_CARACTER]);
+                    char arrayUsuario[][MAXIMO_CARACTER]);
 
 
-#endif // ABM_H_INCLUDED

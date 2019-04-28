@@ -1,3 +1,4 @@
+#define MAXIMO_CARACTER 100
 
 int isValidChar(char aux,int maximo);
 int isValidStringChar(char cadena[]);

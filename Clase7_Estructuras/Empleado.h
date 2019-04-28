@@ -10,7 +10,7 @@ typedef struct
     char nombre[50];
 }Empleado;
 
-void emp_initArray(Empleado* arrayEmp,int limite);/// siempre va a recirbir el array y el limite
+int emp_initArray(Empleado* arrayEmp,int limite);/// siempre va a recirbir el array y el limite
 int emp_lugarLibre(Empleado* arrayEmp,int limite,int* indice);
 int emp_alta(Empleado* arrayEmp,int limite,int id);
 int emp_baja(Empleado* arrayEmp,int limite);

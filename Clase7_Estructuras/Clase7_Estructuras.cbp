@@ -31,6 +31,21 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
+		<Unit filename="ABM.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="ABM.h" />
+		<Unit filename="funcionesUTN.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="funcionesUTN.h" />
+		<Unit filename="main.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="misValid.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="misValid.h" />
 		<Extensions>
 			<code_completion />
 			<debugger />

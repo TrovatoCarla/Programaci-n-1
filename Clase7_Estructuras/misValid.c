@@ -1,3 +1,11 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include "ABM.h"
+#include "funcionesUTN.h"
+#include "misValid.h"
+#define EMPLEADOS 6
+#define MAXIMO_CARACTER 100
 #define TRUE 1
 #define FALSE 0
 
@@ -27,18 +35,14 @@ int isValidInt(int numero, int maximo)
     return 1;
 }
 
-int isValidFloat(char cadena[])
+int isValidFloat(float numero, float maximo, float minimo)
 {
-    int i;
     int retorno=1;
-    while(cadena[i]!='\0')
-    {
-        if((cadena[i]!= ',') && (cadena[i]<'0' || cadena[i]>'9') && (cadena[i]!= '.'))
-        {
-            retorno=0;
-        }
-    i++;
-    }
+   if(numero<maximo && numero>minimo)
+   {
+    retorno=0;
+   }
+
     return retorno;
 
 }

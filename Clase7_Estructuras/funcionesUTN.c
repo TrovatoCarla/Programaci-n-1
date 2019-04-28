@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "ABM.h"
 #include "funcionesUTN.h"
 #include "misValid.h"
 #define EMPLEADOS 6
@@ -215,7 +216,7 @@ int ordenarArray(char arrayStr[] [MAXIMO_CARACTER],int limite)
     int j;
     char auxiliar[MAXIMO_CARACTER];
 
-        for(i=0;i<EMPLEADOS;i++)
+        for(i=0;i<EMPLEADOS-1;i++)
     {
         j=i+1;
         if(strncmp(arrayStr[i],arrayStr[j],EMPLEADOS)>0)
@@ -227,4 +228,6 @@ int ordenarArray(char arrayStr[] [MAXIMO_CARACTER],int limite)
     }
     return 0;
 }
+
+
 

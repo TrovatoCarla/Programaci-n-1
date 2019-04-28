@@ -1,5 +1,13 @@
-#ifndef ABM_C_INCLUDED
-#define ABM_C_INCLUDED
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include "ABM.h"
+#include "funcionesUTN.h"
+#include "misValid.h"
+#define EMPLEADOS 6
+#define MAXIMO_CARACTER 100
+#define TRUE 1
+#define FALSE 0
 
 int altaDeUsuario(char* mensaje,
                     char* mensajeError,
@@ -8,7 +16,7 @@ int altaDeUsuario(char* mensaje,
                     int maximo,
                     int minimo,
                     int reintentos,
-                    char arrayUsuario[EMPLEADOS][MAXIMO_CARACTER])
+                    char arrayUsuario[][MAXIMO_CARACTER])
 {
     char arrayBuffer[MAXIMO_CARACTER];
     int retorno=-1;
@@ -61,7 +69,7 @@ int modificacionDeUsuario(char* mensaje,
     if(mensaje!=NULL && mensajeError!=NULL && msjErrNoExisteUsuario!=NULL && modificacion!=NULL && maximo>minimo && reintentos>=0 && arrayUsuario!=NULL)
     {
         getName(mensaje,mensajeError,maximo,minimo,reintentos,buffer);
-        buscaSiYaExiste(arrayUsuario,buffer,&posicionAModificar,EMPLEADOS);
+        buscaSiYaExiste(arrayUsuario,buffer,&posicionAModificar,100);
             if(posicionAModificar!=-1)
             {
                 strncpy(arrayUsuario[posicionAModificar],"",MAXIMO_CARACTER);
@@ -110,4 +118,4 @@ int bajaDeUsuario(char* mensaje,
 
 
 
-#endif // ABM_C_INCLUDED
+

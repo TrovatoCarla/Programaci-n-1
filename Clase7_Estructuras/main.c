@@ -1,12 +1,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "ABM.h"
 #include "funcionesUTN.h"
 #include "misValid.h"
 #define EMPLEADOS 6
 #define MAXIMO_CARACTER 100
 #define TRUE 1
 #define FALSE 0
+
 
 //Empleado auxiliarEmpleado[500];
 ///mpleado *pEmpleado;
@@ -22,32 +24,62 @@ typedef struct
     char nombre[50];
 }Empleado;
 
-int emp_muestra(Empleado *arrayEmp,int limite);
-int emp_initArray(Empleado* arrayEmp,int limite);
-int emp_lugarLibre(Empleado* arrayEmp,int limite,int* indice);
-
 
 int main()
 {
-    char cadena[EMPLEADOS][MAXIMO_CARACTER];
-
-    iniciarlizarArrays(cadena,EMPLEADOS);
-
-    strncpy(cadena[0],"Carla\n",MAXIMO_CARACTER);
-    strncpy(cadena[1],"Zoe\n",MAXIMO_CARACTER);
-    strncpy(cadena[2],"Emilce\n",MAXIMO_CARACTER);
-    strncpy(cadena[3],"Karen\n",MAXIMO_CARACTER);
-    strncpy(cadena[4],"Juan\n",MAXIMO_CARACTER);
-    strncpy(cadena[5],"Pedro\n",MAXIMO_CARACTER);
-
-    muestraArray(cadena,EMPLEADOS);
-
-    ordenarArray(cadena,EMPLEADOS);
-
-    muestraArray(cadena,EMPLEADOS);
+  int opcion;
+  char nombres[EMPLEADOS][MAXIMO_CARACTER];
+  char seguir='s';
 
 
-    return 0;
+ /* if(iniciarlizarArrays(nombres,EMPLEADOS)==0)
+    {
+        printf("\n\nNombres Inicializados correctamente");
+    }*/
+
+  while(seguir=='s')
+  {
+    printf("MENU ");
+    printf("\n\n 1 ALTA");
+    printf("\n\n 2 BAJA");
+    printf("\n\n 3 MOSTRAR");
+    printf("\n\n 4 SALIR");
+
+    do
+    {
+        printf("\n\nIngrese opcion: ");
+        scanf("%d",&opcion);
+    }while(opcion<1|| opcion>4);
+
+        switch(opcion)
+        {
+            case 1:
+
+                if(altaDeUsuario("Ingrese nombre ","Nombre invalido ","Ya existe nombre","No hay posicion disponible",50,2,3,nombres)==0)
+                {
+
+                    break;
+
+                }
+
+        }
+
+
+
+
+    }
+
+
+
+  }
+
+
+
+
+
+
+
+
 
 
 
@@ -69,17 +101,10 @@ int main()
     printf("%d",lugarLibre);
 
     return 0;*/
-}
 
 
-int doSwap(int *primerValor, int *segundoValor)
-{
-    int aux;
-    aux = *primerValor;
-    *primerValor = *segundoValor;
-    *segundoValor = aux;
-    return 0;
-}
+
+
 
 
 
