@@ -1,59 +1,44 @@
-#ifndef PANTALLA_C_INCLUDED
+//#ifndef PANTALLA_C_INCLUDED
 #define PANTALLA_C_INCLUDED
 #include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include "Pantalla.h"
 #define MAX_ID 10
+#define MAX_CARACTER 50
+#define TRUE 1
+#define FALSE 0
 
-typedef struct
-{
-    int idPantalla;
-    int isEmpty;
-    char nombre[50];
-    char direccion[250];
-    float precio;
-    char tipo [5];
-}Pantalla;
 
-typedef struct
-{
-    int idPublicidad;
-    int isEmpty;
-    char cuit[20];
-    int dias;
-    char archivo[250];
-    int idPantalla;
-}Publicidad;
-
-int pan_alta(Pantalla* pantallas,char* msjError,int limite)
+int pan_alta(Pantalla* pantallas,char* msjError,int limite,int posicionLibre)
 {
     int retorno=1;
     char auxNombre[50];
     char auxDireccion[250];
     float auxPrecio;
     char auxTipo[5];
-    int posicionLibre=-1;
 
-    if(buscaVacio(pantallas,MAX_ID)==0)
+    if(buscaVacio(pantallas,MAX_ID,&posicionLibre)==0)
     {
-        if(getName("Ingrese su nombre","Error",2,50,3,auxNombre)==0)
+        if(getName("\n Ingrese su nombre: ","Error1",2,50,3,auxNombre)==0)
         {
-            if(getString("Ingrese su direccion: ","Error",5,250,auxDireccion)==0)
+            if(getString("\n Ingrese su direccion: ","Error2",5,250,3,auxDireccion)==0)
             {
-                if(getFloat("Ingrese precio: ","Error",0,5000,3,auxPrecio)==0)
+                if(getFloat("\n Ingrese precio: ","Error3",0,5000,3,&auxPrecio)==0)
                 {
-                    if(getString("Ingrese tipo de pantalla LCD o Led: ","Error",3,6,3,auxTipo)==0)
+                    if(getString("\n Ingrese tipo de pantalla LCD o Led: ","Error4",3,6,3,auxTipo)==0)
                     {
                         pantallas[posicionLibre].isEmpty=0;
                         retorno=0;
                     }
-                    else
+                     else
                     {
                         printf("Error,no se pudo cargar");
                     }
                 }
             }
         }
+    }
     return retorno;
 }
 
@@ -68,7 +53,7 @@ int initArray(Pantalla* pantallas,int limite)
     return 0;
 }
 
-int buscaVacio(Pantalla* pantallas,int limite)
+int buscaVacio(Pantalla* pantallas,int limite,int* posicionVacia)
 {
     int i;
     int retorno=1;
@@ -77,6 +62,7 @@ int buscaVacio(Pantalla* pantallas,int limite)
     {
         if(pantallas[i].isEmpty==1)
         {
+            *posicionVacia=i;
             retorno=0;
             break;
         }
@@ -84,27 +70,21 @@ int buscaVacio(Pantalla* pantallas,int limite)
     return retorno;
 }
 
-int muestraArray(Pantalla* pantallas,int limite,char* mensajeError)
+void muestraArray(Pantalla* pantallas,int limite,char* mensajeError)
 {
-    int retorno=1;
     int i;
 
      for(i=0;i<limite;i++)
      {
         if(pantallas[i].isEmpty==0)
         {
-            printf("Posicion %d : Nombre: %s",i,pantallas[i].nombre);
-            printf("Posicion %d : direccion: %s",i,pantallas[i].direccion);
-            printf("Posicion %d : precio: %f",i,pantallas[i].precio);
-            printf("Posicion %d : tipo: %s",i,pantallas[i].tipo);
-            retorno=0;
+            printf("\nPosicion %d : Nombre: %s",i,pantallas[i].nombre);
+            printf("\nPosicion %d : direccion: %s",i,pantallas[i].direccion);
+            printf("\nPosicion %d : precio: %f",i,pantallas[i].precio);
+            printf("\nPosicion %d : tipo: %s",i,pantallas[i].tipo);
+            printf("\nPosicion %d : ID: %d",i,pantallas[i].idPantalla);
         }
-        else
-        {
-            printf("%s",mensajeError);
-        }
-     }
-    return retorno;
+    }
 }
 
 int buscarId(Pantalla* pantallas,int limite,char* msj,char* msjError,int maximo,int minimo,int reintentos,int* idEncontrado)
@@ -128,7 +108,6 @@ int buscarId(Pantalla* pantallas,int limite,char* msj,char* msjError,int maximo,
     return retorno;
 }
 
-
 int getInt(char *message, char *errorMessage, int minimum, int maximum, int retries, int *input)
 {
     int returnValue = -1;
@@ -139,7 +118,7 @@ int getInt(char *message, char *errorMessage, int minimum, int maximum, int retr
         {
             printf("%s", message);
             scanf("%d", &buffer);
-            if(isValidInt(buffer, minimum, maximum))
+            if(isValidInt(buffer,minimum,maximum)==1)
             {
                 *input = buffer;
                 returnValue = 0;
@@ -171,18 +150,18 @@ int getName (char* msg, char* msgError, int minimo, int maximo, int reintentos, 
     char bufferStr[4096];
     if(msg != NULL && msgError != NULL && minimo < maximo && reintentos>=0 && resultado != NULL)
     {
-        if(!getString(msg,msgError,minimo,maximo,reintentos,bufferStr))
+        if(getString(msg,msgError,minimo,maximo,reintentos,bufferStr)==0)
         {
-            if(isValidName(bufferStr))
+            if(isValidNombre(bufferStr)==TRUE)
             {
                 strncpy(resultado, bufferStr,maximo);
                 retorno = 0;
             }
             else
             {
-                reintentos--;
                 printf ("%s",msgError);
             }
+            reintentos--;
         }
     }
     return retorno;
@@ -206,7 +185,7 @@ int getString (char* msg, char* msgError, int minimo, int maximo, int reintentos
                 break;
             }
             reintentos--;
-            printf("%s",msgError);
+           /// printf("%s",msgError);
         }while(reintentos>=0);
     }
     return retorno;
@@ -246,4 +225,23 @@ int getFloat(char *message, char *errorMessage, float minimum, float maximum, in
     return returnValue;
 }
 
-#endif // PANTALLA_C_INCLUDED
+int isValidNombre(char *cadena)
+{
+    int retorno= TRUE;
+    int i;
+
+    for(i=0;cadena[i]!= '\0';i++)
+    {
+        if((cadena[i] <'A' || cadena[i] >'Z') && (cadena[i] <'a' || cadena[i] >'z'))
+        {
+            if(cadena[i]<= '9' && cadena[i]>='0')
+            {
+                retorno= FALSE;
+            }
+        }
+
+    }
+    return retorno;
+}
+
+//#endif // PANTALLA_C_INCLUDED
