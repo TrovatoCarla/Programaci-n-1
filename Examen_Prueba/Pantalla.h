@@ -35,7 +35,7 @@ int isValidFloat(float number, float minimum, float maximum);
 int getName (char* msg, char* msgError, int minimo, int maximo, int reintentos, char* resultado);
 int getString (char* msg, char* msgError, int minimo, int maximo, int reintentos, char* resultado);
 int getFloat(char *message, char *errorMessage, float minimum, float maximum, int retries, float *input);
-int pan_alta(Pantalla* pantallas,char* msjError,int limite,int posicionLibre)
+int pan_alta(Pantalla* pantallas,char* msjError,int limite,int posicionLibre);
 
 
 #endif // PANTALLA_H_INCLUDED

@@ -13,10 +13,10 @@ int main()
     int lugarLibre;
     int auxID=0;
 
-    char auxiliarNombre[MAX_CARACTER];
+   /*char auxiliarNombre[MAX_CARACTER];
     char auxiliarDireccion[MAX_CARACTER];
     float auxiliarPrecio=0;
-    char auxiliarTipo[5];
+    char auxiliarTipo[5];*/
 
     Pantalla prueba[MAX_ID];
 
@@ -49,9 +49,9 @@ int main()
                 }
                 else
                 {
-                    if(pan_alta(prueba,"ERROR",MAX_ID,&lugarLibre)==0)
+                    if(pan_alta(prueba,"ERROR",MAX_ID,lugarLibre)==0)
                     {
-                        printf("alta exitosa");
+                        printf("\n ALTA EXISTOSA");
                     }
                     auxID++;
                 }

@@ -13,20 +13,20 @@
 int pan_alta(Pantalla* pantallas,char* msjError,int limite,int posicionLibre)
 {
     int retorno=1;
-    char auxNombre[50];
-    char auxDireccion[250];
-    float auxPrecio;
-    char auxTipo[5];
+    //char auxNombre[50];
+    //char auxDireccion[250];
+    //float auxPrecio;
+    //char auxTipo[5];
 
     if(buscaVacio(pantallas,MAX_ID,&posicionLibre)==0)
     {
-        if(getName("\n Ingrese su nombre: ","Error1",2,50,3,auxNombre)==0)
+        if(getName("\n Ingrese su nombre: ","Error1",2,50,3,pantallas[posicionLibre].nombre)==0)
         {
-            if(getString("\n Ingrese su direccion: ","Error2",5,250,3,auxDireccion)==0)
+            if(getString("\n Ingrese su direccion: ","Error2",5,250,3,pantallas[posicionLibre].direccion)==0)
             {
-                if(getFloat("\n Ingrese precio: ","Error3",0,5000,3,&auxPrecio)==0)
+                if(getFloat("\n Ingrese precio: ","Error3",0,5000,3,&pantallas[posicionLibre].precio)==0)
                 {
-                    if(getString("\n Ingrese tipo de pantalla LCD o Led: ","Error4",3,6,3,auxTipo)==0)
+                    if(getString("\n Ingrese tipo de pantalla LCD o Led: ","Error4",3,6,3,pantallas[posicionLibre].tipo)==0)
                     {
                         pantallas[posicionLibre].isEmpty=0;
                         retorno=0;
@@ -78,11 +78,11 @@ void muestraArray(Pantalla* pantallas,int limite,char* mensajeError)
      {
         if(pantallas[i].isEmpty==0)
         {
-            printf("\nPosicion %d : Nombre: %s",i,pantallas[i].nombre);
-            printf("\nPosicion %d : direccion: %s",i,pantallas[i].direccion);
-            printf("\nPosicion %d : precio: %f",i,pantallas[i].precio);
-            printf("\nPosicion %d : tipo: %s",i,pantallas[i].tipo);
-            printf("\nPosicion %d : ID: %d",i,pantallas[i].idPantalla);
+            printf("\n\nPosicion %d : NOMBRE: %s",i,pantallas[i].nombre);
+            printf("\n\n            : DIRECCION: %s",pantallas[i].direccion);
+            printf("\n\n            : PRECIO: %f",pantallas[i].precio);
+            printf("\n\n            : TIPO DE PANTALLA: %s",pantallas[i].tipo);
+            printf("\n\n            : ID: %d\n",pantallas[i].idPantalla);
         }
     }
 }
