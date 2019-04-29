@@ -13,28 +13,27 @@
 int pan_alta(Pantalla* pantallas,char* msjError,int limite,int posicionLibre)
 {
     int retorno=1;
-    //char auxNombre[50];
-    //char auxDireccion[250];
-    //float auxPrecio;
-    //char auxTipo[5];
+   // int auxID=0;
 
     if(buscaVacio(pantallas,MAX_ID,&posicionLibre)==0)
     {
-        if(getName("\n Ingrese su nombre: ","Error1",2,50,3,pantallas[posicionLibre].nombre)==0)
+        if(getName("\n Ingrese su nombre: ","\nERROR, no es un nombre",2,50,3,pantallas[posicionLibre].nombre)==0)
         {
-            if(getString("\n Ingrese su direccion: ","Error2",5,250,3,pantallas[posicionLibre].direccion)==0)
+            if(getString("\n Ingrese su direccion: ","Error",5,250,3,pantallas[posicionLibre].direccion)==0)
             {
-                if(getFloat("\n Ingrese precio: ","Error3",0,5000,3,&pantallas[posicionLibre].precio)==0)
+                if(getFloat("\n Ingrese precio: ","Error",0,5000,3,&pantallas[posicionLibre].precio)==0)
                 {
-                    if(getString("\n Ingrese tipo de pantalla LCD o Led: ","Error4",3,6,3,pantallas[posicionLibre].tipo)==0)
+                    if(getString("\n Ingrese tipo de pantalla LCD o Led: ","Error",3,6,3,pantallas[posicionLibre].tipo)==0)
                     {
-                        pantallas[posicionLibre].isEmpty=0;
+                        //pantallas[posicionLibre].isEmpty=0;
+                        //pantallas[posicionLibre].idPantalla=auxID;
                         retorno=0;
                     }
                      else
                     {
                         printf("Error,no se pudo cargar");
                     }
+
                 }
             }
         }

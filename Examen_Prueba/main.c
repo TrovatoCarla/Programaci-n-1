@@ -29,11 +29,15 @@ int main()
   {
         printf("\n\n MENU\n");
         printf("\n 1 ALTA");
-        printf("\n 2 BAJA");
-        printf("\n 3 MUESTRA");
-        printf("\n 3 MODIFICACION");
-        printf("\n 4 SALIR\n");
-
+        printf("\n 2 MODIFICACION");
+        printf("\n 3 BAJA");
+        printf("\n 4 CONTRATAR PUBLICIDAD");
+        printf("\n 5 MODIFICAR CONDICIONES DE PUBLICACION");
+        printf("\n 6 CANCELAR CONTRATACION");
+        printf("\n 7 CONSULTA FACTURACION");
+        printf("\n 8 LISTAR CONTRATACIONES");
+        printf("\n 9 LISTAR PANTALLAS");
+        printf("\n 10 INFORMAR\n");
         do
         {
             printf("\n Ingrese una opcion: ");
@@ -52,8 +56,10 @@ int main()
                     if(pan_alta(prueba,"ERROR",MAX_ID,lugarLibre)==0)
                     {
                         printf("\n ALTA EXISTOSA");
+                        prueba[lugarLibre].idPantalla=auxID;
+                        auxID++;
                     }
-                    auxID++;
+
                 }
                 break;
 
