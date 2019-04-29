@@ -25,7 +25,7 @@ int pan_alta(Pantalla* pantallas,char* msjError,int limite,int posicionLibre)
                 {
                     if(getString("\n Ingrese tipo de pantalla LCD o Led: ","Error",3,6,3,pantallas[posicionLibre].tipo)==0)
                     {
-                        //pantallas[posicionLibre].isEmpty=0;
+                        pantallas[posicionLibre].isEmpty=0;
                         //pantallas[posicionLibre].idPantalla=auxID;
                         retorno=0;
                     }
@@ -40,6 +40,8 @@ int pan_alta(Pantalla* pantallas,char* msjError,int limite,int posicionLibre)
     }
     return retorno;
 }
+
+
 
 int initArray(Pantalla* pantallas,int limite)
 {
@@ -69,7 +71,7 @@ int buscaVacio(Pantalla* pantallas,int limite,int* posicionVacia)
     return retorno;
 }
 
-void muestraArray(Pantalla* pantallas,int limite,char* mensajeError)
+void muestraArray(Pantalla* pantallas,int limite)
 {
     int i;
 
@@ -84,6 +86,7 @@ void muestraArray(Pantalla* pantallas,int limite,char* mensajeError)
             printf("\n\n            : ID: %d\n",pantallas[i].idPantalla);
         }
     }
+    //return 0;
 }
 
 int buscarId(Pantalla* pantallas,int limite,char* msj,char* msjError,int maximo,int minimo,int reintentos,int* idEncontrado)

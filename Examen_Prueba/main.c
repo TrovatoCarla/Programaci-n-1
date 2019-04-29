@@ -5,6 +5,7 @@
 #define MAX_CARACTER 50
 #include "Pantalla.h"
 
+int pan_modificacion(Pantalla* pantallas,char limite);
 
 int main()
 {
@@ -42,7 +43,7 @@ int main()
         {
             printf("\n Ingrese una opcion: ");
             scanf("%d",&opcion);
-        }while(opcion<1 || opcion>4);
+        }while(opcion<1 || opcion>10);
 
         switch(opcion)
         {
@@ -53,23 +54,92 @@ int main()
                 }
                 else
                 {
-                    if(pan_alta(prueba,"ERROR",MAX_ID,lugarLibre)==0)
-                    {
-                        printf("\n ALTA EXISTOSA");
-                        prueba[lugarLibre].idPantalla=auxID;
-                        auxID++;
-                    }
-
+                    pan_alta(prueba,"ERROR",MAX_ID,lugarLibre);
+                    printf("\n          ALTA EXISTOSA");
+                    prueba[lugarLibre].idPantalla=auxID;
+                    auxID++;
                 }
                 break;
 
-            case 3:
-                muestraArray(prueba,MAX_ID,"EROOR?");
+            case 2:
+                pan_modificacion(prueba,MAX_ID);
                 break;
+
+            break;
         }
 
     }
-
+//muestraArray(prueba,MAX_ID,"Error");
     return 0;
 }
 
+int pan_modificacion(Pantalla* pantallas,char limite)
+{
+    int retorno=1;
+    int i;
+    int bufferId;
+    int opcion;
+    char seguir='s';
+    char auxNuevoNombre[MAX_CARACTER];
+    char auxNuevaDireccion[MAX_CARACTER];
+    float auxNuevoPrecio;
+    char auxNuevoTipo[10];
+
+    muestraArray(pantallas,MAX_ID);
+
+
+        if(buscarId(pantallas,MAX_ID,"\nIngrese el ID a modificar ","\nError,ID incorrecto",1000,0,3,&bufferId)==0)
+        {
+            //i=bufferId;
+            while(seguir=='s')
+            {
+                printf("\n 1- Nombre");
+                printf("\n 2- Direccion");
+                printf("\n 3- Precio");
+                printf("\n 4- Tipo de pantalla");
+                printf("\n 5- Salir de Modificaciones");
+                do
+                {
+                    printf("\n\n       INDIQUE EL DATO QUE DESEA MODIFICAR: ");
+                    scanf("%d",&opcion);
+                }while(opcion<1 || opcion>4);
+
+                    switch(opcion)
+                    {
+                        case 1:
+                            if(getName("\n\n   Ingrese nombre: ","Error",2,50,3,auxNuevoNombre)==0)
+                            {
+                                strncpy(pantallas[i].nombre,auxNuevoNombre,MAX_CARACTER);
+                                printf("\n      NOMBRE MODIFICADO CORRECTAMENTE\n");
+                                break;
+                            }
+                        case 2:
+                            if(getString("\n\n  Ingrese direccion: ","Error",2,50,3,auxNuevaDireccion)==0)
+                            {
+                                strncpy(pantallas[i].direccion,auxNuevaDireccion,MAX_CARACTER);
+                                printf("\n\n      DIRECCION MODIFICADA CORRECTAMENTE\n");
+                                break;
+                            }
+                        case 3:
+                            if(getFloat("\n\n    Ingrese precio: ","Error",1,999999,3,&auxNuevoPrecio)==0)
+                            {
+                                pantallas[i].precio=auxNuevoPrecio;
+                                printf("\n\n      PRECIO MODIFICADO CORRECTAMENTE\n");
+                                break;
+                            }
+                        case 4:
+                            if(getString("\n\n  Ingrese tipo de pantalla Led o LCD: ","Error",3,6,3,auxNuevoTipo)==0)
+                            {
+                                strncpy(pantallas[i].tipo,auxNuevoTipo,MAX_CARACTER);
+                                printf("\n\n     Tipo de pantalla modificado correctamente\n");
+                                break;
+                            }
+                        case 5:
+                            seguir='n';
+                            break;
+                    }
+             }
+             retorno=0;
+        }
+    return retorno;
+}

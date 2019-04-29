@@ -25,8 +25,8 @@ typedef struct
 }Publicidad;
 
 int initArray(Pantalla* pantallas,int limite);
+void muestraArray(Pantalla* pantallas,int limite);
 int buscaVacio(Pantalla* pantallas,int limite,int* posicionVacia);
-void muestraArray(Pantalla* pantallas,int limite,char* mensajeError);
 int buscarId(Pantalla* pantallas,int limite,char* msj,char* msjError,int maximo,int minimo,int reintentos,int* idEncontrado);
 int getInt(char *message, char *errorMessage, int minimum, int maximum, int retries, int *input);
 int isValidInt(int number, int minimum, int maximum);
