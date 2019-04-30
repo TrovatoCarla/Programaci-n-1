@@ -6,6 +6,7 @@
 #include "Pantalla.h"
 
 int pan_modificacion(Pantalla* pantallas,char limite);
+int pan_baja(Pantalla* pantallas,char limite);
 
 int main()
 {
@@ -65,7 +66,17 @@ int main()
                 pan_modificacion(prueba,MAX_ID);
                 break;
 
-            break;
+            case 3:
+                if(pan_baja(prueba,MAX_ID)==0)
+                {
+                    printf("\n          BAJA EXITOSA!!!");
+                }
+                muestraArray(prueba,MAX_ID);
+                break;
+
+
+
+
         }
 
     }
@@ -73,18 +84,25 @@ int main()
     return 0;
 }
 
-int pan_baja(pantalla* pantallas,char limite)
+int pan_baja(Pantalla* pantallas,char limite)
 {
 
-
+    int posicionAdarDeBaja;
+    int retorno=-1;
     muestraArray(pantallas,MAX_ID);
 
-
-
+    switch (buscarId(pantallas,MAX_ID,"\nIngrese el ID a dar de baja ","\nError,ID incorrecto",1000,0,3,&posicionAdarDeBaja))
+    {
+        case 0:
+            pantallas[posicionAdarDeBaja].isEmpty=1;
+            retorno=0;
+            break;
+        case 1:
+            printf("\n      ID NO ENCONTRADO PARA LA BAJA");
+            break;
+    }
+    return retorno;
 }
-
-
-
 
 
 

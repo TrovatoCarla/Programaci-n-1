@@ -8,18 +8,18 @@
 1556239810 /home/alumno/Programacion-1/Examen_Prueba/Pantalla.h
 	<string.h>
 
-1556576429 source:/home/carla/Programacion-1/Examen_Prueba/main.c
+1556665734 source:/home/carla/Programacion-1/Examen_Prueba/main.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 	"Pantalla.h"
 
-1556574321 /home/carla/Programacion-1/Examen_Prueba/Pantalla.h
+1556660099 /home/carla/Programacion-1/Examen_Prueba/Pantalla.h
 	<string.h>
 
 1556476191 source:/home/carla/Programacion-1/Examen_Prueba/misValid.c
 
-1556574293 source:/home/carla/Programacion-1/Examen_Prueba/Pantalla.c
+1556660099 source:/home/carla/Programacion-1/Examen_Prueba/Pantalla.c
 	<string.h>
 	<stdio.h>
 	<stdlib.h>
