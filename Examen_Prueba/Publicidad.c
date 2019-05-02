@@ -1,34 +1,35 @@
 #ifndef PUBLICIDAD_C_INCLUDED
 #define PUBLICIDAD_C_INCLUDED
-#define MAX_ID 10
-#define MAX_CARACTER 50
+#include <string.h>
+#include <stdio.h>
+#include <stdlib.h>
 #include "Publicidad.h"
 #include "Pantalla.h"
+#define MAX_ID 10
+#define MAX_CARACTER 50
 
-int pub_alta(Publicidad* publicidades,char* msjError,int limite,int posicionLibre)
+
+int pub_alta(Publicidad* publicidades,char* msjError,int limite,int posicionEncontrada)
 {
     int retorno=1;
    // int auxID=0;
+    //muestraArrayPantalla(pantallas,MAX_ID);
 
-    if(getInt("\nIngrese ID de la pantalla que desea contratar","\nError,ID inexistente",1,100,3,publicidades[posicionLibre].idPublicidad))
+    if(getInt("\nIngrese ID de la pantalla que desea contratar","\nError,ID inexistente",1,100,3,&publicidades[posicionEncontrada].idPublicidad))
     {
-        if(getName("\n Ingrese su nombre: ","\nERROR, no es un nombre",2,50,3,publicidades[posicionLibre].)==0)
+        if(getCuit("\n Ingrese su cuit: ","\nERROR, no es un cuit",9,20,3,publicidades[posicionEncontrada].cuit)==0)
         {
-            if(getString("\n Ingrese su direccion: ","Error",5,250,3,pantallas[posicionLibre].direccion)==0)
+            if(getInt("\n Ingrese cantidad de dias de publicacion: ","Error",1,100,3,&publicidades[posicionEncontrada].dias)==0)
             {
-                if(getFloat("\n Ingrese precio: ","Error",0,5000,3,&pantallas[posicionLibre].precio)==0)
+                if(getString("\n Ingrese nombre del archivo video: ","Error",0,500,3,publicidades[posicionEncontrada].archivo)==0)
                 {
-                    if(getString("\n Ingrese tipo de pantalla LCD o Led: ","Error",3,6,3,pantallas[posicionLibre].tipo)==0)
-                    {
-                        pantallas[posicionLibre].isEmpty=0;
+                        publicidades[posicionEncontrada].isEmpty=0;
                         //pantallas[posicionLibre].idPantalla=auxID;
                         retorno=0;
-                    }
-                     else
-                    {
-                        printf("Error,no se pudo cargar");
-                    }
-
+                }
+                else
+                {
+                    printf("Error,no se pudo cargar publicidad");
                 }
             }
         }
@@ -39,12 +40,12 @@ int pub_alta(Publicidad* publicidades,char* msjError,int limite,int posicionLibr
 
 int pub_baja(Publicidad* publicidades,char limite)
 {
-
     int posicionAdarDeBaja;
     int retorno=-1;
-    muestraArray(publicidades,MAX_ID);
 
-    switch (buscarId(publicidades,MAX_ID,"\nIngrese el ID a dar de baja ","\nError,ID incorrecto",1000,0,3,&posicionAdarDeBaja))
+    muestraArrayPublicidad(publicidades,MAX_ID);
+
+    switch (buscarPantallaPorID(Pantalla* pantallas[i].,MAX_ID,"\nIngrese el ID a dar de baja ","\nError,ID incorrecto",1000,0,3,&posicionAdarDeBaja))
     {
         case 0:
             publicidades[posicionAdarDeBaja].isEmpty=1;
@@ -66,12 +67,12 @@ int pub_modificacion(Publicidad* publicidades,char limite)
     char seguir='s';
     char auxNuevoCuit[MAX_CARACTER];
     char auxNuevoArchivo[MAX_CARACTER];
-    int auxNuevosDias;
+    int auxNuevosDias=0;
 
-    muestraArray(publicidades,MAX_ID);
+    muestraArrayPantalla(pantallas,MAX_ID);
 
 
-    if(buscarId(publicidades,MAX_ID,"\nIngrese el ID a modificar ","\nError,ID incorrecto",1000,0,3,&bufferId)==0)
+    if(buscarPantallaPorID(pantallas,MAX_ID,"\nIngrese el ID a modificar ","\nError,ID incorrecto",1000,0,3,&bufferId)==0)
     {
         i=bufferId;
         while(seguir=='s')
@@ -89,21 +90,21 @@ int pub_modificacion(Publicidad* publicidades,char limite)
                 switch(opcion)
                 {
                     case 1:
-                        if(getCuit("\n\n   Ingrese el nuevo Cuit: ","Error",10,20,3,auxNuevoCuit)==0)
+                        if(!getCuit("\n\n   Ingrese el nuevo Cuit: ","Error",10,20,3,auxNuevoCuit))
                         {
                             strncpy(publicidades[i].cuit,auxNuevoCuit,MAX_CARACTER);
                             printf("\n      CUIT MODIFICADO CORRECTAMENTE\n");
                             break;
                         }
                     case 2:
-                        if(getInt("\n\n  Ingrese dias de contratacion: ","Error",0,1000,3,auxNuevosDias)==0)
+                        if(!getInt("\n\n  Ingrese dias de contratacion: ","Error",0,1000,3,&auxNuevosDias))
                         {
                             publicidades[i].dias=auxNuevosDias;
                             printf("\n\n      DIAS MODIFICADOS CORRECTAMENTE\n");
                             break;
                         }
                     case 3:
-                        if(getString("\n\n    Ingrese archivo: ","Error",1,999999,3,auxNuevoArchivo)==0)
+                        if(!getString("\n\n    Ingrese archivo: ","Error",1,999999,3,auxNuevoArchivo))
                         {
                             strncpy(publicidades[i].archivo,auxNuevoArchivo,MAX_CARACTER);
                             printf("\n\n      ARCHIVO MODIFICADO CORRECTAMENTE\n");
@@ -119,7 +120,31 @@ int pub_modificacion(Publicidad* publicidades,char limite)
     return retorno;
 }
 
-int initArray(Publicidad* publicidades,int limite)
+int buscarPantallaPorID(Pantalla* pantallas,int limite,char* msj,char* msjError,int maximo,int minimo,int reintentos,int* idEncontrado)
+{
+    int i;
+    int retorno=-1;
+    int bufferID;
+
+
+    if(getInt(msj,msjError,minimo,maximo,reintentos,&bufferID)==0)
+    {
+        for(i=0;i<limite;i++)
+        {
+            if(pantallas[i].idPantalla==bufferID)
+            {
+                *idEncontrado=i;
+                retorno=0;
+                break;
+            }
+        }
+    }
+    return retorno;
+
+
+}
+
+int initArrayPublicidad(Publicidad* publicidades,int limite)
 {
     int i;
 
@@ -134,13 +159,13 @@ int getCuil(char* msj,char* msjError,char minimo,char maximo,int reintentos,char
 {
     int i;
     char bufferCuit[20];
-
+    int retorno;
 
     if(msj!=NULL && msjError!=NULL && minimo<maximo && reintentos>=0 && cuil!=NULL)
     {
         for(i=0;i<reintentos;i++)
         {
-            if(!getString(msg,msgError,minimo,maximo,reintentos,bufferCuit))
+            if(!getString(msj,msjError,minimo,maximo,reintentos,bufferCuit))
             {
                 if(isValidCuit(bufferCuit)==1)
                 {
@@ -206,7 +231,7 @@ int getString (char* msg, char* msgError, int minimo, int maximo, int reintentos
     return retorno;
 }
 
-void muestraArray(Publicidad* publicidades,int limite)
+void muestraArrayPublicidad(Publicidad* publicidades,int limite)
 {
     int i;
 
@@ -215,10 +240,10 @@ void muestraArray(Publicidad* publicidades,int limite)
         if(publicidades[i].isEmpty==0)
         {
             printf("\n\nPosicion %d : CUIT: %s",i,publicidades[i].cuit);
-            printf("\n\n            : DIAS: %s",publicidades[i].dias);
-            printf("\n\n            : ARCHIVO: %f",publicidades[i].archivo);
-            printf("\n\n            : ID: %d\n",publicidades[i].idPublicidades);
-            printf("\n\n            : ID PANTALLAS: %s",pantallas[i].idPantalla);
+            printf("\n\n            : DIAS: %d",publicidades[i].dias);
+            printf("\n\n            : ARCHIVO: %s",publicidades[i].archivo);
+            printf("\n\n            : ID: %d\n",publicidades[i].idPublicidad);
+
         }
     }
     //return 0;

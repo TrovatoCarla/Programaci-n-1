@@ -1,4 +1,5 @@
 #define MAX_CARACTER 50
+#include "Pantalla.h"
 
 typedef struct
 {
@@ -10,10 +11,13 @@ typedef struct
     int idPantalla;
 }Publicidad;
 
+
 int isValidCuit(char cadena[]);
 int pub_baja(Publicidad* publicidades,char limite);
 int pub_modificacion(Publicidad* publicidades,char limite);
-int getCuil(char* msj,char* msjError,char minimo,char maximo,int reintentos,char* cuil);
+int pub_alta(Publicidad* publicidades,char* msjError,int limite,int posicionEncontrada);
+int getCuit(char* msj,char* msjError,char minimo,char maximo,int reintentos,char* cuit);
 int getString (char* msg, char* msgError, int minimo, int maximo, int reintentos, char* resultado);
-void muestraArray(Publicidad* publicidades,int limite);
-int initArray(Publicidad* publicidades,int limite);
+void muestraArrayPublicidad(Publicidad* publicidades,int limite);
+int initArrayPublicidad(Publicidad* publicidades,int limite);
+int buscarPantallaPorID(Pantalla* pantallas,int limite,char* msj,char* msjError,int maximo,int minimo,int reintentos,int* idEncontrado);

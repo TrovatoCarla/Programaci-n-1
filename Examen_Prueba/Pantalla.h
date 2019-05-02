@@ -14,18 +14,9 @@ typedef struct
     char tipo [5];
 }Pantalla;
 
-typedef struct
-{
-    int idPublicidad;
-    int isEmpty;
-    char cuit[20];
-    int dias;
-    char archivo[250];
-    int idPantalla;
-}Publicidad;
 
-int initArray(Pantalla* pantallas,int limite);
-void muestraArray(Pantalla* pantallas,int limite);
+int initArrayPantalla(Pantalla* pantallas,int limite);
+void muestraArrayPantalla(Pantalla* pantallas,int limite);
 int buscaVacio(Pantalla* pantallas,int limite,int* posicionVacia);
 int buscarId(Pantalla* pantallas,int limite,char* msj,char* msjError,int maximo,int minimo,int reintentos,int* idEncontrado);
 int getInt(char *message, char *errorMessage, int minimum, int maximum, int retries, int *input);

@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "Pantalla.h"
+#include "Publicidad.h"
 #define MAX_ID 10
 #define MAX_CARACTER 50
 #define TRUE 1
@@ -21,7 +22,7 @@ int pan_modificacion(Pantalla* pantallas,char limite)
     float auxNuevoPrecio;
     char auxNuevoTipo[10];
 
-    muestraArray(pantallas,MAX_ID);
+    muestraArrayPantalla(pantallas,MAX_ID);
 
 
     if(buscarId(pantallas,MAX_ID,"\nIngrese el ID a modificar ","\nError,ID incorrecto",1000,0,3,&bufferId)==0)
@@ -80,13 +81,12 @@ int pan_modificacion(Pantalla* pantallas,char limite)
     return retorno;
 }
 
-
 int pan_baja(Pantalla* pantallas,char limite)
 {
 
     int posicionAdarDeBaja;
     int retorno=-1;
-    muestraArray(pantallas,MAX_ID);
+    muestraArrayPantalla(pantallas,MAX_ID);
 
     switch (buscarId(pantallas,MAX_ID,"\nIngrese el ID a dar de baja ","\nError,ID incorrecto",1000,0,3,&posicionAdarDeBaja))
     {
@@ -106,15 +106,15 @@ int pan_alta(Pantalla* pantallas,char* msjError,int limite,int posicionLibre)
     int retorno=1;
    // int auxID=0;
 
-    if(buscaVacio(pantallas,MAX_ID,&posicionLibre)==0)
+    if(!buscaVacio(pantallas,MAX_ID,&posicionLibre))
     {
-        if(getName("\n Ingrese su nombre: ","\nERROR, no es un nombre",2,50,3,pantallas[posicionLibre].nombre)==0)
+        if(!getName("\n Ingrese su nombre: ","\nERROR, no es un nombre",2,50,3,pantallas[posicionLibre].nombre))
         {
-            if(getString("\n Ingrese su direccion: ","Error",5,250,3,pantallas[posicionLibre].direccion)==0)
+            if(!getString("\n Ingrese su direccion: ","Error",5,250,3,pantallas[posicionLibre].direccion))
             {
-                if(getFloat("\n Ingrese precio: ","Error",0,5000,3,&pantallas[posicionLibre].precio)==0)
+                if(!getFloat("\n Ingrese precio: ","Error",0,5000,3,&pantallas[posicionLibre].precio))
                 {
-                    if(getString("\n Ingrese tipo de pantalla LCD o Led: ","Error",3,6,3,pantallas[posicionLibre].tipo)==0)
+                    if(!getString("\n Ingrese tipo de pantalla LCD o Led: ","Error",3,6,3,pantallas[posicionLibre].tipo))
                     {
                         pantallas[posicionLibre].isEmpty=0;
                         //pantallas[posicionLibre].idPantalla=auxID;
@@ -132,9 +132,7 @@ int pan_alta(Pantalla* pantallas,char* msjError,int limite,int posicionLibre)
     return retorno;
 }
 
-
-
-int initArray(Pantalla* pantallas,int limite)
+int initArrayPantalla(Pantalla* pantallas,int limite)
 {
     int i;
 
@@ -162,7 +160,7 @@ int buscaVacio(Pantalla* pantallas,int limite,int* posicionVacia)
     return retorno;
 }
 
-void muestraArray(Pantalla* pantallas,int limite)
+void muestraArrayPantalla(Pantalla* pantallas,int limite)
 {
     int i;
 

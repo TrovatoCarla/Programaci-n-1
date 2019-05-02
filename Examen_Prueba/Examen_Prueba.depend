@@ -8,20 +8,25 @@
 1556239810 /home/alumno/Programacion-1/Examen_Prueba/Pantalla.h
 	<string.h>
 
-1556805061 source:/home/carla/Programacion-1/Examen_Prueba/main.c
+1556827841 source:/home/carla/Programacion-1/Examen_Prueba/main.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 	"Pantalla.h"
+	"Publicidad.h"
 
-1556805061 /home/carla/Programacion-1/Examen_Prueba/Pantalla.h
+1556827941 /home/carla/Programacion-1/Examen_Prueba/Pantalla.h
 	<string.h>
 
 1556476191 source:/home/carla/Programacion-1/Examen_Prueba/misValid.c
 
-1556805061 source:/home/carla/Programacion-1/Examen_Prueba/Pantalla.c
+1556830285 source:/home/carla/Programacion-1/Examen_Prueba/Pantalla.c
 	<string.h>
 	<stdio.h>
 	<stdlib.h>
+	"Pantalla.h"
+	"Publicidad.h"
+
+1556827907 /home/carla/Programacion-1/Examen_Prueba/Publicidad.h
 	"Pantalla.h"
 

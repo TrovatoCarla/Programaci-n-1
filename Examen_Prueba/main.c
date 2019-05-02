@@ -4,9 +4,8 @@
 #define MAX_ID 10
 #define MAX_CARACTER 50
 #include "Pantalla.h"
+#include "Publicidad.h"
 
-int pan_modificacion(Pantalla* pantallas,char limite);
-int pan_baja(Pantalla* pantallas,char limite);
 
 int main()
 {
@@ -20,9 +19,9 @@ int main()
     float auxiliarPrecio=0;
     char auxiliarTipo[5];*/
 
-    Pantalla prueba[MAX_ID];
+    Pantalla pantallas[MAX_ID];
 
-    if(initArray(prueba,MAX_ID)==0)
+    if(initArrayPantalla(pantallas,MAX_ID)==0)
     {
         printf("Inicializacion correcta");
     }
@@ -49,29 +48,29 @@ int main()
         switch(opcion)
         {
             case 1:
-                if(buscaVacio(prueba,MAX_ID,&lugarLibre)!=0)
+                if(buscaVacio(pantallas,MAX_ID,&lugarLibre)!=0)
                 {
                    printf("No hay lugar disponible\n ");
                 }
                 else
                 {
-                    pan_alta(prueba,"ERROR",MAX_ID,lugarLibre);
+                    pan_alta(pantallas,"ERROR",MAX_ID,lugarLibre);
                     printf("\n          ALTA EXISTOSA");
-                    prueba[lugarLibre].idPantalla=auxID;
+                    pantallas[lugarLibre].idPantalla=auxID;
                     auxID++;
                 }
                 break;
 
             case 2:
-                pan_modificacion(prueba,MAX_ID);
+                pan_modificacion(pantallas,MAX_ID);
                 break;
 
             case 3:
-                if(pan_baja(prueba,MAX_ID)==0)
+                if(pan_baja(pantallas,MAX_ID)==0)
                 {
                     printf("\n          BAJA EXITOSA!!!");
                 }
-                muestraArray(prueba,MAX_ID);
+                muestraArrayPantalla(pantallas,MAX_ID);
                 break;
 
 
