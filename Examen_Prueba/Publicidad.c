@@ -9,11 +9,11 @@
 #define MAX_CARACTER 50
 
 
-int pub_alta(Publicidad* publicidades,char* msjError,int limite,int posicionEncontrada)
+int pub_alta(Publicidad* publicidades,Pantalla* pantallas,int limite,int posicionEncontrada)
 {
     int retorno=1;
-   // int auxID=0;
-    //muestraArrayPantalla(pantallas,MAX_ID);
+
+    muestraArrayPantalla(pantallas,MAX_ID);
 
     if(getInt("\nIngrese ID de la pantalla que desea contratar","\nError,ID inexistente",1,100,3,&publicidades[posicionEncontrada].idPublicidad))
     {
@@ -38,14 +38,14 @@ int pub_alta(Publicidad* publicidades,char* msjError,int limite,int posicionEnco
 }
 
 
-int pub_baja(Publicidad* publicidades,char limite)
+int pub_baja(Publicidad* publicidades,Pantalla* pantallas,char limite)
 {
     int posicionAdarDeBaja;
     int retorno=-1;
 
     muestraArrayPublicidad(publicidades,MAX_ID);
 
-    switch (buscarPantallaPorID(Pantalla* pantallas[i].,MAX_ID,"\nIngrese el ID a dar de baja ","\nError,ID incorrecto",1000,0,3,&posicionAdarDeBaja))
+    switch (buscarPantallaPorID(pantallas,MAX_ID,"\nIngrese el ID a dar de baja ","\nError,ID incorrecto",1000,0,3,&posicionAdarDeBaja))
     {
         case 0:
             publicidades[posicionAdarDeBaja].isEmpty=1;
@@ -58,7 +58,7 @@ int pub_baja(Publicidad* publicidades,char limite)
     return retorno;
 }
 
-int pub_modificacion(Publicidad* publicidades,char limite)
+int pub_modificacion(Publicidad* publicidades,Pantalla* pantallas,char limite)
 {
     int retorno=1;
     int i;
@@ -70,7 +70,6 @@ int pub_modificacion(Publicidad* publicidades,char limite)
     int auxNuevosDias=0;
 
     muestraArrayPantalla(pantallas,MAX_ID);
-
 
     if(buscarPantallaPorID(pantallas,MAX_ID,"\nIngrese el ID a modificar ","\nError,ID incorrecto",1000,0,3,&bufferId)==0)
     {
@@ -155,7 +154,7 @@ int initArrayPublicidad(Publicidad* publicidades,int limite)
     return 0;
 }
 
-int getCuil(char* msj,char* msjError,char minimo,char maximo,int reintentos,char* cuil)
+int getCuit(char* msj,char* msjError,char minimo,char maximo,int reintentos,char* cuil)
 {
     int i;
     char bufferCuit[20];
@@ -207,7 +206,7 @@ int isValidCuit(char cadena[])
         return retorno;
 }
 
-int getString (char* msg, char* msgError, int minimo, int maximo, int reintentos, char* resultado)
+/*int getString (char* msg, char* msgError, int minimo, int maximo, int reintentos, char* resultado)
 {
     int retorno = -1;
     char bufferStr[4096];
@@ -229,7 +228,7 @@ int getString (char* msg, char* msgError, int minimo, int maximo, int reintentos
         }while(reintentos>=0);
     }
     return retorno;
-}
+}*/
 
 void muestraArrayPublicidad(Publicidad* publicidades,int limite)
 {

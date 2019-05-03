@@ -13,9 +13,9 @@ typedef struct
 
 
 int isValidCuit(char cadena[]);
-int pub_baja(Publicidad* publicidades,char limite);
-int pub_modificacion(Publicidad* publicidades,char limite);
-int pub_alta(Publicidad* publicidades,char* msjError,int limite,int posicionEncontrada);
+int pub_baja(Publicidad* publicidades,Pantalla* pantallas,char limite);
+int pub_modificacion(Publicidad* publicidades,Pantalla* pantallas,char limite);
+int pub_alta(Publicidad* publicidades,Pantalla* pantallas,int limite,int posicionEncontrada);
 int getCuit(char* msj,char* msjError,char minimo,char maximo,int reintentos,char* cuit);
 int getString (char* msg, char* msgError, int minimo, int maximo, int reintentos, char* resultado);
 void muestraArrayPublicidad(Publicidad* publicidades,int limite);

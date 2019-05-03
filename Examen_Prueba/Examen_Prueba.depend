@@ -1,11 +1,12 @@
 # depslib dependency file v1.0
-1556239810 source:/home/alumno/Programacion-1/Examen_Prueba/main.c
+1556842787 source:/home/alumno/Programacion-1/Examen_Prueba/main.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 	"Pantalla.h"
+	"Publicidad.h"
 
-1556239810 /home/alumno/Programacion-1/Examen_Prueba/Pantalla.h
+1556839013 /home/alumno/Programacion-1/Examen_Prueba/Pantalla.h
 	<string.h>
 
 1556827841 source:/home/carla/Programacion-1/Examen_Prueba/main.c
@@ -28,5 +29,22 @@
 	"Publicidad.h"
 
 1556827907 /home/carla/Programacion-1/Examen_Prueba/Publicidad.h
+	"Pantalla.h"
+
+1556833590 /home/alumno/Programacion-1/Examen_Prueba/Publicidad.h
+	"Pantalla.h"
+
+1556839013 source:/home/alumno/Programacion-1/Examen_Prueba/Pantalla.c
+	<string.h>
+	<stdio.h>
+	<stdlib.h>
+	"Pantalla.h"
+	"Publicidad.h"
+
+1556842567 source:/home/alumno/Programacion-1/Examen_Prueba/Publicidad.c
+	<string.h>
+	<stdio.h>
+	<stdlib.h>
+	"Publicidad.h"
 	"Pantalla.h"
 

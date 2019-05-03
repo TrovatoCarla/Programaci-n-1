@@ -117,7 +117,6 @@ int pan_alta(Pantalla* pantallas,char* msjError,int limite,int posicionLibre)
                     if(!getString("\n Ingrese tipo de pantalla LCD o Led: ","Error",3,6,3,pantallas[posicionLibre].tipo))
                     {
                         pantallas[posicionLibre].isEmpty=0;
-                        //pantallas[posicionLibre].idPantalla=auxID;
                         retorno=0;
                     }
                      else
@@ -170,7 +169,7 @@ void muestraArrayPantalla(Pantalla* pantallas,int limite)
         {
             printf("\n\nPosicion %d : NOMBRE: %s",i,pantallas[i].nombre);
             printf("\n\n            : DIRECCION: %s",pantallas[i].direccion);
-            printf("\n\n            : PRECIO: %f",pantallas[i].precio);
+            printf("\n\n            : PRECIO: %.2f",pantallas[i].precio);
             printf("\n\n            : TIPO DE PANTALLA: %s",pantallas[i].tipo);
             printf("\n\n            : ID: %d\n",pantallas[i].idPantalla);
         }
