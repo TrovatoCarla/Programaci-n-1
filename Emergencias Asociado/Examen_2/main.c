@@ -6,6 +6,7 @@
 #define HABILITADO 2
 #define INHABILITADO 3
 #define MAX_ARRAY 10
+#define MAX_CARACTER 50
 
 
 int main()
@@ -15,13 +16,33 @@ int main()
     char seguir='s';
     int opcion;
     int lugarLibre=1;
-    int auxId=0;
+    int auxId;
 
     if(aso_initArray(pacientes,MAX_ARRAY)==0)
     {
         printf(" Iniciaizacion correcta\n");
     }
+/*
+    strncpy(pacientes[0].nombre,"Carla",MAX_CARACTER);
+    strncpy(pacientes[0].apellido,"Trovato",MAX_CARACTER);
+    strncpy(pacientes[0].DNI,"DNI",MAX_CARACTER);
+    pacientes[0].edad=29;
+    pacientes[0].idAsociado=0;
 
+    strncpy(pacientes[1].nombre,"karen",MAX_CARACTER);
+    strncpy(pacientes[1].apellido,"ramirez",MAX_CARACTER);
+    strncpy(pacientes[1].DNI,"DNI",MAX_CARACTER);
+    pacientes[1].edad=26;
+    pacientes[0].idAsociado=1;
+
+    strncpy(pacientes[2].nombre,"ucas",MAX_CARACTER);
+    strncpy(pacientes[2].apellido,"silva",MAX_CARACTER);
+    strncpy(pacientes[2].DNI,"DNI",MAX_CARACTER);
+    pacientes[2].edad=27;
+    pacientes[0].idAsociado=2;
+
+    aso_muestra(pacientes,MAX_ARRAY);
+*/
     while(seguir=='s')
     {
         printf("\n MENU\n");
@@ -42,13 +63,21 @@ int main()
         switch(opcion)
         {
             case 1:
-                if(aso_alta(pacientes,"\nError",MAX_ARRAY,lugarLibre)==0)
+                if(aso_alta(pacientes,"\nError en alta",MAX_CARACTER,lugarLibre)==0)
                 {
                     printf("\n ALTA EXITOSA");
                     pacientes[lugarLibre].idAsociado=auxId;
                     auxId++;
                 }
-            break;
+                    break;
+            case 2:
+                if(aso_modificacion(pacientes,MAX_ARRAY)==0)
+                {
+                    printf("\n DATO MODIFICADO CORRECTAMENTE");
+                }
+                aso_muestra(pacientes,MAX_ARRAY);
+                break;
+
 
         }
 

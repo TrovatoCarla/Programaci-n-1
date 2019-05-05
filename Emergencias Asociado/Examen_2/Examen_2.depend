@@ -15,17 +15,18 @@
 	<stdlib.h>
 	"Asociado.h"
 
-1557088488 source:/home/carla/Programacion-1/Emergencias Asociado/Examen_2/Asociado.c
+1557098448 source:/home/carla/Programacion-1/Emergencias Asociado/Examen_2/Asociado.c
 	<string.h>
 	<stdio.h>
 	<stdlib.h>
+	<stdio_ext.h>
 	"Asociado.h"
 
-1557088814 /home/carla/Programacion-1/Emergencias Asociado/Examen_2/Asociado.h
+1557097740 /home/carla/Programacion-1/Emergencias Asociado/Examen_2/Asociado.h
 	"Asociado.h"
 	<string.h>
 
-1557083158 source:/home/carla/Programacion-1/Emergencias Asociado/Examen_2/main.c
+1557098613 source:/home/carla/Programacion-1/Emergencias Asociado/Examen_2/main.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
