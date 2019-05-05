@@ -22,17 +22,20 @@ int aso_alta(Asociado* aPaciente,char* msjError,int limite,int lugarDisponible)
         {
             if(getName("\nIngrese apellido: ","\nError,apellido invalido",2,MAX_CARACTER,3,aPaciente[lugarDisponible].apellido)==0)
             {
-                if(getDni("\nIngrese DNI: ","\nError,DNI invalido",MAX_CARACTER,4,3,aPaciente[lugarDisponible].DNI)==0)
+                if(getDni("\nIngrese DNI: ","\nError,DNI invalido",1,100,3,aPaciente[lugarDisponible].DNI)==0)
                 {
-                    if(getInt("\nIngrese edad: ","Error,edad invalida",0,120,3,&aPaciente[lugarDisponible].edad)==0)
+                    if(getInt("\nIngrese edad: ","Error,edad invalida",120,0,3,&aPaciente[lugarDisponible].edad)==0)
                     {
                         aPaciente[lugarDisponible].estado=HABILITADO;
                         retorno=0;
                     }
-                }
-            }
-        }
-
+                 }
+             }
+         }
+    }
+    else
+    {
+        printf("\n No hay lugar libre");
     }
     return retorno;
 }
@@ -60,7 +63,7 @@ int getName (char* mensaje, char* mensajeError, int minimo, int maximo, int rein
     char bufferStr[4096];
     if(mensaje != NULL && mensajeError != NULL && minimo < maximo && reintentos>=0 && resultado != NULL)
     {
-        if(getString(mensaje,mensajeError,maximo,minimo,reintentos,bufferStr)==0)
+        if(getString(mensaje,mensajeError,minimo,maximo,reintentos,bufferStr)==0)
         {
             if(isValidNombre(bufferStr)==TRUE)
             {
@@ -70,8 +73,8 @@ int getName (char* mensaje, char* mensajeError, int minimo, int maximo, int rein
             else
             {
                 printf ("%s",mensajeError);
+                reintentos--;
             }
-            reintentos--;
         }
     }
     return retorno;
@@ -111,12 +114,12 @@ int isValidIntArray(char* cadena)
     return retorno;
 }
 
-int getString(char *mensaje,char *mensajeError,char maximo,char minimo,int reintentos,char *resultado)
+int getString(char *mensaje,char *mensajeError,char minimo,char maximo,int reintentos,char *resultado)
 {
     char buffer[MAX_CARACTER];
     int retorno=-1;
 
-    if(mensaje!=NULL && mensajeError!=NULL && maximo>minimo && reintentos>=0 && resultado!=NULL)
+    if(mensaje!=NULL && mensajeError!=NULL && minimo<maximo && reintentos>=0 && resultado!=NULL)
     {
         do
         {
@@ -130,51 +133,51 @@ int getString(char *mensaje,char *mensajeError,char maximo,char minimo,int reint
                 break;
             }
             reintentos--;
-            printf("%s",mensajeError);
         }while(reintentos>=0);
     }
      return retorno;
 }
 
-int getDni(char *msj,char *msjError,char maximo,char minimo,int reintentos,char *resultado)
+int getDni(char *msj,char *msjError,int minimo,int maximo,int reintentos,char *resultado)
 {
     int retorno = -1;
-    char bufferDNI[4096];
-    if(msj != NULL && msjError != NULL && minimo < maximo && reintentos>=0 && resultado != NULL)
+    char bufferDNI[4000];
+    if(msj != NULL && msjError!=NULL && minimo<maximo && reintentos>=0 && resultado!=NULL)
     {
         if(getString(msj,msjError,minimo,maximo,reintentos,bufferDNI)==0)
         {
             if(isValidIntArray(bufferDNI)==TRUE)
             {
-                strncpy(resultado,bufferDNI,maximo);
+               strncpy(resultado,bufferDNI,maximo);
                 retorno = 0;
             }
             else
             {
                 printf ("%s",msjError);
+                reintentos--;
             }
-            reintentos--;
+
         }
     }
     return retorno;
 }
 
-int getInt(char *mensaje,char *mensajeError,int maximo,int minimo,int reintentos,int *resultado)
+int getInt(char *mensaje,char *mensajeError,int maximo,int minimo,int reintentos,int* resultado)
 {
     int auxiliar;
     int i;
     int retorno=-1;
         if(mensaje!=NULL &&
             mensajeError!=NULL &&
-            maximo>=minimo &&
+            maximo>minimo &&
             reintentos>=0 &&
             resultado!=NULL)
-
+        {
             for(i=0;i<reintentos;i++)
             {
                 printf("%s",mensaje);
                 scanf("%d",&auxiliar);
-                if(isValidInt(auxiliar,maximo))
+                if(!isValidInt(auxiliar,maximo))
                 {
                     *resultado=auxiliar;
                     retorno=0;
@@ -185,20 +188,23 @@ int getInt(char *mensaje,char *mensajeError,int maximo,int minimo,int reintentos
                     printf("%s",mensajeError);
                 }
             }
+        }
+
     return retorno;
 }
 
 int isValidInt(int numero, int maximo)
 {
     int i;
-   for(i=0;i<maximo;i++)
-   {
+    int retorno=TRUE;
+    for(i=0;i<maximo;i++)
+    {
         if(numero<'0' || numero>'9')
         {
-            return 0;
+            retorno=FALSE;
         }
-   }
-    return 1;
+    }
+    return retorno;
 }
 int aso_initArray(Asociado* paciente,int limite)
 {
@@ -212,5 +218,9 @@ int aso_initArray(Asociado* paciente,int limite)
     }
     return retorno;
 }
+void aso_muestra(Asociado* paciente,int limite)
+{
+    int i;
 
+}
 #endif // ASOCIADO_C_INCLUDED

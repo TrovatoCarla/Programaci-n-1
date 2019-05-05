@@ -10,19 +10,21 @@
 
 int main()
 {
-    Asociado prueba[MAX_ARRAY];
+    Asociado pacientes[MAX_ARRAY];
 
     char seguir='s';
     int opcion;
     int lugarLibre=1;
+    int auxId=0;
 
-    if(aso_initArray(prueba,MAX_ARRAY)==0)
+    if(aso_initArray(pacientes,MAX_ARRAY)==0)
     {
         printf(" Iniciaizacion correcta\n");
     }
 
     while(seguir=='s')
     {
+        printf("\n MENU\n");
         printf("\n 1- ALTA");
         printf("\n 2- MODIFICAR");
         printf("\n 3- BAJA");
@@ -40,12 +42,12 @@ int main()
         switch(opcion)
         {
             case 1:
-                if(aso_alta(prueba,"\nError",MAX_ARRAY,lugarLibre)==0)
+                if(aso_alta(pacientes,"\nError",MAX_ARRAY,lugarLibre)==0)
                 {
-                    printf("JOYAAAA");
+                    printf("\n ALTA EXITOSA");
+                    pacientes[lugarLibre].idAsociado=auxId;
+                    auxId++;
                 }
-
-
             break;
 
         }
