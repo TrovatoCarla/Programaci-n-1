@@ -1,0 +1,17 @@
+# depslib dependency file v1.0
+1557016832 source:/home/carla/Asociado.c/Examen_2/main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"Asociado.h"
+
+1557016324 /home/carla/Asociado.c/Examen_2/Asociado.h
+	"Asociado.h"
+	<string.h>
+
+1557016772 source:/home/carla/Asociado.c/Examen_2/Asociado.c
+	<string.h>
+	<stdio.h>
+	<stdlib.h>
+	"Asociado.h"
+
