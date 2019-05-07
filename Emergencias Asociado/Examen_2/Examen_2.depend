@@ -15,20 +15,43 @@
 	<stdlib.h>
 	"Asociado.h"
 
-1557098448 source:/home/carla/Programacion-1/Emergencias Asociado/Examen_2/Asociado.c
+1557259881 source:/home/carla/Programacion-1/Emergencias Asociado/Examen_2/Asociado.c
 	<string.h>
 	<stdio.h>
 	<stdlib.h>
 	<stdio_ext.h>
 	"Asociado.h"
+	"funcionesUTN.h"
+	"misValid.h"
 
-1557097740 /home/carla/Programacion-1/Emergencias Asociado/Examen_2/Asociado.h
+1557260530 /home/carla/Programacion-1/Emergencias Asociado/Examen_2/Asociado.h
 	"Asociado.h"
 	<string.h>
 
-1557098613 source:/home/carla/Programacion-1/Emergencias Asociado/Examen_2/main.c
+1557260591 source:/home/carla/Programacion-1/Emergencias Asociado/Examen_2/main.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 	"Asociado.h"
+	"funcionesUTN.h"
+	"misValid.h"
+
+1557252244 /home/carla/Programacion-1/Emergencias Asociado/Examen_2/misValid.h
+
+1557254778 /home/carla/Programacion-1/Emergencias Asociado/Examen_2/funcionesUTN.h
+
+1557259591 source:/home/carla/Programacion-1/Emergencias Asociado/Examen_2/funcionesUTN.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<stdio_ext.h>
+	"funcionesUTN.h"
+	"misValid.h"
+
+1557259377 source:/home/carla/Programacion-1/Emergencias Asociado/Examen_2/misValid.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"funcionesUTN.h"
+	"misValid.h"
 

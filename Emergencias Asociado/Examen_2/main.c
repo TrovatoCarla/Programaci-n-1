@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include <string.h>
 #include "Asociado.h"
+#include "funcionesUTN.h"
+#include "misValid.h"
 #define VACIO 1
 #define HABILITADO 2
 #define INHABILITADO 3
@@ -17,11 +19,15 @@ int main()
     int opcion;
     int lugarLibre=1;
     int auxId;
+    int idParaBaja=-1;
+
+
 
     if(aso_initArray(pacientes,MAX_ARRAY)==0)
     {
         printf(" Iniciaizacion correcta\n");
     }
+
 /*
     strncpy(pacientes[0].nombre,"Carla",MAX_CARACTER);
     strncpy(pacientes[0].apellido,"Trovato",MAX_CARACTER);
@@ -33,16 +39,16 @@ int main()
     strncpy(pacientes[1].apellido,"ramirez",MAX_CARACTER);
     strncpy(pacientes[1].DNI,"DNI",MAX_CARACTER);
     pacientes[1].edad=26;
-    pacientes[0].idAsociado=1;
+    pacientes[1].idAsociado=1;
 
-    strncpy(pacientes[2].nombre,"ucas",MAX_CARACTER);
+    strncpy(pacientes[2].nombre,"Lucas",MAX_CARACTER);
     strncpy(pacientes[2].apellido,"silva",MAX_CARACTER);
     strncpy(pacientes[2].DNI,"DNI",MAX_CARACTER);
     pacientes[2].edad=27;
-    pacientes[0].idAsociado=2;
-
+    pacientes[2].idAsociado=2;
     aso_muestra(pacientes,MAX_ARRAY);
 */
+
     while(seguir=='s')
     {
         printf("\n MENU\n");
@@ -63,13 +69,13 @@ int main()
         switch(opcion)
         {
             case 1:
-                if(aso_alta(pacientes,"\nError en alta",MAX_CARACTER,lugarLibre)==0)
+                if(!aso_alta(pacientes,"\nError en alta",MAX_CARACTER,lugarLibre))
                 {
                     printf("\n ALTA EXITOSA");
                     pacientes[lugarLibre].idAsociado=auxId;
                     auxId++;
                 }
-                    break;
+                break;
             case 2:
                 if(aso_modificacion(pacientes,MAX_ARRAY)==0)
                 {
@@ -77,7 +83,13 @@ int main()
                 }
                 aso_muestra(pacientes,MAX_ARRAY);
                 break;
-
+            case 3:
+                aso_muestra(pacientes,MAX_ARRAY);
+                if(aso_baja(pacientes,MAX_ARRAY,idParaBaja)==0)
+                {
+                    printf("\n PACIENTE DADO DE BAJA,INHABILITADO");
+                }
+                break;
 
         }
 

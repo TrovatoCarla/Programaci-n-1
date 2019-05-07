@@ -2,12 +2,12 @@
 <CodeBlocks_project_file>
 	<FileVersion major="1" minor="6" />
 	<Project>
-		<Option title="Examen_2" />
+		<Option title="Segundo Intento ASo" />
 		<Option pch_mode="2" />
 		<Option compiler="gcc" />
 		<Build>
 			<Target title="Debug">
-				<Option output="bin/Debug/Examen_2" prefix_auto="1" extension_auto="1" />
+				<Option output="bin/Debug/Segundo Intento ASo" prefix_auto="1" extension_auto="1" />
 				<Option object_output="obj/Debug/" />
 				<Option type="1" />
 				<Option compiler="gcc" />
@@ -16,7 +16,7 @@
 				</Compiler>
 			</Target>
 			<Target title="Release">
-				<Option output="bin/Release/Examen_2" prefix_auto="1" extension_auto="1" />
+				<Option output="bin/Release/Segundo Intento ASo" prefix_auto="1" extension_auto="1" />
 				<Option object_output="obj/Release/" />
 				<Option type="1" />
 				<Option compiler="gcc" />
@@ -31,21 +31,9 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
-		<Unit filename="Asociado.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="Asociado.h" />
-		<Unit filename="funcionesUTN.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="funcionesUTN.h" />
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="misValid.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="misValid.h" />
 		<Extensions>
 			<code_completion />
 			<debugger />
