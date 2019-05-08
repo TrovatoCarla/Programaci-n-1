@@ -128,6 +128,8 @@ int aso_alta(Asociado* aPaciente,char* msjError,int limite,int lugarDisponible)
 {
     int retorno=-1;
 
+    __fpurge(stdin);
+
     if(aso_buscaLugarLibre(aPaciente,MAX_ARRAY,&lugarDisponible)==0)
     {
         if(getName("\nIngrese nombre: ","\nError nombre invalido",40,2,3,aPaciente[lugarDisponible].nombre)==0)

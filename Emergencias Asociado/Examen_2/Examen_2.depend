@@ -55,3 +55,43 @@
 	"funcionesUTN.h"
 	"misValid.h"
 
+1557264892 source:/home/alumno/Programacion-1/Emergencias Asociado/Examen_2/Asociado.c
+	<string.h>
+	<stdio.h>
+	<stdlib.h>
+	<stdio_ext.h>
+	"Asociado.h"
+	"funcionesUTN.h"
+	"misValid.h"
+
+1557264636 /home/alumno/Programacion-1/Emergencias Asociado/Examen_2/Asociado.h
+	"Asociado.h"
+	<string.h>
+
+1557264636 /home/alumno/Programacion-1/Emergencias Asociado/Examen_2/funcionesUTN.h
+
+1557264636 /home/alumno/Programacion-1/Emergencias Asociado/Examen_2/misValid.h
+
+1557264636 source:/home/alumno/Programacion-1/Emergencias Asociado/Examen_2/funcionesUTN.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<stdio_ext.h>
+	"funcionesUTN.h"
+	"misValid.h"
+
+1557264923 source:/home/alumno/Programacion-1/Emergencias Asociado/Examen_2/main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"Asociado.h"
+	"funcionesUTN.h"
+	"misValid.h"
+
+1557264636 source:/home/alumno/Programacion-1/Emergencias Asociado/Examen_2/misValid.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"funcionesUTN.h"
+	"misValid.h"
+

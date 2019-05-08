@@ -11,13 +11,14 @@
 #define MAX_CARACTER 50
 
 
+
 int main()
 {
     Asociado pacientes[MAX_ARRAY];
 
     char seguir='s';
     int opcion;
-    int lugarLibre=1;
+    int lugarLibre=-1;
     int auxId;
     int idParaBaja=-1;
 
@@ -69,13 +70,14 @@ int main()
         switch(opcion)
         {
             case 1:
-                if(!aso_alta(pacientes,"\nError en alta",MAX_CARACTER,lugarLibre))
+                if(aso_alta(pacientes,"\nError en alta",MAX_CARACTER,lugarLibre)==0)
                 {
                     printf("\n ALTA EXITOSA");
                     pacientes[lugarLibre].idAsociado=auxId;
                     auxId++;
                 }
                 break;
+
             case 2:
                 if(aso_modificacion(pacientes,MAX_ARRAY)==0)
                 {
@@ -84,6 +86,7 @@ int main()
                 aso_muestra(pacientes,MAX_ARRAY);
                 break;
             case 3:
+
                 aso_muestra(pacientes,MAX_ARRAY);
                 if(aso_baja(pacientes,MAX_ARRAY,idParaBaja)==0)
                 {

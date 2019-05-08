@@ -1,0 +1,39 @@
+# depslib dependency file v1.0
+1557278292 source:/home/alumno/Programacion-1/Modelo_Parcial/main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"Autores.h"
+	"funcionesUTN.h"
+	"misValid.h"
+
+1557274087 source:/home/alumno/Programacion-1/Modelo_Parcial/misValid.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"funcionesUTN.h"
+	"misValid.h"
+
+1557274178 /home/alumno/Programacion-1/Modelo_Parcial/funcionesUTN.h
+
+1557274168 /home/alumno/Programacion-1/Modelo_Parcial/misValid.h
+
+1557277536 source:/home/alumno/Programacion-1/Modelo_Parcial/Autores.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<stdio_ext.h>
+	"Autores.h"
+	"funcionesUTN.h"
+	"misValid.h"
+
+1557276768 /home/alumno/Programacion-1/Modelo_Parcial/Autores.h
+
+1557274284 source:/home/alumno/Programacion-1/Modelo_Parcial/funcionesUTN.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<stdio_ext.h>
+	"funcionesUTN.h"
+	"misValid.h"
+
