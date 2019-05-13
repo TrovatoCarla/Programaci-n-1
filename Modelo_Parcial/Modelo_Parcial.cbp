@@ -35,6 +35,10 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="Autores.h" />
+		<Unit filename="Libros.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Libros.h" />
 		<Unit filename="funcionesUTN.c">
 			<Option compilerVar="CC" />
 		</Unit>

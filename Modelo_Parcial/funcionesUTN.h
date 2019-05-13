@@ -6,10 +6,5 @@ int getChar(char *mensaje,char *mensajeError,char maximo,char minimo,int reinten
 int getString(char *mensaje,char *mensajeError,char maximo,char minimo,int reintentos,char *resultado);
 int getName(char *mensaje,char *mensajeError,char maximo,char minimo,int reintentos,char *resultado);
 int getApellido(char* mensaje,char* mensajeError,char maximo,char minimo,int reintentos,char* resultado);
-/*
-int iniciarlizarArrays(char arrayStr [] [MAXIMO_CARACTER], int limite);
-int muestraArray(char arrayStr[][MAXIMO_CARACTER],int limite);
-int encuentraPosVacia(char arrayStr [] [MAXIMO_CARACTER],int* posicionDisponible, int limite);
-int buscaSiYaExiste(char arrayStr [] [MAXIMO_CARACTER],char* nombre,int* posicionNombreExistente,int limite);
-int ordenarArray(char arrayStr[] [MAXIMO_CARACTER],int limite);
-*/
+int getTelefono(char* mensaje,char* mensajeError,char maximo,char minimo,int reintentos,char* resultado);
+int getMail(char* mensaje,char* mensajeError,char maximo,char minimo,int reintentos,char* resultado);

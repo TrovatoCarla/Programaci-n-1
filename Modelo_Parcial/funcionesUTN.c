@@ -122,11 +122,13 @@ int getName(char *mensaje,char *mensajeError,char maximo,char minimo,int reinten
         __fpurge(stdin);
        if(!getString(mensaje,mensajeError,maximo,minimo,reintentos,buffer))
         {
-            if(isValidNombre(buffer))
+            if(isValidNombre(buffer)==TRUE)
             {
                 strncpy(resultado,buffer,maximo);
                 retorno=0;
              }
+             else
+                printf("%s",mensajeError);
         }
     }
     return retorno;
@@ -142,94 +144,77 @@ int getApellido(char* mensaje,char* mensajeError,char maximo,char minimo,int rei
         __fpurge(stdin);
         if(!getString(mensaje,mensajeError,maximo,minimo,reintentos,buffer))
         {
-            if(isValidApellido(buffer))
+            if(isValidNombre(buffer)==TRUE)
             {
                 strncpy(resultado,buffer,maximo);
                 retorno=0;
             }
+            else
+                printf("%s",mensajeError);
         }
     }
         return retorno;
 }
-/*
-int muestraArray(char arrayStr[][MAXIMO_CARACTER],int limite)
+
+int getSexo(char* mensaje,char* mensajeError,char maximo,char minimo,int reintentos,char* resultado)
 {
-    int i;
-
-      for(i=0;i<limite;i++)
-    {
-        printf("%s",arrayStr[i]);
-    }
-    return 0;
-}
-
-int iniciarlizarArrays(char arrayStr [][MAXIMO_CARACTER], int limite)
-{
-    int i;
-
-    for(i=0;i<limite;i++)
-    {
-        strncpy(arrayStr[i],"\0",MAXIMO_CARACTER);
-    }
-
-    return 0;
-}
-
-int encuentraPosVacia(char arrayStr [] [MAXIMO_CARACTER],int* posicionDisponible, int limite)
-{
-    int i;
+    char bufferSexo;
     int retorno=-1;
 
-    for(i=0;i<limite;i++)
-    {
-        if(strncmp(arrayStr[i],"\0",MAXIMO_CARACTER)==0)
+     if(mensaje!=NULL && mensajeError!=NULL && maximo>minimo && reintentos>0 && resultado!=NULL)
+     {
+        if(getString(mensaje,mensajeError,maximo,minimo,reintentos,&bufferSexo)==0)
         {
-            *posicionDisponible=i;
-            retorno=0;
-            break;
-         }
-      else
-         continue;
-    }
+            if(isValidSexo(bufferSexo)==TRUE)
+            {
+                *resultado=bufferSexo;
+                retorno=0;
+            }
+        }
+     }
+    return retorno;
+}
+int getTelefono(char* mensaje,char* mensajeError,char maximo,char minimo,int reintentos,char* resultado)
+{
+    char bufferTelefono[CARACTER];
+    int retorno=-1;
+
+      if(mensaje!=NULL && mensajeError!=NULL && maximo>minimo && reintentos>0 && resultado!=NULL)
+      {
+        if(getString(mensaje,mensajeError,maximo,minimo,reintentos,bufferTelefono)==0)
+        {
+            if(isValidTelefono(bufferTelefono)==TRUE)
+            {
+                strncpy(resultado,bufferTelefono,CARACTER);
+                retorno=0;
+            }
+        }
+      }
     return retorno;
 }
 
-int buscaSiYaExiste(char arrayStr [] [MAXIMO_CARACTER],char* nombre,int* posicionNombreExistente,int limite)
+int getMail(char* mensaje,char* mensajeError,char maximo,char minimo,int reintentos,char* resultado)
 {
+    char bufferMail[CARACTER];
+    int retorno;
 
-    int i;
-    int retorno=-1;
-
-    for (i=0;i<limite;i++)
-    {
-        if(strncmp(arrayStr[i],nombre,MAXIMO_CARACTER)==0)
-        {
-            *posicionNombreExistente=i;
-            retorno=0;
-            break;
-        }
-    }
+       if(mensaje!=NULL && mensajeError!=NULL && maximo>minimo && reintentos>0 && resultado!=NULL)
+       {
+            if(getString(mensaje,mensajeError,maximo,minimo,reintentos,bufferMail)==0)
+            {
+                if(isValidMail(bufferMail)==TRUE)
+                {
+                    strncpy(resultado,bufferMail,CARACTER);
+                    retorno=0;
+                }
+            }
+       }
     return retorno;
 }
 
-int ordenarArray(char arrayStr[] [MAXIMO_CARACTER],int limite)
+int getFecha(char* mensaje,char* mensajeError,char maximo,char minimo,int reintentos,char* resultado)
 {
-    int i;
-    int j;
-    char auxiliar[MAXIMO_CARACTER];
 
-        for(i=0;i<EMPLEADOS-1;i++)
-    {
-        j=i+1;
-        if(strncmp(arrayStr[i],arrayStr[j],EMPLEADOS)>0)
-        {
-            strncpy(auxiliar,arrayStr[i],MAXIMO_CARACTER);
-            strncpy(arrayStr[i],arrayStr[j],MAXIMO_CARACTER);
-            strncpy(arrayStr[j],auxiliar,MAXIMO_CARACTER);
-        }
-    }
-    return 0;
+
+
 }
-*/
-
-

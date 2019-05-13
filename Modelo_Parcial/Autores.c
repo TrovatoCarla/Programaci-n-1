@@ -5,6 +5,8 @@
 #include <string.h>
 #include <stdio_ext.h>
 #include "Autores.h"
+#include "Libros.h"
+#include "Socios.h"
 #include "funcionesUTN.h"
 #include "misValid.h"
 

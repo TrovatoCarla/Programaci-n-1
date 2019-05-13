@@ -110,7 +110,7 @@ int isValidApellido(char* cadena)
     return retorno;
 }
 
-int isTelefono(char cadena[])
+int isValidTelefono(char cadena[])
 {
     int i=0;
     int retorno=-1;
@@ -133,4 +133,38 @@ int isTelefono(char cadena[])
             retorno=1;
         }
         return retorno;
+}
+
+int isValidSexo(char cadena)
+{
+    int retorno=TRUE;
+
+    if(cadena!='f' || cadena!='F' || cadena!='m' || cadena!='M')
+    {
+        retorno=FALSE;
+    }
+    return retorno;
+}
+
+int isValidMail(char cadena[])
+{
+    int retorno=TRUE;
+    int i;
+    int contador=0;
+
+    for(i=0;cadena[i]!='\0';i++)
+    {
+        if((cadena[i]<'a'||cadena[i]>'z')&&(cadena[i]!='_')&&(cadena[i]!='-')&&(cadena[i]!='.')&&(cadena[i]<'0'||cadena[i]>'9')&&(cadena[i]!='@'))
+        {
+            if(cadena[i]=='@')
+            {
+                contador++;
+                    if(contador!='1')
+                    {
+                        retorno=FALSE;
+                    }
+            }
+        }
+    }
+    return retorno;
 }

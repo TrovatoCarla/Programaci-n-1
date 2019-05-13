@@ -7,15 +7,15 @@ typedef struct
     int codigoAutor;
     char titulo[51];
     int codigoLibro;
-}Libros;
+}Libro;
 
-int lib_initArray(Libros* libro,int limite);
-int lib_alta(Libros* libro,int limite,int posicionLibre,int id);
-int lib_buscaPorId(Libros* libro,int limite,int idBusqueda,int* indice);
-int lib_buscaPosicionLibre(Libros* libro,int len,int* posicionLibre);
-int lib_modificar(Libros* libro,int limite,int idAmodificar);
-int lib_bajaLibro(Libros* libro,int limite,int idBaja);
-int lib_muestraLibros(Libros* libro,int limite);
+int lib_initArray(Libro* libros,int limite);
+int lib_alta(Libro* libros,int limite,int posicionLibre,int id);
+int lib_buscaPorId(Libro* libros,int limite,int idBusqueda,int* indice);
+int lib_buscaPosicionLibre(Libro* libros,int len,int* posicionLibre);
+int lib_modificar(Libro* libros,int limite,int idAmodificar);
+int lib_bajaLibro(Libro* libros,int limite,int idBaja);
+int lib_muestraLibros(Libro* libros,int limite);
 
 
 

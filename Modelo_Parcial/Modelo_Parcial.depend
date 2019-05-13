@@ -37,22 +37,24 @@
 	"funcionesUTN.h"
 	"misValid.h"
 
-1557760938 source:/home/carla/Programacion-1/Modelo_Parcial/Autores.c
+1557764844 source:/home/carla/Programacion-1/Modelo_Parcial/Autores.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 	<stdio_ext.h>
 	"Autores.h"
+	"Libros.h"
+	"Socios.h"
 	"funcionesUTN.h"
 	"misValid.h"
 
 1557764068 /home/carla/Programacion-1/Modelo_Parcial/Autores.h
 
-1557758888 /home/carla/Programacion-1/Modelo_Parcial/funcionesUTN.h
+1557768918 /home/carla/Programacion-1/Modelo_Parcial/funcionesUTN.h
 
-1557758888 /home/carla/Programacion-1/Modelo_Parcial/misValid.h
+1557768899 /home/carla/Programacion-1/Modelo_Parcial/misValid.h
 
-1557758888 source:/home/carla/Programacion-1/Modelo_Parcial/funcionesUTN.c
+1557768719 source:/home/carla/Programacion-1/Modelo_Parcial/funcionesUTN.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -60,23 +62,23 @@
 	"funcionesUTN.h"
 	"misValid.h"
 
-1557763176 source:/home/carla/Programacion-1/Modelo_Parcial/main.c
+1557764164 source:/home/carla/Programacion-1/Modelo_Parcial/main.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 	"Autores.h"
+	"Libros.h"
 	"funcionesUTN.h"
 	"misValid.h"
-	"Libros.h"
 
-1557758888 source:/home/carla/Programacion-1/Modelo_Parcial/misValid.c
+1557768898 source:/home/carla/Programacion-1/Modelo_Parcial/misValid.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 	"funcionesUTN.h"
 	"misValid.h"
 
-1557764020 source:/home/carla/Programacion-1/Modelo_Parcial/Libros.c
+1557764622 source:/home/carla/Programacion-1/Modelo_Parcial/Libros.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -86,5 +88,18 @@
 	"misValid.h"
 	"Libros.h"
 
-1557763978 /home/carla/Programacion-1/Modelo_Parcial/Libros.h
+1557764622 /home/carla/Programacion-1/Modelo_Parcial/Libros.h
+
+1557764738 /home/carla/Programacion-1/Modelo_Parcial/Socios.h
+
+1557764854 source:/home/carla/Programacion-1/Modelo_Parcial/Socios.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<stdio_ext.h>
+	"Autores.h"
+	"Libros.h"
+	"Socios.h"
+	"funcionesUTN.h"
+	"misValid.h"
 
