@@ -5,9 +5,7 @@
 #include "funcionesUTN.h"
 #include "misValid.h"
 #define MAX_ARRAY 50
-#define VACIO 1
-#define HABILITADO 0
-#define INHABILITADO 2
+
 int main()
 {
     Autor prueba[MAX_ARRAY];
@@ -29,16 +27,19 @@ int main()
     strcpy(prueba[0].apellido,"trovato");
     prueba[0].isEmpty=HABILITADO;
     prueba[0].codigoAutor=1;
+    auxId++;
 
     strcpy(prueba[1].nombre,"ramirez");
     strcpy(prueba[1].apellido,"karen");
     prueba[1].isEmpty=HABILITADO;
     prueba[1].codigoAutor=2;
+    auxId++;
 
     strcpy(prueba[2].nombre,"carolina");
     strcpy(prueba[2].apellido,"perez");
     prueba[2].isEmpty=HABILITADO;
     prueba[2].codigoAutor=3;
+    auxId++;
 
         while(seguir=='s')
         {
@@ -66,19 +67,26 @@ int main()
                         break;
                     case 2:
                         aut_muestraAutores(prueba,MAX_ARRAY);
-                        if(aut_modificar(prueba,MAX_ARRAY,idAmodificar)==0)
+                        if(getInt("\nIngrese Codigo de Autor: ","\nError,codigo no encontrado",MAXIMO_CARACTER,0,3,&idAmodificar)==0)
                         {
-                            printf("\nMODIFICACION EXITOSA\n");
+                            if(aut_modificar(prueba,MAX_ARRAY,idAmodificar)==0)
+                            {
+                                printf("\nMODIFICACION EXITOSA\n");
+                            }
                         }
                         break;
                     case 3:
-                    if(aut_bajaAutor(prueba,MAX_ARRAY,idBaja)==0)
-                    {
-                        printf("\nBAJA EXITOSA\n");
-                    }
+                        if(getInt("\nIngrese Codigo de Autor: ","\nError,codigo no encontrado",MAXIMO_CARACTER,0,3,&idBaja)==0)///Agrego getInt
+                        {
+                            if(aut_bajaAutor(prueba,MAX_ARRAY,idBaja)==0)
+                            {
+                                printf("\nBAJA EXITOSA\n");
+                            }
+                        }
                         break;
                     case 4:
-                    aut_muestraAutores(prueba,MAX_ARRAY);
+                        aut_muestraAutores(prueba,MAX_ARRAY);
+                        break;
                 }
         }
 

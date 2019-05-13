@@ -37,3 +37,41 @@
 	"funcionesUTN.h"
 	"misValid.h"
 
+1557760938 source:/home/carla/Programacion-1/Modelo_Parcial/Autores.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<stdio_ext.h>
+	"Autores.h"
+	"funcionesUTN.h"
+	"misValid.h"
+
+1557323566 /home/carla/Programacion-1/Modelo_Parcial/Autores.h
+
+1557758888 /home/carla/Programacion-1/Modelo_Parcial/funcionesUTN.h
+
+1557758888 /home/carla/Programacion-1/Modelo_Parcial/misValid.h
+
+1557758888 source:/home/carla/Programacion-1/Modelo_Parcial/funcionesUTN.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<stdio_ext.h>
+	"funcionesUTN.h"
+	"misValid.h"
+
+1557760938 source:/home/carla/Programacion-1/Modelo_Parcial/main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"Autores.h"
+	"funcionesUTN.h"
+	"misValid.h"
+
+1557758888 source:/home/carla/Programacion-1/Modelo_Parcial/misValid.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"funcionesUTN.h"
+	"misValid.h"
+
