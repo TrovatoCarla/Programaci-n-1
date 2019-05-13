@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "Autores.h"
+#include "Libros.h"
 #include "funcionesUTN.h"
 #include "misValid.h"
 #define MAX_ARRAY 50
