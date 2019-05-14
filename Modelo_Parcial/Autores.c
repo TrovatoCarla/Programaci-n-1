@@ -47,8 +47,6 @@ int aut_alta(Autor* autores,int limite,int posicionLibre,int id)
 {
     int retorno;
 
-    //__fpurge(stdin);
-
     if(aut_buscaPosicionLibre(autores,MAX_ARRAY,&posicionLibre)==0)
     {
         if(getApellido("\nIngrese apellido del autor: ","\nError,apellido invalido",MAXIMO_CARACTER,2,3,autores[posicionLibre].apellido)==0)
@@ -84,12 +82,12 @@ int aut_buscaPorId(Autor* autores,int limite,int idBusqueda,int* indice)///Agreg
     return retorno;
 }
 
-int aut_buscaPosicionLibre(Autor* autores,int len,int* posicionLibre)
+int aut_buscaPosicionLibre(Autor* autores,int limite,int* posicionLibre)
 {
     int i;
     int retorno;
 
-    for(i=0;i<len;i++)
+    for(i=0;i<limite;i++)
     {
         if(autores[i].isEmpty==VACIO)
         {
@@ -166,5 +164,6 @@ int aut_bajaAutor(Autor* autores,int limite,int idBaja)
     aut_muestraAutores(autores,limite);
 return retorno;
 }
+
 
 #endif // AUTORES_C_INCLUDED

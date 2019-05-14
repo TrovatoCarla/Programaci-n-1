@@ -212,9 +212,3 @@ int getMail(char* mensaje,char* mensajeError,char maximo,char minimo,int reinten
     return retorno;
 }
 
-int getFecha(char* mensaje,char* mensajeError,char maximo,char minimo,int reintentos,char* resultado)
-{
-
-
-
-}

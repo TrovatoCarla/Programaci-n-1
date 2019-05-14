@@ -15,7 +15,7 @@ typedef struct
     char nombre[31];
 }Autor;
 
-int aut_buscaPosicionLibre(Autor* autores,int len,int* posicionLibre);
+int aut_buscaPosicionLibre(Autor* autores,int limite,int* posicionLibre);
 int aut_alta(Autor* autores,int limite,int posicionLibre,int id);
 int aut_buscaPorId(Autor* autores,int limite,int idBusqueda,int* indice);
 int aut_modificar(Autor* autores,int limite,int idAmodificar);

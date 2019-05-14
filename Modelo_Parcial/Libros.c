@@ -9,6 +9,7 @@
 #include "misValid.h"
 #include "Libros.h"
 
+
 int lib_initArray(Libro* libros,int limite)
 {
     int i;

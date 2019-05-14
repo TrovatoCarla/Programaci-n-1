@@ -8,3 +8,4 @@ int getName(char *mensaje,char *mensajeError,char maximo,char minimo,int reinten
 int getApellido(char* mensaje,char* mensajeError,char maximo,char minimo,int reintentos,char* resultado);
 int getTelefono(char* mensaje,char* mensajeError,char maximo,char minimo,int reintentos,char* resultado);
 int getMail(char* mensaje,char* mensajeError,char maximo,char minimo,int reintentos,char* resultado);
+int getSexo(char* mensaje,char* mensajeError,char maximo,char minimo,int reintentos,char* resultado);
