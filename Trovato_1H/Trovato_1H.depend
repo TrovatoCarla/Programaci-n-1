@@ -1,0 +1,20 @@
+# depslib dependency file v1.0
+1557868496 source:/home/alumno/FantasmaPrimerPacial/funcionesUTN.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<stdio_ext.h>
+	"funcionesUTN.h"
+	"misValid.h"
+
+1557868496 /home/alumno/FantasmaPrimerPacial/funcionesUTN.h
+
+1557868496 /home/alumno/FantasmaPrimerPacial/misValid.h
+
+1557868496 source:/home/alumno/FantasmaPrimerPacial/misValid.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"funcionesUTN.h"
+	"misValid.h"
+
