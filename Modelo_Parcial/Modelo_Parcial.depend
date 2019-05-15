@@ -37,7 +37,7 @@
 	"funcionesUTN.h"
 	"misValid.h"
 
-1557764844 source:/home/carla/Programacion-1/Modelo_Parcial/Autores.c
+1557945332 source:/home/carla/Programacion-1/Modelo_Parcial/Autores.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -48,13 +48,13 @@
 	"funcionesUTN.h"
 	"misValid.h"
 
-1557803705 /home/carla/Programacion-1/Modelo_Parcial/Autores.h
+1557945272 /home/carla/Programacion-1/Modelo_Parcial/Autores.h
 
-1557775092 /home/carla/Programacion-1/Modelo_Parcial/funcionesUTN.h
+1557926728 /home/carla/Programacion-1/Modelo_Parcial/funcionesUTN.h
 
-1557768899 /home/carla/Programacion-1/Modelo_Parcial/misValid.h
+1557926728 /home/carla/Programacion-1/Modelo_Parcial/misValid.h
 
-1557775079 source:/home/carla/Programacion-1/Modelo_Parcial/funcionesUTN.c
+1557926728 source:/home/carla/Programacion-1/Modelo_Parcial/funcionesUTN.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -62,7 +62,7 @@
 	"funcionesUTN.h"
 	"misValid.h"
 
-1557764164 source:/home/carla/Programacion-1/Modelo_Parcial/main.c
+1557960288 source:/home/carla/Programacion-1/Modelo_Parcial/main.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -71,14 +71,14 @@
 	"funcionesUTN.h"
 	"misValid.h"
 
-1557768898 source:/home/carla/Programacion-1/Modelo_Parcial/misValid.c
+1557926728 source:/home/carla/Programacion-1/Modelo_Parcial/misValid.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 	"funcionesUTN.h"
 	"misValid.h"
 
-1557796944 source:/home/carla/Programacion-1/Modelo_Parcial/Libros.c
+1557961312 source:/home/carla/Programacion-1/Modelo_Parcial/Libros.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -88,12 +88,12 @@
 	"misValid.h"
 	"Libros.h"
 
-1557764622 /home/carla/Programacion-1/Modelo_Parcial/Libros.h
+1557957699 /home/carla/Programacion-1/Modelo_Parcial/Libros.h
 
-1557796482 /home/carla/Programacion-1/Modelo_Parcial/Socios.h
+1557926728 /home/carla/Programacion-1/Modelo_Parcial/Socios.h
 	"Fecha.h"
 
-1557796949 source:/home/carla/Programacion-1/Modelo_Parcial/Socios.c
+1557926728 source:/home/carla/Programacion-1/Modelo_Parcial/Socios.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -105,7 +105,7 @@
 	"funcionesUTN.h"
 	"misValid.h"
 
-1557796923 source:/home/carla/Programacion-1/Modelo_Parcial/Fecha.c
+1557926728 source:/home/carla/Programacion-1/Modelo_Parcial/Fecha.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -113,5 +113,5 @@
 	"funcionesUTN.h"
 	"misValid.h"
 
-1557773081 /home/carla/Programacion-1/Modelo_Parcial/Fecha.h
+1557926728 /home/carla/Programacion-1/Modelo_Parcial/Fecha.h
 

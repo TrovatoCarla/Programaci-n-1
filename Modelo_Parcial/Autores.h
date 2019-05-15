@@ -15,12 +15,14 @@ typedef struct
     char nombre[31];
 }Autor;
 
-int aut_buscaPosicionLibre(Autor* autores,int limite,int* posicionLibre);
 int aut_alta(Autor* autores,int limite,int posicionLibre,int id);
-int aut_buscaPorId(Autor* autores,int limite,int idBusqueda,int* indice);
-int aut_modificar(Autor* autores,int limite,int idAmodificar);
-int aut_initArray(Autor* autores,int limite);
 int aut_bajaAutor(Autor* autores,int limite,int idBaja);
-int aut_muestraAutores(Autor* autores,int limite);
+int aut_modificar(Autor* autores,int limite,int idAmodificar);
+
+int aut_buscaPosicionLibre(Autor* autores,int limite,int* posicionLibre);
+int aut_buscarID(Autor* autores, int limite, int valorBuscado, int* posicion);
+int aut_initArray(Autor* autores,int limite);
+int aut_listarAutores(Autor* autores,int limite);
+int aut_ordenaPorApellidoNombre(Autor* autores,int limite,int orderFirst,int orderSecond);
 
 #endif // AUTORES_H_INCLUDED

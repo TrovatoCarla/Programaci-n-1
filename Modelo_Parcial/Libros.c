@@ -8,6 +8,8 @@
 #include "funcionesUTN.h"
 #include "misValid.h"
 #include "Libros.h"
+#define MAX_DIG 100
+#define MIN_DIG 0
 
 
 int lib_initArray(Libro* libros,int limite)
@@ -22,19 +24,36 @@ int lib_initArray(Libro* libros,int limite)
     return retorno;
 }
 
-int lib_alta(Libro* libros,int limite,int posicionLibre,int id)
+int lib_alta(Libro* libros,Autor* autores,int limite,int* contadorID)///OK
 {
-    int retorno;
+    int retorno=-1;
+    int posicion;
+    int auxIdAutor;
+    int posicionAutor;
 
-    if(lib_buscaPosicionLibre(libros,MAX_ARRAY,&posicionLibre)==0)
+    if(libros!=NULL && autores!=NULL && limite>0 && contadorID!=NULL)
     {
-        if(getString("\nIngrese titulo del libros: ","\nError,titulo invalido",MAXIMO_CARACTER,2,3,libros[posicionLibre].titulo)==0)
+        aut_listarAutores(autores,MAX_ARRAY);
+        getInt("\nIngrese codigo de autor: ","\nError",MAX_DIG,MIN_DIG,2,&auxIdAutor);
+
+        if(!aut_buscarID(autores,MAX_ARRAY,auxIdAutor,&posicionAutor))
         {
-            if(getInt("\nIngrese codigo del autor: ","\nError,codigo invalido",MAXIMO_CARACTER,2,3,&libros[posicionLibre].codigoAutor)==0)
+            if(lib_buscaPosicionLibre(libros,MAX_ARRAY,&posicion)!=0)
             {
-                libros[posicionLibre].isEmpty=HABILITADO;
-                libros[posicionLibre].codigoLibro=id;
-                retorno=0;
+                printf("\n NO HAY LUGAR DISPONIBLE-LIBROS-\n");
+            }
+            else
+            {
+                (*contadorID)++;
+                libros[posicion].codigoLibro=*contadorID;
+                libros[posicion].isEmpty=0;
+                libros[posicion].codigoAutor=auxIdAutor;
+                if(!getName("\nIngrese titulo: ","\nError",MAXIMO_CARACTER,1,2,libros[posicion].titulo))
+                {
+                    printf("\nTitulo: %s\n Codigo de titulo: %d\n Autor: %s\n Codigo de autor: %d\n ",libros[posicion].titulo,
+                        libros[posicion].codigoLibro,autores[posicionAutor].apellido,autores[posicionAutor].codigoAutor);
+                        retorno=0;
+                }
             }
         }
     }
@@ -50,7 +69,7 @@ int lib_buscaPorId(Libro* libros,int limite,int idBusqueda,int* indice)///Agrego
 
     for(i=0;i<limite;i++)
     {
-        if(idBusqueda==libros[i].codigoAutor)
+        if(idBusqueda==libros[i].codigoLibro)
         {
             *indice=i;///Cambio idEncontrado por indice
             retorno=0;
@@ -64,7 +83,7 @@ int lib_buscaPorId(Libro* libros,int limite,int idBusqueda,int* indice)///Agrego
 int lib_buscaPosicionLibre(Libro* libros,int len,int* posicionLibre)
 {
     int i;
-    int retorno;
+    int retorno=-1;
 
     for(i=0;i<len;i++)
     {
@@ -78,79 +97,96 @@ int lib_buscaPosicionLibre(Libro* libros,int len,int* posicionLibre)
     return retorno;
 }
 
-int lib_modificar(Libro* libros,int limite,int idAmodificar)
+int lib_modificar(Libro* libros,Autor* autores,int limite)
 {
     int retorno;
-    char seguir='s';
+    int posicion;
+    int id;
     int opcion;
+
     char auxTitulo[MAXIMO_CARACTER];
     int auxCodigoAutor=-1;
-    int indiceAmodificar;///Agrego indiceAmodificar
 
-
-    if(lib_buscaPorId(libros,MAX_ARRAY,idAmodificar,&indiceAmodificar)==0)///cambio puntero de idMofic aca y puso indiceAmodif
+    if(libros!=NULL && autores!=NULL && limite>0)
     {
-        while(seguir=='s')
+        lib_muestraLibros(libros,autores,MAX_ARRAY);
+        getInt("\nIngrese codigo de libro a modificar: ","\nError",MAX_DIG,MIN_DIG,2,&id);
+        if(lib_buscaPorId(libros,MAX_ARRAY,id,&posicion)!=0)
         {
-            printf("\nMENU DE MOFICICACIONES: \n 1-Titulo \n 2-Codigo de autor\n 3-Salir\n");
+            printf("\nID NO ENCONTRADO");
+        }
+        else
+        {
             do
             {
+                printf("\nTitulo: %s\n Codigo de libro: %d\n Codigo de autor: %d\n ",libros[posicion].titulo,///copio el print de alta
+                    libros[posicion].codigoLibro,libros[posicion].codigoAutor);
 
-            }while(getInt("\nIngrese una opcion: ","\nError,opcion invalida",3,1,2,&opcion));
-
-            switch(opcion)
-            {
-                case 1:
-                    if(getString("\nIngrese titulo: ","\nTitulo invalido",MAXIMO_CARACTER,2,3,auxTitulo)==0)
-                    {
-                        strncpy(libros[indiceAmodificar].titulo,auxTitulo,MAXIMO_CARACTER);
-                        printf("\nTITULO MODIFICADO CORRECTAMENTE\n");
-                    }
-                break;
-                case 2:
-                    if(getInt("\nIngrese codigo de autor: ","\nCodigo invalido\n",100,0,3,&auxCodigoAutor)==0)
-                    {
-                        libros[indiceAmodificar].codigoAutor=auxCodigoAutor;
-                        printf("\nCODIGO DE AUTOR MODIFICADO CORRECTAMENTE");
-                    }
-                    break;
-                case 3:
-                    seguir='n';
-                    retorno=0;
-            }
+                getInt("\nModificar:\n 1-Titulo\n 2-Codigo de autor\n 3-(salir)\n","\nError,opcion invalida\n",MAX_DIG,MIN_DIG,2,&opcion);
+                switch(opcion)
+                {
+                    case 1:
+                        if(getName("\nIngrese titulo: ","\nTitulo invalido",MAXIMO_CARACTER,2,3,auxTitulo)==0)
+                        {
+                            strncpy(libros[posicion].titulo,auxTitulo,MAXIMO_CARACTER);
+                            printf("\nTITULO MODIFICADO CORRECTAMENTE\n");
+                        }
+                        break;
+                    case 2:
+                        if(getInt("\nIngrese codigo de autor: ","\nCodigo invalido\n",MAX_DIG,MIN_DIG,3,&auxCodigoAutor)==0)
+                        {
+                            libros[posicion].codigoAutor=auxCodigoAutor;
+                            printf("\nCODIGO DE AUTOR MODIFICADO CORRECTAMENTE");
+                        }
+                        break;
+                    case 3:
+                        break;
+                    default:
+                        printf("\nOpcion no valida");
+                }
+            }while(opcion!=3);
+            retorno=0;
         }
     }
+     return retorno;
+}
+
+int lib_bajaLibros(Libro* libros,Autor* autores, int limite)
+{
+    int retorno=-1;
+    int posicion;
+    int id;
+    if(libros!=NULL && limite>0)
+    {
+        lib_muestraLibros(libros,autores,MAX_ARRAY);
+        getInt("\nIngrese Codigo de libro a cancelar: ","\nError",MAX_DIG,MIN_DIG,2,&id); ///cambiar si no se busca por ID
+        if(lib_buscaPorId(libros,limite,id,&posicion)!=0)         ///cambiar si no se busca por ID
+        {
+            printf("\nNo existe este ID");  ///cambiar si no se busca por ID
+        }
+        else
+        {
+            libros[posicion].isEmpty=1;
+            libros[posicion].codigoLibro=INHABILITADO;            ///cambiar campo id
+            libros[posicion].codigoAutor=0; ///cambiar campo apellido
+            strcpy(libros[posicion].titulo,"");    ///cambiar campo nombre
+            //libros[posicion].auxInt=0;             ///cambiar campo auxInt
+            //libros[posicion].auxFloat=0;           ///cambiar campo auxFloar
+
+            retorno=0;
+        }
+    }
+
     return retorno;
 }
 
-int lib_bajaLibro(Libro* libros,int limite,int idBaja)
-{
-    int retorno=-1;
-    int indice;///agrego variable
-
-    if(lib_buscaPorId(libros,limite,idBaja,&indice)==0)///y lo utiliza de puntero
-    {
-        printf(" estoy dando de baja aaaa %d\n",libros[indice].codigoLibro);
-        printf(" el estado anterior es %d \n",libros[indice].isEmpty);
-        libros[indice].isEmpty=INHABILITADO;
-        printf(" el nuevo es %d \n",libros[indice].isEmpty);
-        retorno=0;
-    }
-    else
-    {
-        printf("\n ID NO ENCONTRADO");
-    }
-    lib_muestraLibros(libros,limite);
-return retorno;
-}
-
-int lib_muestraLibros(Libro* libros,int limite)
+int lib_muestraLibros(Libro* libros,Autor* autores,int limite)
 {
     int i;
     int retorno=-1;
     for(i=0;i<limite;i++)
     {
-        if(libros[i].isEmpty==HABILITADO)
+        if((libros[i].isEmpty==HABILITADO)&&(autores[i].isEmpty==HABILITADO))
         {
             __fpurge(stdin);
             printf("\nPosicion %d:  Codigo Libro: %d",i,libros[i].codigoLibro);
@@ -162,4 +198,46 @@ int lib_muestraLibros(Libro* libros,int limite)
     }
     return retorno;
 }
+
+int lib_ordenaPorTitulo(Libro* libros,int limite,int orderFirst,int orderSecond)                              //cambiar fantasma
+{
+    int retorno=-1;
+    int i;
+    Libro buffer;
+    int flagSwap;
+
+    if(libros!=NULL && limite>=0)
+    {
+        do
+        {
+            flagSwap=0;
+            for (i=0; i<limite-1; i++)
+            {
+                if(((strcmp(libros[i].titulo,libros[i+1].titulo) < 0) && orderFirst) ||
+                    ((strcmp(libros[i].titulo,libros[i+1].titulo) > 0) && !orderFirst))
+                {
+                    flagSwap=1;
+                    buffer = libros[i];
+                    libros[i] = libros[i+1];
+                    libros[i+1] = buffer;
+                }/*
+                else if(strcmp(libros[i].apellido,libros[i+1].apellido) == 0)
+                {
+                    if( ((strcmp(libros[i].nombre,libros[i+1].nombre)< 0) && orderSecond) ||
+                       ( (strcmp(libros[i].nombre,libros[i+1].nombre)> 0) && !orderSecond) )
+                    {
+                        flagSwap=1;
+                        buffer = libros[i];
+                        libros[i] = libros[i+1];
+                        libros[i+1] = buffer;
+                    }
+                }*/
+            }
+        }while(flagSwap);
+        retorno=0;
+    }
+    return retorno;
+}
+
+
 #endif // LIBROS_C_INCLUDED

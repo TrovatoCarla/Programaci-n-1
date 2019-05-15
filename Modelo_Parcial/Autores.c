@@ -11,13 +11,13 @@
 #include "misValid.h"
 
 
-int aut_muestraAutores(Autor* autores,int limite)
+int aut_listarAutores(Autor* autores,int limite)
 {
     int i;
     int retorno=-1;
     for(i=0;i<limite;i++)
     {
-        if(autores[i].isEmpty==HABILITADO)
+        if((autores[i].isEmpty==HABILITADO))
         {
             __fpurge(stdin);
             printf("\nPosicion %d:  Codigo Autor: %d",i,autores[i].codigoAutor);
@@ -26,6 +26,46 @@ int aut_muestraAutores(Autor* autores,int limite)
             printf("\n             IsEmpty: %d",autores[i].isEmpty);
             retorno=0;
         }
+    }
+    return retorno;
+}
+
+int aut_ordenaPorApellidoNombre(Autor* autores,int limite,int orderFirst,int orderSecond)                              //cambiar fantasma
+{
+    int retorno=-1;
+    int i;
+    Autor buffer;
+    int flagSwap;
+
+    if(autores!=NULL && limite>=0)
+    {
+        do
+        {
+            flagSwap=0;
+            for (i = 0; i < limite-1; i++)
+            {
+                if(((strcmp(autores[i].apellido,autores[i+1].apellido) < 0) && orderFirst) ||
+                    ((strcmp(autores[i].apellido,autores[i+1].apellido) > 0) && !orderFirst))
+                {
+                    flagSwap=1;
+                    buffer = autores[i];
+                    autores[i] = autores[i+1];
+                    autores[i+1] = buffer;
+                }
+                else if(strcmp(autores[i].apellido,autores[i+1].apellido) == 0)
+                {
+                    if( ((strcmp(autores[i].nombre,autores[i+1].nombre)< 0) && orderSecond) ||
+                       ( (strcmp(autores[i].nombre,autores[i+1].nombre)> 0) && !orderSecond) )
+                    {
+                        flagSwap=1;
+                        buffer = autores[i];
+                        autores[i] = autores[i+1];
+                        autores[i+1] = buffer;
+                    }
+                }
+            }
+        }while(flagSwap);
+        retorno=0;
     }
     return retorno;
 }
@@ -62,23 +102,24 @@ int aut_alta(Autor* autores,int limite,int posicionLibre,int id)
     return retorno;
 }
 
-int aut_buscaPorId(Autor* autores,int limite,int idBusqueda,int* indice)///Agrego idBusqueda e indice
+int aut_buscarID(Autor* autores, int limite, int valorBuscado, int* posicion)
 {
-    int i;
     int retorno=-1;
-    ///Saco bufferID y lo reemplazo por idBusqueda
-    ///Quito el getInt de aca y lo agrego al main.
-
-    for(i=0;i<limite;i++)
+    int i;
+    if(autores!= NULL && limite>=0)
     {
-        if(idBusqueda==autores[i].codigoAutor)
+        for(i=0;i<limite;i++)
         {
-            *indice=i;///Cambio idEncontrado por indice
-            retorno=0;
-            break;
+            if(autores[i].isEmpty==1)
+                continue;
+            else if(autores[i].codigoAutor==valorBuscado)
+            {
+                retorno=0;
+                *posicion=i;
+                break;
+            }
         }
     }
-
     return retorno;
 }
 
@@ -109,7 +150,7 @@ int aut_modificar(Autor* autores,int limite,int idAmodificar)
     int indiceAmodificar;///Agrego indiceAmodificar
 
 
-    if(aut_buscaPorId(autores,MAX_ARRAY,idAmodificar,&indiceAmodificar)==0)///cambio puntero de idMofic aca y puso indiceAmodif
+    if(aut_buscarID(autores,MAX_ARRAY,idAmodificar,&indiceAmodificar)==0)///cambio puntero de idMofic aca y puso indiceAmodif
     {
         while(seguir=='s')
         {
@@ -149,7 +190,7 @@ int aut_bajaAutor(Autor* autores,int limite,int idBaja)
     int retorno=-1;
     int indice;///agrego variable
 
-    if(aut_buscaPorId(autores,limite,idBaja,&indice)==0)///y lo utiliza de puntero
+    if(aut_buscarID(autores,limite,idBaja,&indice)==0)///y lo utiliza de puntero
     {
         printf(" estoy dando de baja aaaa %d\n",autores[indice].codigoAutor);
         printf(" el estado anterior es %d \n",autores[indice].isEmpty);
@@ -161,7 +202,7 @@ int aut_bajaAutor(Autor* autores,int limite,int idBaja)
     {
         printf("\n ID NO ENCONTRADO");
     }
-    aut_muestraAutores(autores,limite);
+    aut_listarAutores(autores,limite);
 return retorno;
 }
 
