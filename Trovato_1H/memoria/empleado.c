@@ -67,7 +67,7 @@ int Emp_getPeso(Empleado* this, float* resultado)
 }
 
 
-int Emp_setNombre(Empleado* this, char* nombre)
+int Emp_setNombre(Empleado* this, char *nombre)
 {
     int retorno = -1;
     if(this != NULL && (!isValidNombre(nombre)))
@@ -83,7 +83,7 @@ int Emp_getNombre(Empleado* this, char* resultado)
     int retorno = -1;
     if(this != NULL && resultado != NULL)
     {
-        strncpy(this->nombre,resultado,MAX_CARACTER);
+        strncpy(resultado,this->nombre,MAX_CARACTER);
         retorno = 0;
     }
     return retorno;
