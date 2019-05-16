@@ -4,6 +4,7 @@
 #include "Autores.h"
 #include "Libros.h"
 #include "Socios.h"
+#include "Prestamo.h"
 #include "funcionesUTN.h"
 #include "misValid.h"
 #define MAX_ARRAY 50
@@ -16,20 +17,15 @@ int main()
     Autor autores[MAX_ARRAY];
     Libro libros[MAX_ARRAY];
     Socio socios[MAX_ARRAY];
+    Prestamo prestamos[MAX_ARRAY];
     int opcion;
     int auxIdSocio=0;
+    int auxIdPrestamo=0;
+    int auxIdLibro=0;
 
-    if(aut_initArray(autores,MAX_ARRAY)==0)
+    if((!aut_initArray(autores,MAX_ARRAY))&& (!lib_initArray(libros,MAX_ARRAY))&& (!soc_initArray(socios,MAX_ARRAY))&& (!pre_Inicializar(prestamos,MAX_ARRAY)))
     {
-        printf("\n INICIALIZAZION AUTORES CORRECTA\n");
-    }
-    if(lib_initArray(libros,MAX_ARRAY)==0)
-    {
-        printf("\n INICIALIZAZION LIBROS CORRECTA\n");
-    }
-    if(soc_initArray(socios,MAX_ARRAY)==0)
-    {
-        printf("\n INICIALIZAZION SOCIOS CORRECTA\n");
+        printf("\n INICIALIZACIONES CORRECTAS\n");
     }
 
     strcpy(socios[0].nombre,"carla");
@@ -50,6 +46,24 @@ int main()
     socios[2].isEmpty=HABILITADO;
     socios[2].codigoSocio=3;
     auxIdSocio++;
+
+    libros[0].codigoLibro=0;
+    libros[0].isEmpty=0;
+    libros[0].codigoAutor=1;
+    strcpy(libros[0].titulo,"CCCCC");
+
+
+    libros[1].codigoLibro=1;
+    libros[1].isEmpty=0;
+    libros[1].codigoAutor=2;
+    strcpy(libros[1].titulo,"AAAAA");
+
+
+    libros[2].codigoLibro=2;
+    libros[2].isEmpty=0;
+    libros[2].codigoAutor=3;
+    strcpy(libros[2].titulo,"BBBBB");
+
 
             do
             {
@@ -83,6 +97,8 @@ int main()
                             }
                             break;
                         case 5:
+                            lib_alta(libros,autores,MAX_ARRAY,auxIdLibro);
+                            lib_muestraLibros(libros,autores,MAX_ARRAY);
                             if(!lib_ordenaPorTitulo(libros,MAX_ARRAY,SORT_UP,SORT_UP))
                             {
                                 lib_muestraLibros(libros,autores,MAX_ARRAY);
@@ -92,6 +108,12 @@ int main()
                             if(!aut_ordenaPorApellidoNombre(autores,MAX_ARRAY,SORT_UP,SORT_UP))
                             {
                                 aut_listarAutores(autores,MAX_ARRAY);
+                            }
+                            break;
+                        case 7:
+                            if(!pre_alta(prestamos,socios,libros,autores,MAX_ARRAY,MAX_ARRAY,MAX_ARRAY,MAX_ARRAY,&auxIdPrestamo))
+                            {
+                                pre_listar(prestamos,MAX_ARRAY);
                             }
                             break;
                     /*

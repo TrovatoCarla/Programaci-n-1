@@ -43,6 +43,10 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="Libros.h" />
+		<Unit filename="Prestamo.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Prestamo.h" />
 		<Unit filename="Socios.c">
 			<Option compilerVar="CC" />
 		</Unit>
