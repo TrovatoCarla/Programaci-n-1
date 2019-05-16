@@ -74,7 +74,7 @@ int getChar(char *mensaje,char *mensajeError,char maximo,char minimo,int reinten
            {
                printf("%s",mensaje);
                scanf("%c",&buffer);
-               if(isValidChar(buffer,maximo))
+               if(!isValidChar(buffer,maximo))
                {
                    *resultado=buffer;
                    retorno=0;
@@ -181,6 +181,7 @@ int getTelefono(char* mensaje,char* mensajeError,char maximo,char minimo,int rei
 
       if(mensaje!=NULL && mensajeError!=NULL && maximo>minimo && reintentos>0 && resultado!=NULL)
       {
+        __fpurge(stdin);
         if(getString(mensaje,mensajeError,maximo,minimo,reintentos,bufferTelefono)==0)
         {
             if(isValidTelefono(bufferTelefono)==TRUE)
@@ -200,6 +201,7 @@ int getMail(char* mensaje,char* mensajeError,char maximo,char minimo,int reinten
 
        if(mensaje!=NULL && mensajeError!=NULL && maximo>minimo && reintentos>0 && resultado!=NULL)
        {
+            __fpurge(stdin);
             if(getString(mensaje,mensajeError,maximo,minimo,reintentos,bufferMail)==0)
             {
                 if(isValidMail(bufferMail)==TRUE)

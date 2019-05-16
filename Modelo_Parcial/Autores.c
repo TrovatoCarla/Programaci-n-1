@@ -82,7 +82,6 @@ int aut_initArray(Autor* autores,int limite)
     return retorno;
 }
 
-
 int aut_alta(Autor* autores,int limite,int posicionLibre,int id)
 {
     int retorno;

@@ -1,6 +1,5 @@
 #ifndef AUTORES_H_INCLUDED
 #define AUTORES_H_INCLUDED
-
 #define MAX_ARRAY 50
 #define VACIO 1
 #define HABILITADO 0

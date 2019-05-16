@@ -50,14 +50,15 @@ int isValidFloat(float numero, float maximo, float minimo)
 int isValidChar(char aux,int maximo)
 {
     int i;
+    int retorno=1;
     for(i=0;i<maximo;i++)
     {
        if((aux<'a' || aux>'z') && (aux<'A' || aux>'Z'))
        {
-            return 0;
+            retorno=0;
        }
     }
-    return 1;
+    return retorno;
 }
 
 int isValidStringChar(char cadena[])

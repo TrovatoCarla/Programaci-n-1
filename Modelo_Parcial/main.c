@@ -3,6 +3,7 @@
 #include <string.h>
 #include "Autores.h"
 #include "Libros.h"
+#include "Socios.h"
 #include "funcionesUTN.h"
 #include "misValid.h"
 #define MAX_ARRAY 50
@@ -14,15 +15,9 @@ int main()
 {
     Autor autores[MAX_ARRAY];
     Libro libros[MAX_ARRAY];
+    Socio socios[MAX_ARRAY];
     int opcion;
-    int posicionLibreAutor=-1;
-    int idAmodificarAutor=-1;
-    //int posicionLibreLibro=-1;
-    //int idAmodificarLibro=-1;
-    int idBajaAutor=-1;
-    //int idBajaLibro=-1;
-    int auxIdAutor=0;
-    int auxIdLibro=0;
+    int auxIdSocio=0;
 
     if(aut_initArray(autores,MAX_ARRAY)==0)
     {
@@ -32,33 +27,74 @@ int main()
     {
         printf("\n INICIALIZAZION LIBROS CORRECTA\n");
     }
+    if(soc_initArray(socios,MAX_ARRAY)==0)
+    {
+        printf("\n INICIALIZAZION SOCIOS CORRECTA\n");
+    }
 
-    strcpy(autores[0].nombre,"carla");
-    strcpy(autores[0].apellido,"trovato");
-    autores[0].isEmpty=HABILITADO;
-    autores[0].codigoAutor=1;
+    strcpy(socios[0].nombre,"carla");
+    strcpy(socios[0].apellido,"trovato");
+    socios[0].isEmpty=HABILITADO;
+    socios[0].codigoSocio=1;
 
-    auxIdAutor++;
+    auxIdSocio++;
 
-    strcpy(autores[1].nombre,"ramirez");
-    strcpy(autores[1].apellido,"karen");
-    autores[1].isEmpty=HABILITADO;
-    autores[1].codigoAutor=2;
-    auxIdAutor++;
+    strcpy(socios[1].nombre,"ramirez");
+    strcpy(socios[1].apellido,"karen");
+    socios[1].isEmpty=HABILITADO;
+    socios[1].codigoSocio=2;
+    auxIdSocio++;
 
-    strcpy(autores[2].nombre,"carolina");
-    strcpy(autores[2].apellido,"perez");
-    autores[2].isEmpty=HABILITADO;
-    autores[2].codigoAutor=3;
-    auxIdAutor++;
+    strcpy(socios[2].nombre,"carolina");
+    strcpy(socios[2].apellido,"perez");
+    socios[2].isEmpty=HABILITADO;
+    socios[2].codigoSocio=3;
+    auxIdSocio++;
 
             do
             {
-                getInt("\n 1- ALTA DE AUTOR\n 2- MODIFICAR AUTOR\n 3- BAJA DE AUTORES\n 4- LISTAR AUTORES\n 5-ALTA DE LIRBOS\n 6-MODIFICAR LIBRO\n 7-BAJA LIBRO\n 8-LISTAR LIBROS\n 9-Salir\n",
-                        "\nError",10,1,1,&opcion);
+                getInt("\n 1- ALTA \n 2- MODIFICAR\n 3- BAJA\n 4- LISTAR SOCIOS\n 5- LISTAR LIRBOS\n 6- LISTAR AUTORES\n 7- PRESTAMOS\n 8- Salir\n",
+                        "\nError",8,1,1,&opcion);
                 system("clear");
                 switch(opcion)
                 {
+                        case 1:
+                            if(!soc_alta(socios,MAX_ARRAY,&auxIdSocio))
+                            {
+                                printf("\nALTA EXITOSA");
+                            }
+                            break;
+                        case 2:
+                            if(!soc_modificar(socios,MAX_ARRAY))
+                            {
+                                printf("\nMODIFICACION EXITOSA");
+                            }
+                            break;
+                        case 3:
+                            if(!soc_baja(socios,MAX_ARRAY))
+                            {
+                                printf("\nBAJA EXITOSA");
+                            }
+                            break;
+                        case 4:
+                            if(!soc_ordenaPorApellidoNombre(socios,MAX_ARRAY,SORT_UP,SORT_UP))
+                            {
+                                soc_listar(socios,MAX_ARRAY);
+                            }
+                            break;
+                        case 5:
+                            if(!lib_ordenaPorTitulo(libros,MAX_ARRAY,SORT_UP,SORT_UP))
+                            {
+                                lib_muestraLibros(libros,autores,MAX_ARRAY);
+                            }
+                            break;
+                        case 6:
+                            if(!aut_ordenaPorApellidoNombre(autores,MAX_ARRAY,SORT_UP,SORT_UP))
+                            {
+                                aut_listarAutores(autores,MAX_ARRAY);
+                            }
+                            break;
+                    /*
                     case 1:
                         if(aut_alta(autores,MAX_ARRAY,posicionLibreAutor,auxIdAutor)==0)
                         {
@@ -123,7 +159,7 @@ int main()
                         break;
                     case 9:
                         break;
-
+                        */
 
                 }
              }while(opcion!=9);
