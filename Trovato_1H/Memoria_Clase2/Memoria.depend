@@ -1,0 +1,34 @@
+# depslib dependency file v1.0
+1558648342 source:/home/alumno/Programacion-1/Trovato_1H/memoria/Memoria/funcionesUTN.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"funcionesUTN.h"
+	"misValid.h"
+
+1558646364 /home/alumno/Programacion-1/Trovato_1H/memoria/Memoria/funcionesUTN.h
+
+1558646364 /home/alumno/Programacion-1/Trovato_1H/memoria/Memoria/misValid.h
+
+1558648611 source:/home/alumno/Programacion-1/Trovato_1H/memoria/Memoria/main.c
+	<stdio.h>
+	<stdlib.h>
+	"Persona.h"
+
+1558648393 /home/alumno/Programacion-1/Trovato_1H/memoria/Memoria/Persona.h
+
+1558648337 source:/home/alumno/Programacion-1/Trovato_1H/memoria/Memoria/misValid.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"funcionesUTN.h"
+	"misValid.h"
+
+1558648427 source:/home/alumno/Programacion-1/Trovato_1H/memoria/Memoria/Persona.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"Persona.h"
+	"funcionesUTN.h"
+	"misValid.h"
+
