@@ -8,11 +8,45 @@
 #include "misValid.h"
 #define MAX_CARACTER 50
 
-Persona* Per_new(void)
+///sprintf(bufferId,"&d",id)--->
+
+
+
+Persona* Per_new(void)///crea una persona vacio
 {
     return (Persona*) malloc(sizeof(Persona));
 }
 
+Persona* Per_newStr(char *nombre,char *apellido,char *id,char *estado)///funcion q recibe todos los parametros como string y crea un empleado con todos los datos.Y me devuelve una persona si se pudo hacer
+{
+    Persona* retorno= NULL;
+    Persona* pAuxPersona= NULL;
+
+    if(nombre!=NULL && apellido!=NULL && id!=NULL && estado!=NULL)
+    {
+        pAuxPersona= Per_new();///guarda en aux el lugar q me consiguio para persona
+        if(pAuxPersona != NULL)
+        {
+            if(!Per_setNombre(pAuxPersona,nombre) &&         ///agrego nombre
+                !Per_setApellido(pAuxPersona,apellido) &&    ///agrego apellido
+                !Per_setIdStr(pAuxPersona,id) &&
+                ! Per_setEstadoStr(pAuxPersona,estado))
+                {
+                    retorno= pAuxPersona;
+
+                }
+            else
+            {
+                Per_delete(pAuxPersona);
+            }
+
+        }
+    }
+
+
+    return 0;
+}
+///----
 int Per_delete(Persona* this)
 {
     int retorno = -1;
@@ -24,16 +58,31 @@ int Per_delete(Persona* this)
     return retorno;
 }
 
+
+///---DE TODAS LAS FUNCIONES Q SEAN SET... SIEMPRE HACERLE UN SETsTRING
 int Per_setId(Persona* this, int id)
 {
     int retorno = -1;
     if(this != NULL && id >= 0)
     {
-        this->id = id;
+        this->id = id;/// solo aca puede aparecer la flecha.porque es la unica q accede de manera segura
         retorno = 0;
     }
     return retorno;
 }
+
+int Per_setIdStr(Persona* this, char* id)///ok lo hizo el profe- valida q el string q recibe no sea null
+{
+    int retorno = -1;
+    if(this != NULL && id != NULL && (!isValidInt(id)))
+    {
+
+        retorno = Per_setId(this,atoi(id));///si salio bien retorna 0 sino -1
+    }
+    return retorno;
+}
+
+
 
 int Per_getId(Persona* this, int* resultado)
 {
@@ -46,6 +95,22 @@ int Per_getId(Persona* this, int* resultado)
     return retorno;
 }
 
+int Per_getIdStr(Persona* this, char* resultado)///ok,lo hizo el profe
+{
+    int retorno = -1;
+    int bufferInt;
+
+    if(this != NULL && resultado != NULL)
+    {
+        Per_getId(this,&bufferInt);
+        sprintf(resultado,"%d",bufferInt);
+        retorno = 0;
+    }
+    return retorno;
+}
+
+
+///----
 int Per_setNombre(Persona* this, char *nombre)
 {
     int retorno = -1;
@@ -67,7 +132,7 @@ int Per_getNombre(Persona* this, char* resultado)
     }
     return retorno;
 }
-
+///---
 int Per_setApellido(Persona* this, char *apellido)
 {
     int retorno = -1;
@@ -89,7 +154,7 @@ int Per_getApellido(Persona* this, char* resultado)
     }
     return retorno;
 }
-
+///---
 int Per_setEstado(Persona* this, int estado)
 {
     int retorno = -1;
@@ -111,8 +176,8 @@ int Per_getEstado(Persona* this, int* resultado)
     }
     return retorno;
 }
-
-int Per_construtor(Persona* this,int id,int estado,char nombre,char apellido)
+///---
+int Per_constructor(Persona* this,int id,int estado,char nombre,char apellido)
 {
     int retorno=-1;
 

@@ -32,3 +32,37 @@
 	"funcionesUTN.h"
 	"misValid.h"
 
+1558648342 source:/home/alumno/Programacion-1/Trovato_1H/Memoria_Clase2/funcionesUTN.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"funcionesUTN.h"
+	"misValid.h"
+
+1558646364 /home/alumno/Programacion-1/Trovato_1H/Memoria_Clase2/funcionesUTN.h
+
+1558646364 /home/alumno/Programacion-1/Trovato_1H/Memoria_Clase2/misValid.h
+
+1558648337 source:/home/alumno/Programacion-1/Trovato_1H/Memoria_Clase2/misValid.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"funcionesUTN.h"
+	"misValid.h"
+
+1558655772 source:/home/alumno/Programacion-1/Trovato_1H/Memoria_Clase2/main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"Persona.h"
+
+1558653281 /home/alumno/Programacion-1/Trovato_1H/Memoria_Clase2/Persona.h
+
+1558654411 source:/home/alumno/Programacion-1/Trovato_1H/Memoria_Clase2/Persona.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"Persona.h"
+	"funcionesUTN.h"
+	"misValid.h"
+

@@ -10,7 +10,8 @@ typedef struct
 
 }Persona;
 
-Persona* Per_new(void);
+Persona* Per_new(void);///siempre. me devuelve un puntero a la identidad.para el q me consiguio lugar
+
 int Per_delete(Persona* this);
 
 int Per_setId(Persona* this, int id);
